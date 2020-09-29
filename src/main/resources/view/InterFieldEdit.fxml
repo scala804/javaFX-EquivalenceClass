@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="578.0" prefWidth="815.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.autoTest.javaFXEquivalenceClass.controller.InterFieldEditDialogController">
+  <children>
+      <AnchorPane layoutX="13.0" layoutY="7.0" prefHeight="97.0" prefWidth="797.0">
+          <children>
+              <TextField fx:id="uuid" visible="false" />
+              <TextField fx:id="fieldOtherType" visible="false" />
+              <TextField fx:id="fieldType" visible="false" />
+              <TextField fx:id="fieldLength" visible="false" />
+              <TextField fx:id="orderNumber" visible="false" />
+
+              <Label layoutX="15.0" layoutY="38.0" prefHeight="23.0" prefWidth="55.0" text="字段名称:" />
+              <TextField fx:id="fieldName" layoutX="85.0" layoutY="37.0" prefHeight="23.0" prefWidth="142.0" />
+              <Label layoutX="264.0" layoutY="42.0" prefHeight="15.0" prefWidth="55.0" text="数据项:" />
+              <TextField fx:id="fieldID" layoutX="320.0" layoutY="38.0" prefHeight="23.0" prefWidth="142.0" />
+              <Label layoutX="512.0" layoutY="22.0" prefHeight="15.0" prefWidth="66.0" text="是否为空:" />
+              <ChoiceBox fx:id="ChoiceFieldEmpty" layoutX="581.0" layoutY="19.0" prefHeight="23.0" prefWidth="161.0" />
+              <Label layoutX="512.0" layoutY="67.0" text="正常数值：" />
+              <TextField fx:id="fieldNormalData" layoutX="582.0" layoutY="63.0" />
+              <Separator layoutY="95.0" prefHeight="4.0" prefWidth="780.0" />
+          </children>
+      </AnchorPane>
+      <AnchorPane layoutX="14.0" layoutY="106.0" prefHeight="390.0" prefWidth="780.0">
+         <children>
+            <Label layoutX="21.0" layoutY="27.0" text="整数下边界值:" />
+            <TextField fx:id="interBeyondLowerBoundaryValue" layoutX="122.0" layoutY="23.0" prefHeight="23.0" prefWidth="184.0" />
+            <Label layoutX="28.0" layoutY="64.0" text="超出下边界的预期结果:" />
+             <TextArea fx:id="beyondLowerBoundaryExpectedResults" layoutX="13.0" layoutY="88.0" prefHeight="144.0" prefWidth="290.0" />
+            <Label layoutX="403.0" layoutY="27.0" text="整数上边界值:" />
+            <TextField fx:id="interBeyondUpperBoundaryValue" layoutX="514.0" layoutY="23.0" prefHeight="23.0" prefWidth="184.0" />
+            <Label layoutX="390.0" layoutY="64.0" text="超出上边界的预期结果:" />
+             <TextArea fx:id="beyondUpperBoundaryExpectedResults" layoutX="403.0" layoutY="89.0" prefHeight="144.0" prefWidth="296.0" />
+            <Label layoutX="390.0" layoutY="252.0" text="输入其它非整数的字符串的预期结果:" />
+             <TextArea fx:id="otherNotInterExpectedResults" layoutX="408.0" layoutY="282.0" prefHeight="109.0" prefWidth="290.0" />
+            <Separator layoutX="353.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="398.0" prefWidth="0.0" />
+             <Label layoutX="23.0" layoutY="244.0" prefHeight="15.0" prefWidth="91.0" text="为空的预期结果:" />
+            <TextArea fx:id="withNullExpectedResult" layoutX="13.0" layoutY="274.0" prefHeight="109.0" prefWidth="290.0" />
+         </children>
+      </AnchorPane>
+      <ButtonBar layoutX="176.0" layoutY="233.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+      <Button contentDisplay="CENTER" layoutX="273.0" layoutY="521.0" mnemonicParsing="false" onAction="#handleOk" prefHeight="23.0" prefWidth="55.0" style="-fx-background-color: #3A84C3; -fx-background-radius: 1em;" text="确认" textFill="#e8e5e5" />
+      <Button contentDisplay="CENTER" layoutX="473.0" layoutY="521.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="23.0" prefWidth="55.0" style="-fx-background-color: #3A84C3; -fx-background-radius: 1em;" text="取消" textFill="#e8e5e5" />
+      <Separator layoutX="14.0" layoutY="503.0" prefHeight="15.0" prefWidth="780.0" />
+  </children>
+</AnchorPane>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<fx:root prefHeight="197.0" prefWidth="154.0" style="-fx-background-color:#ddd" type="VBox" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.2-internal">
+
+	<HBox fx:id="timeButtonsPane" alignment="CENTER">
+		<children>
+			<TextFlow fx:id="hour" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: gray" />
+			<TextFlow fx:id="minute" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: gray" />
+			<TextFlow fx:id="second" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: gray" />
+		</children>
+	</HBox>
+
+	<AnchorPane prefHeight="70.0" prefWidth="154.0" style="-fx-background-color:#ddd;">
+	     	<Button layoutX="14.0" layoutY="5.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="40.0" text="删除" />
+			<Button layoutX="95.0" layoutY="4.0" onAction="#handleOk" mnemonicParsing="false" text="确认" />
+	</AnchorPane>
+</fx:root>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="578.0" prefWidth="815.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.autoTest.javaFXEquivalenceClass.controller.DateFieldEditDialogController">
+    <children>
+        <AnchorPane layoutX="13.0" layoutY="7.0" prefHeight="79.0" prefWidth="797.0">
+
+            <children>
+                <TextField fx:id="uuid" visible="false" />
+                <TextField fx:id="fieldOtherType" visible="false" />
+                <TextField fx:id="fieldType" visible="false" />
+                <TextField fx:id="fieldLength" visible="false" />
+                <TextField fx:id="orderNumber" visible="false" />
+
+                <Label layoutX="15.0" layoutY="38.0" prefHeight="23.0" prefWidth="55.0" text="字段名称:" />
+                <TextField fx:id="fieldName" layoutX="85.0" layoutY="37.0" prefHeight="23.0" prefWidth="142.0" />
+                <Label layoutX="264.0" layoutY="42.0" prefHeight="15.0" prefWidth="55.0" text="数据项:" />
+                <TextField fx:id="fieldID" layoutX="320.0" layoutY="38.0" prefHeight="23.0" prefWidth="142.0" />
+                <Label layoutX="512.0" layoutY="22.0" prefHeight="15.0" prefWidth="66.0" text="是否为空:" />
+                <ChoiceBox fx:id="ChoiceFieldEmpty" layoutX="581.0" layoutY="19.0" prefHeight="23.0" prefWidth="161.0" />
+                <Label layoutX="512.0" layoutY="67.0" text="正常数值：" />
+                <TextField fx:id="fieldNormalData" layoutX="582.0" layoutY="63.0" />
+                <Separator layoutY="95.0" prefHeight="4.0" prefWidth="780.0" />
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="14.0" layoutY="106.0" prefHeight="390.0" prefWidth="780.0">
+            <children>
+                <Label layoutX="21.0" layoutY="27.0" text="日期下边界值:" />
+                <DatePicker fx:id="dateBeyondLowerBoundaryValue" layoutX="122.0" layoutY="23.0" prefHeight="23.0" prefWidth="184.0" />
+                <Label layoutX="21.0" layoutY="65.0" text="时间下边界值:" />
+                <TextField fx:id="timeBeyondLowerBoundaryValue" layoutX="122.0" layoutY="63.0" prefHeight="23.0" prefWidth="161.0" />
+
+                <Label layoutX="28.0" layoutY="97.0" text="超出下边界的预期结果:" />
+                <TextArea fx:id="beyondLowerBoundaryExpectedResults" layoutX="28.0" layoutY="127.0" prefHeight="121.0" prefWidth="285.0" />
+                <Label layoutX="26.0" layoutY="254.0" text="日期为空的预期结果：" />
+                <TextArea fx:id="dateIsNullExpectedResults" layoutX="26.0" layoutY="276.0" prefHeight="115.0" prefWidth="285.0" />
+
+                <Label layoutX="403.0" layoutY="27.0" text="日期上边界值:" />
+                <DatePicker fx:id="dateBeyondUpperBoundaryValue" layoutX="514.0" layoutY="23.0" prefHeight="23.0" prefWidth="184.0" />
+                <Label layoutX="403.0" layoutY="64.0" text="时间上边界值:" />
+                <TextField fx:id="timeBeyondUpperBoundaryValue" layoutX="514.0" layoutY="60.0" prefHeight="23.0" prefWidth="161.0" />
+
+                <Label layoutX="390.0" layoutY="95.0" text="超出上边界的预期结果:" />
+                <TextArea fx:id="beyondUpperBoundaryExpectedResults" layoutX="403.0" layoutY="127.0" prefHeight="121.0" prefWidth="296.0" />
+                <Label layoutX="391.0" layoutY="260.0" text="非日期格式的预期结果：" />
+                <TextArea fx:id="dateIsFormatExpectedResults" layoutX="395.0" layoutY="282.0" prefHeight="109.0" prefWidth="303.0" />
+                <Separator layoutX="357.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="401.0" prefWidth="3.0" />
+            <ImageView fx:id="ImageViewUpperTime" fitHeight="12.0" fitWidth="12.0" layoutX="283.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="ImageViewLowerTime" fitHeight="12.0" fitWidth="12.0" layoutX="677.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" />
+
+            </children>
+        </AnchorPane>
+        <ButtonBar layoutX="176.0" layoutY="233.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+        <Button contentDisplay="CENTER" layoutX="252.0" layoutY="521.0" mnemonicParsing="false" onAction="#handleOk" prefHeight="23.0" prefWidth="55.0" style="-fx-background-color: #3A84C3; -fx-background-radius: 1em;" text="确认" textFill="#e8e5e5" />
+        <Button contentDisplay="CENTER" layoutX="458.0" layoutY="521.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="23.0" prefWidth="55.0" style="-fx-background-color: #3A84C3; -fx-background-radius: 1em;" text="取消" textFill="#e8e5e5" />
+        <Separator layoutX="14.0" layoutY="507.0" prefHeight="4.0" prefWidth="780.0" />
+    </children>
+</AnchorPane>

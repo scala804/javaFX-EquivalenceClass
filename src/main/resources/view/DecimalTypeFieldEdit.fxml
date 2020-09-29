@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="578.0" prefWidth="815.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.autoTest.javaFXEquivalenceClass.controller.DecimalFieldEditDialogController">
+  <children>
+      <AnchorPane layoutX="13.0" layoutY="7.0" prefHeight="97.0" prefWidth="797.0">
+          <children>
+              <TextField fx:id="uuid" visible="false" />
+              <TextField fx:id="fieldOtherType" visible="false" />
+              <TextField fx:id="fieldType" visible="false" />
+              <TextField fx:id="fieldLength" visible="false" />
+              <TextField fx:id="orderNumber" visible="false" />
+
+              <Label layoutX="15.0" layoutY="19.0" prefHeight="23.0" prefWidth="55.0" text="字段名称:" />
+              <TextField fx:id="fieldName" layoutX="85.0" layoutY="18.0" prefHeight="23.0" prefWidth="142.0" />
+              <Label layoutX="264.0" layoutY="23.0" prefHeight="15.0" prefWidth="55.0" text="数据项:" />
+              <TextField fx:id="fieldID" layoutX="320.0" layoutY="19.0" prefHeight="23.0" prefWidth="142.0" />
+              <Label layoutX="241.0" layoutY="66.0" prefHeight="15.0" prefWidth="66.0" text="是否为空:" />
+              <ChoiceBox fx:id="ChoiceFieldEmpty" layoutX="322.0" layoutY="63.0" prefHeight="23.0" prefWidth="142.0" />
+              <Label layoutX="510.0" layoutY="67.0" text="正常数值：" />
+              <TextField fx:id="fieldNormalData" layoutX="580.0" layoutY="63.0" />
+              <Separator layoutY="95.0" prefHeight="4.0" prefWidth="780.0" />
+            <Label layoutX="29.0" layoutY="66.0" text="精度：" />
+            <TextField fx:id="precision" layoutX="84.0" layoutY="63.0" prefHeight="23.0" prefWidth="142.0" />
+          </children>
+      </AnchorPane>
+      <AnchorPane layoutX="14.0" layoutY="106.0" prefHeight="405.0" prefWidth="780.0">
+          <children>
+              <Label layoutX="21.0" layoutY="27.0" text="小数下边界值:" />
+              <TextField fx:id="decimalBeyondLowerBoundaryValue" layoutX="122.0" layoutY="23.0" prefHeight="23.0" prefWidth="184.0" />
+              <Label layoutX="28.0" layoutY="83.0" text="超出下边界的预期结果:" />
+              <TextArea fx:id="beyondLowerBoundaryExpectedResults" layoutX="14.0" layoutY="112.0" prefHeight="136.0" prefWidth="287.0" />
+              <Label layoutX="20.0" layoutY="270.0" text="为空的预期结果：" />
+              <TextArea fx:id="isNullExpectedResults" layoutX="19.0" layoutY="286.0" prefHeight="109.0" prefWidth="281.0" />
+
+              <Label layoutX="403.0" layoutY="27.0" text="小数上边界值:" />
+              <TextField fx:id="decimalBeyondUpperBoundaryValue" layoutX="514.0" layoutY="23.0" prefHeight="23.0" prefWidth="184.0" />
+
+              <Label layoutX="390.0" layoutY="77.0" text="超出上边界的预期结果:" />
+              <TextArea fx:id="beyondUpperBoundaryExpectedResults" layoutX="403.0" layoutY="110.0" prefHeight="136.0" prefWidth="296.0" />
+              <Label layoutX="390.0" layoutY="267.0" text="非小数格式的预期结果：" />
+              <TextArea fx:id="decimalIsFormatExpectedResults" layoutX="402.0" layoutY="291.0" prefHeight="109.0" prefWidth="296.0" />
+              <Separator layoutX="347.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="405.0" prefWidth="9.0" />
+
+
+          </children>
+      </AnchorPane>
+      <ButtonBar layoutX="176.0" layoutY="233.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+      <Button contentDisplay="CENTER" layoutX="240.0" layoutY="521.0" mnemonicParsing="false"  prefHeight="23.0" prefWidth="55.0" onAction="#handleOk" style="-fx-background-color: #3A84C3; -fx-background-radius: 1em;" text="确认" textFill="#e8e5e5" />
+      <Button contentDisplay="CENTER" layoutX="444.0" layoutY="522.0" mnemonicParsing="false"  prefHeight="23.0" prefWidth="55.0" onAction="#handleCancel" style="-fx-background-color: #3A84C3; -fx-background-radius: 1em;" text="取消" textFill="#e8e5e5" />
+      <Separator layoutX="14.0" layoutY="508.0" prefHeight="15.0" prefWidth="780.0" />
+  </children>
+</AnchorPane>

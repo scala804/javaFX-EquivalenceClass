@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="578.0" prefWidth="815.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.autoTest.javaFXEquivalenceClass.controller.EnumerationFieldEditDialogController">
+    <children>
+        <AnchorPane layoutX="13.0" layoutY="7.0" prefHeight="79.0" prefWidth="797.0">
+            <children>
+                <TextField fx:id="uuid" visible="false" />
+                <TextField fx:id="fieldOtherType" visible="false" />
+                <TextField fx:id="fieldType" visible="false" />
+                <TextField fx:id="fieldLength" visible="false" />
+                <TextField fx:id="orderNumber" visible="false" />
+
+                <Label layoutX="15.0" layoutY="38.0" prefHeight="23.0" prefWidth="55.0" text="字段名称:" />
+                <TextField fx:id="fieldName" layoutX="85.0" layoutY="37.0" prefHeight="23.0" prefWidth="142.0" />
+                <Label layoutX="264.0" layoutY="42.0" prefHeight="15.0" prefWidth="55.0" text="数据项:" />
+                <TextField fx:id="fieldID" layoutX="320.0" layoutY="38.0" prefHeight="23.0" prefWidth="142.0" />
+                <Label layoutX="512.0" layoutY="22.0" prefHeight="15.0" prefWidth="66.0" text="是否为空:" />
+                <ChoiceBox fx:id="ChoiceFieldEmpty" layoutX="581.0" layoutY="19.0" prefHeight="23.0" prefWidth="161.0" />
+                <Label layoutX="512.0" layoutY="67.0" text="正常数值：" />
+                <TextField fx:id="fieldNormalData" layoutX="582.0" layoutY="63.0" />
+                <Separator layoutY="95.0" prefHeight="4.0" prefWidth="780.0" />
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="14.0" layoutY="106.0" prefHeight="390.0" prefWidth="780.0">
+            <children>
+                <Label layoutX="28.0" layoutY="39.0" text="枚举类型的值：" />
+                <TextArea fx:id="enumerationValue" layoutX="28.0" layoutY="69.0" prefHeight="121.0" prefWidth="285.0" />
+                <Label layoutX="390.0" layoutY="37.0" text="成功的预期结果:" />
+                <TextArea fx:id="successExpectedResults" layoutX="403.0" layoutY="69.0" prefHeight="121.0" prefWidth="296.0" />
+                <Separator layoutX="360.0" layoutY="4.0" orientation="VERTICAL" prefHeight="401.0" prefWidth="3.0" />
+                <Label layoutX="26.0" layoutY="217.0" text="为空的预期结果：" />
+                <TextArea fx:id="isNullExpectedResults" layoutX="26.0" layoutY="239.0" prefHeight="115.0" prefWidth="285.0" />
+            </children>
+        </AnchorPane>
+        <ButtonBar layoutX="176.0" layoutY="233.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+        <Button contentDisplay="CENTER" layoutX="252.0" layoutY="521.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0"  onAction="#handleOk" style="-fx-background-color: #3A84C3; -fx-background-radius: 1em;" text="确认" textFill="#e8e5e5" />
+        <Button contentDisplay="CENTER" layoutX="458.0" layoutY="521.0" mnemonicParsing="false"  prefHeight="23.0" prefWidth="55.0" onAction="#handleCancel" style="-fx-background-color: #3A84C3; -fx-background-radius: 1em;" text="取消" textFill="#e8e5e5" />
+        <Separator layoutX="14.0" layoutY="507.0" prefHeight="4.0" prefWidth="780.0" />
+    </children>
+</AnchorPane>
