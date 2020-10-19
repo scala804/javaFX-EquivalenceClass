@@ -1,8 +1,11 @@
 package com.autoTest.javaFXEquivalenceClass.util;
 
+import java.io.UnsupportedEncodingException;
+import java.util.Date;
 import java.util.Random;
 
 public class RandomUtil {
+    private static Random random = null;
     public static final String ALLCHAR = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     public static final String LETTERCHAR = "abcdefghijkllmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     public static final String NUMBERCHAR = "0123456789";
@@ -137,10 +140,63 @@ public class RandomUtil {
         return sb.toString();
     }
 
+
+    public static String getChineseString(int Max,int MIN ){
+        String chineseString="";
+        return chineseString;
+    }
+
+    private static Random getRandomInstance() {
+        if (random == null) {
+           Date date= new Date();
+            random = new Random(date.getTime());
+        }
+        return random;
+    }
+
+
+    public static String getFixedLengthChinese(int length) {
+        String str = "";
+        for (int i = length; i > 0; i--) {
+            str = str + getChinese();
+        }
+        return str;
+    }
+
+    public static String getRandomLengthChiness(int start, int end) {
+        String str = "";
+        int length = new Random().nextInt(end + 1);
+        if (length < start) {
+            str = getRandomLengthChiness(start, end);
+        } else {
+            for (int i = 0; i < length; i++) {
+                str = str + getChinese();
+            }
+        }
+        return str;
+    }
+
+
+    public static String getChinese() {
+        String str = null;
+        int highPos, lowPos;
+        Random random = getRandomInstance();
+        highPos = (176 + Math.abs(random.nextInt(39)));
+        lowPos = 161 + Math.abs(random.nextInt(93));
+        byte[] b = new byte[2];
+        b[0] = (new Integer(highPos)).byteValue();
+        b[1] = (new Integer(lowPos)).byteValue();
+        try {
+            str = new String(b, "GB2312");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return str;
+    }
+
     public static void main(String[] args) {
         /*System.out.println("返回一个定长的随机字符串(只包含大小写字母、数字):" + generateString(10));
-        System.out
-                .println("返回一个定长的随机纯字母字符串(只包含大小写字母):" + generateMixString(10));
+        System.out.println("返回一个定长的随机纯字母字符串(只包含大小写字母):" + generateMixString(10));
         System.out.println("返回一个定长的随机纯大写字母字符串(只包含大小写字母):"
                 + generateLowerString(10));
         System.out.println("返回一个定长的随机纯小写字母字符串(只包含大小写字母):"
@@ -150,8 +206,11 @@ public class RandomUtil {
                 + toFixdLengthString(123, 10));
         int[] in = { 1, 2, 3, 4, 5, 6, 7 };
         System.out.println("每次生成的len位数都不相同:" + getNotSimple(in, 3));*/
+        System.out.println(getChinese());
+        System.out.println(getFixedLengthChinese(20));
+        System.out.println(getRandomLengthChiness(2, 5));
 
-        System.out.println("每次生成的len位数都不相同:" + getIntervalSectionStrSimple(30, 3));
-        System.out.println("返回一个定长的随机字符串(只包含大小写字母、数字):" + generateString(0));
+       /* System.out.println("每次生成的len位数都不相同:" + getIntervalSectionStrSimple(30, 3));
+        System.out.println("返回一个定长的随机字符串(只包含大小写字母、数字):" + generateString(0));*/
     }
 }

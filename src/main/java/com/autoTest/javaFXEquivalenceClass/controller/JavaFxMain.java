@@ -258,7 +258,6 @@ public  class JavaFxMain extends Application {
     }
 
 
-
     private Field enumerationEditList(Field field) {
         try {
             // Load the fxml file and create a new stage for the popup dialog.

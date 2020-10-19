@@ -90,10 +90,9 @@ public class FieldOverviewController {
         fieldAddNumber.setPromptText(TEXT_INPUT_NOT_NULL);
         fieldTable.setOnMouseClicked(event -> {
             if (event.getClickCount() == 2 && (! fieldTable.getSelectionModel().isEmpty()) ) {
-                Field emailInfo = fieldTable.getSelectionModel().getSelectedItem();
+                /*Field emailInfo = fieldTable.getSelectionModel().getSelectedItem();*/
                 handleEditField();
             }
-
         });
     }
 

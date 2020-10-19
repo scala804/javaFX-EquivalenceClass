@@ -1,6 +1,15 @@
 package com.autoTest.javaFXEquivalenceClass.base;
 
 public class ConsField {
+
+    public static final String YES="是";
+    public static final String NO="否";
+
+    public static final String STRING_TYPE_NAME="字符串型";
+    public static final String INTER_TYPE_NAME="整数型";
+    public static final String DECIMAL_TYPE_NAME="小数型";
+    public static final String DATE_TYPE_NAME="日期型";
+    public static final String ENUMERATION_TYPE_NAME="枚举型";
     /**
      * 主界面fxMl
       */

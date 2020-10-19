@@ -235,15 +235,27 @@ public class GeneratedSamples {
         }catch (Exception e){
             logger.error(fieldType+"类型的等价类计算错误："+e);
         }
-
     }
 
     private void stringTypeDateComputation(List<StringTypeBean> stringTypeBeans, JSONObject successJson, List<Map<String, List<Map<String, String>>>> normalListDate, List<Map<String, List<Map<String, String>>>> abnormalListDate) {
          for(int i=0;i<stringTypeBeans.size();i++){
              if(stringTypeBeans.get(i).getFieldName()!=null){
+                String bigStringLength= stringTypeBeans.get(i).getBigStringLenth();
+                String minStringLength=stringTypeBeans.get(i).getMinStringLenth();
+                String isGroupBytes=stringTypeBeans.get(i).getIsGroupBytes();
+                try {
+                    int bigIntLength=Integer.valueOf(bigStringLength);
+                    int minIntLength=Integer.valueOf(minStringLength);
+                    if(bigIntLength>minIntLength+1){
+
+                    }
+                }catch (Exception e){
+
+                }
               /**操作成功，对应业务规则1,2,3,4**/
               /**规则1，数据样本验证正常有效的字符串（中间值）**/
               Map<String,List<Map<String,String>>> normalMap=new HashMap<>();
+
               
              }
          }
