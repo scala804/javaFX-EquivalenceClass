@@ -148,7 +148,7 @@ public class XmlInterfaceUtils {
         }
         //创建Jdom2的解析器对象
         SAXBuilder builder = new SAXBuilder();
-        Document document = null;
+        Document document;
         Element root = null;
         Object obj = null;
         try {

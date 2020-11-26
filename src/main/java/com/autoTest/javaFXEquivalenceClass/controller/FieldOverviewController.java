@@ -20,6 +20,9 @@ import static com.autoTest.javaFXEquivalenceClass.base.ConsField.*;
 import static com.autoTest.javaFXEquivalenceClass.util.PopupUtil.*;
 
 
+/**
+ * @author yangbihua
+ */
 public class FieldOverviewController {
     @FXML
     private TableView<Field> fieldTable;
@@ -47,9 +50,6 @@ public class FieldOverviewController {
     private  ChoiceBox ChoiceFieldEmpty;
     @FXML
     private  ChoiceBox ChoiceOtherType;
-
-    /*private int fieldNumbers;*/
-
 
 
     private  JavaFxMain javaFxMain;

@@ -231,6 +231,8 @@ public class GeneratedSamples {
                     break;
                 case "枚举型":
                     break;
+                default:
+                    logger.error("没有改类型"+fieldType);
             }
         }catch (Exception e){
             logger.error(fieldType+"类型的等价类计算错误："+e);
@@ -240,10 +242,10 @@ public class GeneratedSamples {
     private void stringTypeDateComputation(List<StringTypeBean> stringTypeBeans, JSONObject successJson, List<Map<String, List<Map<String, String>>>> normalListDate, List<Map<String, List<Map<String, String>>>> abnormalListDate) {
          for(int i=0;i<stringTypeBeans.size();i++){
              if(stringTypeBeans.get(i).getFieldName()!=null){
-                String bigStringLength= stringTypeBeans.get(i).getBigStringLenth();
-                String minStringLength=stringTypeBeans.get(i).getMinStringLenth();
-                String isGroupBytes=stringTypeBeans.get(i).getIsGroupBytes();
                 try {
+                    String bigStringLength= stringTypeBeans.get(i).getBigStringLenth();
+                    String minStringLength=stringTypeBeans.get(i).getMinStringLenth();
+                    String isGroupBytes=stringTypeBeans.get(i).getIsGroupBytes();
                     int bigIntLength=Integer.valueOf(bigStringLength);
                     int minIntLength=Integer.valueOf(minStringLength);
                     if(bigIntLength>minIntLength+1){

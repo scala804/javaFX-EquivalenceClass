@@ -29,6 +29,9 @@ import static com.autoTest.javaFXEquivalenceClass.util.ReflexObjectUtil.getMap;
 import static com.autoTest.javaFXEquivalenceClass.util.ReflexObjectUtil.map2Bean;
 
 
+/**
+ * @author yangbihua
+ */
 public  class JavaFxMain extends Application {
     private static final Logger logger= LoggerFactory.getLogger(JavaFxMain.class);
     private Stage primaryStage;
@@ -72,6 +75,7 @@ public  class JavaFxMain extends Application {
                 xmlFilePath="";
             }
             ListAllJavaBeans listAllJavaBeans = (ListAllJavaBeans) XmlInterfaceUtils.dataXmltoEntity(ListAllJavaBeans.class, xmlFilePath);
+
             if(listAllJavaBeans.getListStringTypeBeans()!=null){
                 List<StringTypeBean> listStringTypeBeans=listAllJavaBeans.getListStringTypeBeans();
                 for(int m=0;m<listStringTypeBeans.size();m++){

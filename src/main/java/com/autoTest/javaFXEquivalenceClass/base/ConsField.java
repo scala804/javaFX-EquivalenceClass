@@ -169,8 +169,6 @@ public class ConsField {
      */
     public static final String POPUP_INTER_IS_EMPTY="不允许为空的字段，整数下边界长度输入最少为1。";
 
-
-
     /**
      * 小数类型，弹出框提示信息
      */
@@ -270,6 +268,8 @@ public class ConsField {
     public static final String FIELD_TYPE_DECIMAL="小数型";
     public static final String FIELD_TYPE_DATE="日期型";
     public static final String FIELD_TYPE_ENUMERATION="枚举型";
+
+    public static final String[] FIELD_TYPE={FIELD_TYPE_STRING,FIELD_TYPE_INTER,FIELD_TYPE_DECIMAL,FIELD_TYPE_DATE,FIELD_TYPE_ENUMERATION};
 
     public static final String  UUID_DEFAULT_VALUE="uuid001";
 
