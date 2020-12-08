@@ -43,7 +43,7 @@ public class DateFieldEditDialogController {
     @FXML
     private TextField orderNumber;
     @FXML
-    private ChoiceBox ChoiceFieldEmpty;
+    private ChoiceBox choiceFieldEmpty;
     @FXML
     private  TextField fieldID;
     @FXML
@@ -81,7 +81,7 @@ public class DateFieldEditDialogController {
     DateTimeFormatter hhmmdd = DateTimeFormatter.ofPattern("HH:mm:ss");
     @FXML
     private void initialize() {
-        ChoiceFieldEmpty.getItems().addAll("否", "是");
+        choiceFieldEmpty.getItems().addAll("否", "是");
         fieldName.setPromptText(TEXT_INPUT_NOT_NULL);
         fieldID.setPromptText(TEXT_INPUT_NOT_REQUIRED);
         fieldNormalData.setPromptText(TEXT_INPUT_NOT_REQUIRED_SYSTEM_CREATE);
@@ -115,8 +115,8 @@ public class DateFieldEditDialogController {
     public void setField(Field field) {
         this.field = field;
         uuid.setText(field.getUuid());
-        ChoiceFieldEmpty.setValue(field.getChoiceFieldEmpty());
-        ChoiceFieldEmpty.setValue(field.getChoiceFieldEmpty());
+        choiceFieldEmpty.setValue(field.getChoiceFieldEmpty());
+        choiceFieldEmpty.setValue(field.getChoiceFieldEmpty());
         fieldOtherType.setText(field.getFieldOtherType());
         fieldType.setText(field.getFieldType());
         fieldLength.setText(field.getFieldLength());
@@ -160,7 +160,7 @@ public class DateFieldEditDialogController {
             dateIsFormatExpectedResults.setText(dateTypeBean.getDateIsFormatExpectedResults());
             beyondLowerBoundaryExpectedResults.setText(dateTypeBean.getBeyondLowerBoundaryExpectedResults());
             fieldLength.setText(dateTypeBean.getFieldLength());
-            ChoiceFieldEmpty.setValue(dateTypeBean.getChoiceFieldEmpty());
+            choiceFieldEmpty.setValue(dateTypeBean.getChoiceFieldEmpty());
             beyondUpperBoundaryExpectedResults.setText(dateTypeBean.getBeyondUpperBoundaryExpectedResults());
         } catch (Exception e) {
             logger.error("编辑框中的数据放入到StringTypeBean里面失败：" + e);
@@ -176,7 +176,7 @@ public class DateFieldEditDialogController {
         if(isOkClicked()){
             field.setName(fieldName.getText());
             field.setFieldType(fieldType.getText());
-            field.setChoiceFieldEmpty(ChoiceFieldEmpty.getValue().toString());
+            field.setChoiceFieldEmpty(choiceFieldEmpty.getValue().toString());
             field.setUuid(uuid.getText());
             field.setFieldOtherType(fieldOtherType.getText());
             field.setFieldLength(fieldLength.getText());
@@ -212,7 +212,7 @@ public class DateFieldEditDialogController {
             dateTypeBean.setBeyondLowerBoundaryExpectedResults(beyondLowerBoundaryExpectedResults.getText());
             dateTypeBean.setBeyondUpperBoundaryExpectedResults(beyondUpperBoundaryExpectedResults.getText());
             dateTypeBean.setFieldLength(fieldLength.getText());
-            dateTypeBean.setChoiceFieldEmpty(ChoiceFieldEmpty.getValue().toString());
+            dateTypeBean.setChoiceFieldEmpty(choiceFieldEmpty.getValue().toString());
         } catch (Exception e) {
             logger.error("编辑框中的数据放入到StringTypeBean里面失败：" + e);
         }
@@ -331,7 +331,7 @@ public class DateFieldEditDialogController {
                 return false;
             }else {
                 String dateLowerStr=timeBeyondLowerBoundaryValue.getText();
-                if(!timeCompareResult(dateLowerStr,dateUpperStr)){
+                if(!timeCompareResult(dateUpperStr,dateLowerStr)){
                     String strMessage = POPUP_TIME_LOW_BOUNDARY_AFTER_UPPER_BOUNDARY;
                     dataIsInvalid(dialogStage, "时间上边界值", strMessage);
                     return false;

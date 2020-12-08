@@ -91,13 +91,13 @@ public  class JavaFxMain extends Application {
             if(listAllJavaBeans.getListDateTypeBeans()!=null){
                 List<DateTypeBean> listDateTypeBeans=listAllJavaBeans.getListDateTypeBeans();
                 for(int i=0;i<listDateTypeBeans.size();i++){
-                    getDateFromXMl(Collections.singletonList(listDateTypeBeans.get(i)),FIELD_TYPE_DECIMAL);
+                    getDateFromXMl(Collections.singletonList(listDateTypeBeans.get(i)),FIELD_TYPE_DATE);
                 }
             }
             if(listAllJavaBeans.getListDecimalTypeBeans()!=null){
                 List<DecimalTypeBean> listDecimalTypeBeans=listAllJavaBeans.getListDecimalTypeBeans();
                 for(int i=0;i<listDecimalTypeBeans.size();i++){
-                    getDateFromXMl(Collections.singletonList(listDecimalTypeBeans.get(i)),FIELD_TYPE_DATE);
+                    getDateFromXMl(Collections.singletonList(listDecimalTypeBeans.get(i)),FIELD_TYPE_DECIMAL);
                 }
             }
             if(listAllJavaBeans.getListEnumerationTypeBeans()!=null){
@@ -129,8 +129,11 @@ public  class JavaFxMain extends Application {
                 String name=map.get("fieldName").toString();
                 String fieldType=map.get("fieldType").toString();
                 String fieldLength=map.get("fieldLength").toString();
-                String choiceFieldEmpty=map.get("choiceFieldEmpty").toString();
-                String fieldOtherType=map.get("fieldOtherType").toString();
+                String  choiceFieldEmpty=map.get("choiceFieldEmpty").toString();
+                String fieldOtherType="";
+                if(map.get("fieldOtherType")!=null){
+                    fieldOtherType=map.get("fieldOtherType").toString();
+                }
                 String uuid=map.get("uuid").toString();
                 String isGroupBytes="";
                 if(javaBeanType.equals(FIELD_TYPE_STRING)){
@@ -142,7 +145,6 @@ public  class JavaFxMain extends Application {
                 }
                 if(javaBeanType.equals(FIELD_TYPE_DECIMAL)){
                     decimalTypeBeans.add(i, map2Bean(map,DecimalTypeBean.class));
-                    isGroupBytes=map.get("isGroupBytes").toString();
                 }
                 if(javaBeanType.equals(FIELD_TYPE_DATE)){
                     dateTypeBeans.add(i, map2Bean(map,DateTypeBean.class));
@@ -437,38 +439,69 @@ public  class JavaFxMain extends Application {
     }
 
     public boolean generatedSamples(){
+
+       ListAllJavaBeans listAllJavaBeans = new ListAllJavaBeans();
+       if(stringTypeBeans.size()>0){
+           listAllJavaBeans.setListStringTypeBeans(stringTypeBeans);
+       }
+       if(dateTypeBeans.size()>0){
+           listAllJavaBeans.setListDateTypeBeans(dateTypeBeans);
+       }
+       if(enumerationTypeBeans.size()>0){
+           listAllJavaBeans.setListDecimalTypeBeans(decimalTypeBeans);
+       }
+       if(enumerationTypeBeans.size()>0){
+           listAllJavaBeans.setListEnumerationTypeBeans(enumerationTypeBeans);
+       }
+       if(interTypeBeans.size()>0){
+           listAllJavaBeans.setListInterTypeBeans(interTypeBeans);
+       }
+        String pathString=XmlInterfaceUtils.convertToXml(listAllJavaBeans,"dataXml001");
+        ListAllJavaBeans o = (ListAllJavaBeans) XmlInterfaceUtils.dataXmltoEntity(ListAllJavaBeans.class, pathString);
+        if(o.getListDateTypeBeans()!=null){
+            for(int i=0;i<o.getListDateTypeBeans().size();i++){
+                DateTypeBean tempDateTypeBean=o.getListDateTypeBeans().get(i);
+                System.out.println(tempDateTypeBean);
+            }
+        }
         /**按照字段，用于存放正常的数据样本**/
         /*List<List<String>> successList=new ArrayList<>();*/
+        //Map<String,List<Map<String,String>>> 正常数据集合：为字段名称，包含字段值及字段描述
         List<Map<String,List<Map<String,String>>>> normalListDate=new ArrayList<>();
         /**按照字段，用于存放异常的数据样本**/
         /*List<List<String>> failList=new ArrayList<>();*/
+        //Map<String,List<Map<String,String>>> 异常数据集合：为字段名称，包含字段值及字段描述
         List<Map<String,List<Map<String,String>>>> abnormalListDate=new ArrayList<>();
         JSONObject successJson=new JSONObject();
+        //String fieldType="字符串型";
         if(stringTypeBeans.size()>0){
             logger.info("开始根据\"生成字符串型数据样本\"，生成字符串样本数据。");
-            String fieldType="字符串型";
-           /* generatedSamples.computationalEquivalence(stringTypeBeans,fieldType,successJson,successList,failList);*/
-           generatedSamples.computationalSampleData(stringTypeBeans,fieldType,successJson,normalListDate,abnormalListDate);
+            generatedSamples.stringTypeDateComputation(stringTypeBeans,successJson,normalListDate,abnormalListDate);
         }
+        //String fieldType="整数型";
         if(interTypeBeans.size()>0){
             logger.info("开始根据\"生成整数型数据样本\"，生成整数样本数据。");
-            String fieldType="整数型";
+            generatedSamples.interTypeDateComputation(interTypeBeans,successJson,normalListDate,abnormalListDate);
+
         }
+        // String fieldType="小数型";
         if(decimalTypeBeans.size()>0){
             logger.info("开始根据\"生成小数型数据样本\"，生成小数样本数据。");
-            String fieldType="小数型";
+            generatedSamples.decimalTypeDateComputation(decimalTypeBeans,successJson,normalListDate,abnormalListDate);
         }
         if(dateTypeBeans.size()>0){
+            generatedSamples.dateTypeDateComputation(dateTypeBeans,successJson,normalListDate,abnormalListDate);
             logger.info("开始根据\"生成日期型数据样本\"，生成日期样本数据。");
-            String fieldType="日期型";
+            /*String fieldType="日期型";*/
         }
+        //String fieldType="枚举型";
         if(enumerationTypeBeans.size()>0){
+            generatedSamples.enumerationTypeDateComputation(enumerationTypeBeans,successJson,normalListDate,abnormalListDate);
             logger.info("开始根据\"生成枚举型数据样本\"，生成枚举样本数据。");
-            String fieldType="枚举型";
         }
 
-       /* List<List<String>> lists=generatedSamples.makeLists(successList,failList,successJson);*/
-       /* generatedSamples.writeExcel(lists);*/
+       List<List<String>> lists=generatedSamples.makeLists(normalListDate,abnormalListDate,successJson);
+        generatedSamples.writeExcel(lists);
         return true;
     }
 

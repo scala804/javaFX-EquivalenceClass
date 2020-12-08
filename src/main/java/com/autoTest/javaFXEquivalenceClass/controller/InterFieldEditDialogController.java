@@ -33,7 +33,7 @@ public class InterFieldEditDialogController {
     @FXML
     private TextField orderNumber;
     @FXML
-    private ChoiceBox ChoiceFieldEmpty;
+    private ChoiceBox choiceFieldEmpty;
     @FXML
     private  TextField fieldID;
     @FXML
@@ -63,7 +63,7 @@ public class InterFieldEditDialogController {
 
     @FXML
     private void initialize() {
-       ChoiceFieldEmpty.getItems().addAll("否", "是");
+       choiceFieldEmpty.getItems().addAll("否", "是");
 
         fieldName.setPromptText(TEXT_INPUT_NOT_NULL);
         fieldID.setPromptText(TEXT_INPUT_NOT_REQUIRED);
@@ -88,7 +88,7 @@ public class InterFieldEditDialogController {
     public void setField(Field field) {
         this.field = field;
         uuid.setText(field.getUuid());
-        ChoiceFieldEmpty.setValue(field.getChoiceFieldEmpty());
+        choiceFieldEmpty.setValue(field.getChoiceFieldEmpty());
         fieldOtherType.setText(field.getFieldOtherType());
         fieldType.setText(field.getFieldType());
         fieldLength.setText(field.getFieldLength());
@@ -128,7 +128,7 @@ public class InterFieldEditDialogController {
             interBeyondLowerBoundaryValue.setText(interTypeBean.getInterBeyondLowerBoundaryValue());
             beyondLowerBoundaryExpectedResults.setText(interTypeBean.getBeyondLowerBoundaryExpectedResults());
             fieldLength.setText(interTypeBean.getFieldLength());
-            ChoiceFieldEmpty.setValue(interTypeBean.getChoiceFieldEmpty());
+            choiceFieldEmpty.setValue(interTypeBean.getChoiceFieldEmpty());
             interBeyondUpperBoundaryValue.setText(interTypeBean.getInterBeyondUpperBoundaryValue());
             beyondUpperBoundaryExpectedResults.setText(interTypeBean.getBeyondUpperBoundaryExpectedResults());
             otherNotInterExpectedResults.setText(interTypeBean.getOtherNotInterExpectedResults());
@@ -146,7 +146,7 @@ public class InterFieldEditDialogController {
         if(isOkClicked()){
             field.setName(fieldName.getText());
             field.setFieldType(fieldType.getText());
-            field.setChoiceFieldEmpty(ChoiceFieldEmpty.getValue().toString());
+            field.setChoiceFieldEmpty(choiceFieldEmpty.getValue().toString());
             field.setUuid(uuid.getText());
             field.setFieldOtherType(fieldOtherType.getText());
             field.setFieldLength(fieldLength.getText());
@@ -180,8 +180,9 @@ public class InterFieldEditDialogController {
             interTypeBean.setOtherNotInterExpectedResults(otherNotInterExpectedResults.getText());
             interTypeBean.setBeyondLowerBoundaryExpectedResults(beyondLowerBoundaryExpectedResults.getText());
             interTypeBean.setBeyondUpperBoundaryExpectedResults(beyondUpperBoundaryExpectedResults.getText());
+            interTypeBean.setWithNullExpectedResult(withNullExpectedResult.getText());
             interTypeBean.setFieldLength(fieldLength.getText());
-            interTypeBean.setChoiceFieldEmpty(ChoiceFieldEmpty.getValue().toString());
+            interTypeBean.setChoiceFieldEmpty(choiceFieldEmpty.getValue().toString());
         } catch (Exception e) {
             logger.error("编辑框中的数据放入到StringTypeBean里面失败：" + e);
         }

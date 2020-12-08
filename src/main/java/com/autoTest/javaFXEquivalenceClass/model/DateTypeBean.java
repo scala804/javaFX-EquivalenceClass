@@ -9,7 +9,7 @@ public class DateTypeBean {
     private  String orderNumber;
     private  String fieldID;
     private  String  fieldName;
-    private String ChoiceFieldEmpty;
+    private String choiceFieldEmpty;
     private String fieldNormalData;
     private String dateBeyondLowerBoundaryValue;
     /*private Date dateBeyondLowerBoundaryValue;*/
@@ -81,11 +81,11 @@ public class DateTypeBean {
     }
 
     public String getChoiceFieldEmpty() {
-        return ChoiceFieldEmpty;
+        return choiceFieldEmpty;
     }
 
     public void setChoiceFieldEmpty(String choiceFieldEmpty) {
-        ChoiceFieldEmpty = choiceFieldEmpty;
+        this.choiceFieldEmpty = choiceFieldEmpty;
     }
 
     public String getFieldNormalData() {

@@ -8,7 +8,7 @@ public class DecimalTypeBean {
     private  String orderNumber;
     private  String fieldID;
     private  String  fieldName;
-    private String ChoiceFieldEmpty;
+    private String choiceFieldEmpty;
     private String fieldNormalData;
 
     private String precision;
@@ -75,12 +75,20 @@ public class DecimalTypeBean {
         this.fieldName = fieldName;
     }
 
+    public String getFieldType() {
+        return fieldType;
+    }
+
+    public void setFieldType(String fieldType) {
+        this.fieldType = fieldType;
+    }
+
     public String getChoiceFieldEmpty() {
-        return ChoiceFieldEmpty;
+        return choiceFieldEmpty;
     }
 
     public void setChoiceFieldEmpty(String choiceFieldEmpty) {
-        ChoiceFieldEmpty = choiceFieldEmpty;
+        this.choiceFieldEmpty = choiceFieldEmpty;
     }
 
     public String getFieldNormalData() {

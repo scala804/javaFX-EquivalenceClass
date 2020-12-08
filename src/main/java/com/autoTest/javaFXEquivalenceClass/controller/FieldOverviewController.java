@@ -45,11 +45,11 @@ public class FieldOverviewController {
     @FXML
     private TextField fieldLength;
     @FXML
-    private  ChoiceBox ChoiceBoxfieldType;
+    private  ChoiceBox choiceBoxfieldType;
     @FXML
-    private  ChoiceBox ChoiceFieldEmpty;
+    private  ChoiceBox choiceFieldEmpty;
     @FXML
-    private  ChoiceBox ChoiceOtherType;
+    private  ChoiceBox choiceOtherType;
 
 
     private  JavaFxMain javaFxMain;
@@ -78,14 +78,14 @@ public class FieldOverviewController {
         fielEmptyColumn.setCellValueFactory(new PropertyValueFactory<Field, String>("choiceFieldEmpty"));
         fieldOtherTypeColumn.setCellValueFactory(new PropertyValueFactory<Field, String>("fieldOtherType"));
 
-        ChoiceBoxfieldType.getItems().addAll("字符串型", "整数型", "小数型","日期型", "枚举型");
-        ChoiceBoxfieldType.getSelectionModel().selectFirst();
+        choiceBoxfieldType.getItems().addAll("字符串型", "整数型", "小数型","日期型", "枚举型");
+        choiceBoxfieldType.getSelectionModel().selectFirst();
 
-        ChoiceFieldEmpty.getItems().addAll("否", "是");
-        ChoiceFieldEmpty.getSelectionModel().selectFirst();
+        choiceOtherType.getItems().addAll("否", "是");
+        choiceOtherType.getSelectionModel().selectFirst();
 
-        ChoiceOtherType.getItems().addAll("否", "是");
-        ChoiceOtherType.getSelectionModel().selectFirst();
+        choiceFieldEmpty.getItems().addAll("否", "是");
+        choiceFieldEmpty.getSelectionModel().selectFirst();
         /*fieldNumbers=0;*/
         fieldAddNumber.setPromptText(TEXT_INPUT_NOT_NULL);
         fieldTable.setOnMouseClicked(event -> {
@@ -192,8 +192,8 @@ public class FieldOverviewController {
             return;
         }else {
             try {
-                String choiceBoxfieldType=ChoiceBoxfieldType.getValue().toString();
-                String choiceOtherType=ChoiceOtherType.getValue().toString();
+                String choiceBoxfieldTypes=choiceBoxfieldType.getValue().toString();
+                String choiceOtherTypes=choiceOtherType.getValue().toString();
                 for(int i=0;i<fieldAddNumberInt;i++){
                    /* fieldNumbers++;*/
                     Field tempField = new Field();
@@ -205,8 +205,8 @@ public class FieldOverviewController {
                     /*int randomIntFieldID=RandomUtil.getNotSimple(in,3);*/
                     tempField.setFieldID("testID");
                     tempField.setFieldLength(Integer.toString(fileldLength));
-                    tempField.setFieldOtherType(choiceOtherType);
-                    tempField.setFieldType(choiceBoxfieldType);
+                    tempField.setFieldOtherType(choiceOtherTypes);
+                    tempField.setFieldType(choiceBoxfieldTypes);
                     javaFxMain.getFieldsData().add(tempField);
                 }
             }catch (Exception e){

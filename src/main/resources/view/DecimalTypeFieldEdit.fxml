@@ -19,7 +19,7 @@
               <Label layoutX="264.0" layoutY="23.0" prefHeight="15.0" prefWidth="55.0" text="数据项:" />
               <TextField fx:id="fieldID" layoutX="320.0" layoutY="19.0" prefHeight="23.0" prefWidth="142.0" />
               <Label layoutX="241.0" layoutY="66.0" prefHeight="15.0" prefWidth="66.0" text="是否为空:" />
-              <ChoiceBox fx:id="ChoiceFieldEmpty" layoutX="322.0" layoutY="63.0" prefHeight="23.0" prefWidth="142.0" />
+              <ChoiceBox fx:id="choiceFieldEmpty" layoutX="322.0" layoutY="63.0" prefHeight="23.0" prefWidth="142.0" />
               <Label layoutX="510.0" layoutY="67.0" text="正常数值：" />
               <TextField fx:id="fieldNormalData" layoutX="580.0" layoutY="63.0" />
               <Separator layoutY="95.0" prefHeight="4.0" prefWidth="780.0" />

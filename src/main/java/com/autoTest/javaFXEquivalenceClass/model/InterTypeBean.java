@@ -9,7 +9,7 @@ public class InterTypeBean {
     private  String orderNumber;
     private  String fieldID;
     private  String  fieldName;
-    private String ChoiceFieldEmpty;
+    private String choiceFieldEmpty;
     private String fieldNormalData;
     private String interBeyondLowerBoundaryValue;
     private String beyondLowerBoundaryExpectedResults;
@@ -99,13 +99,12 @@ public class InterTypeBean {
     }
 
     public String getChoiceFieldEmpty() {
-        return ChoiceFieldEmpty;
+        return choiceFieldEmpty;
     }
 
     public void setChoiceFieldEmpty(String choiceFieldEmpty) {
-        ChoiceFieldEmpty = choiceFieldEmpty;
+        this.choiceFieldEmpty = choiceFieldEmpty;
     }
-
 
     public String getFieldNormalData() {
         return fieldNormalData;

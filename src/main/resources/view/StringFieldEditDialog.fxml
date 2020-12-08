@@ -20,7 +20,7 @@
                 <Label layoutX="6.0" layoutY="67.0" text="是否双字节:" />
                 <ChoiceBox fx:id="isGroupBytes" layoutX="84.0" layoutY="62.0" prefHeight="23.0" prefWidth="142.0" />
                 <Label layoutX="252.0" layoutY="66.0" prefHeight="15.0" prefWidth="55.0" text="是否为空:" />
-                <ChoiceBox fx:id="ChoiceFieldEmpty" layoutX="322.0" layoutY="63.0" prefHeight="23.0" prefWidth="142.0" />
+                <ChoiceBox fx:id="choiceFieldEmpty" layoutX="322.0" layoutY="63.0" prefHeight="23.0" prefWidth="142.0" />
                 <Label layoutX="510.0" layoutY="67.0" text="正常数值：" />
                 <TextField fx:id="fieldNormalData" layoutX="580.0" layoutY="63.0" />
                 <Separator layoutY="95.0" prefHeight="4.0" prefWidth="780.0" />

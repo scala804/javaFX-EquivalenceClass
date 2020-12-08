@@ -277,4 +277,7 @@ public class ConsField {
     public static final String CHOICE_FIELD_YES="是";
     public static final String CHOICE_FIELD_NO="否";
 
+    public static final String STANDARD_CHARACTERS="'%_,.*~`!@#$^&()-+=[]{}:;\"?/<>";
+
+    public static final String EXPECT_RESULT="期望结果";
 }

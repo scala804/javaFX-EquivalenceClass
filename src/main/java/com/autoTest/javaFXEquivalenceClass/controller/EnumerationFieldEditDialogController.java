@@ -34,7 +34,7 @@ public class EnumerationFieldEditDialogController {
     @FXML
     private TextField orderNumber;
     @FXML
-    private ChoiceBox ChoiceFieldEmpty;
+    private ChoiceBox choiceFieldEmpty;
     @FXML
     private  TextField fieldID;
     @FXML
@@ -56,7 +56,7 @@ public class EnumerationFieldEditDialogController {
 
     @FXML
     private void initialize() {
-        ChoiceFieldEmpty.getItems().addAll("否", "是");
+        choiceFieldEmpty.getItems().addAll("否", "是");
 
         fieldName.setPromptText(TEXT_INPUT_NOT_NULL);
         fieldID.setPromptText(TEXT_INPUT_NOT_REQUIRED);
@@ -73,7 +73,7 @@ public class EnumerationFieldEditDialogController {
     public void setField(Field field) {
         this.field = field;
         uuid.setText(field.getUuid());
-        ChoiceFieldEmpty.setValue(field.getChoiceFieldEmpty());
+        choiceFieldEmpty.setValue(field.getChoiceFieldEmpty());
         fieldOtherType.setText(field.getFieldOtherType());
         fieldType.setText(field.getFieldType());
         fieldLength.setText(field.getFieldLength());
@@ -104,7 +104,7 @@ public class EnumerationFieldEditDialogController {
             fieldOtherType.setText(enumerationTypeBean.getFieldOtherType());
             isNullExpectedResults.setText(enumerationTypeBean.getIsNullExpectedResults());
             fieldLength.setText(enumerationTypeBean.getFieldLength());
-            ChoiceFieldEmpty.setValue(enumerationTypeBean.getChoiceFieldEmpty());
+            choiceFieldEmpty.setValue(enumerationTypeBean.getChoiceFieldEmpty());
             enumerationValue.setText(enumerationTypeBean.getEnumerationValue());
             successExpectedResults.setText(enumerationTypeBean.getSuccessExpectedResults());
         } catch (Exception e) {
@@ -121,7 +121,7 @@ public class EnumerationFieldEditDialogController {
         if(isOkClicked()){
             field.setName(fieldName.getText());
             field.setFieldType(fieldType.getText());
-            field.setChoiceFieldEmpty(ChoiceFieldEmpty.getValue().toString());
+            field.setChoiceFieldEmpty(choiceFieldEmpty.getValue().toString());
             field.setUuid(uuid.getText());
             field.setFieldOtherType(fieldOtherType.getText());
             field.setFieldLength(fieldLength.getText());
@@ -150,7 +150,7 @@ public class EnumerationFieldEditDialogController {
             enumerationTypeBean.setFieldOtherType(fieldOtherType.getText());
             enumerationTypeBean.setIsNullExpectedResults(isNullExpectedResults.getText());
             enumerationTypeBean.setFieldLength(fieldLength.getText());
-            enumerationTypeBean.setChoiceFieldEmpty(ChoiceFieldEmpty.getValue().toString());
+            enumerationTypeBean.setChoiceFieldEmpty(choiceFieldEmpty.getValue().toString());
             enumerationTypeBean.setEnumerationValue(enumerationValue.getText());
             enumerationTypeBean.setSuccessExpectedResults(successExpectedResults.getText());
         } catch (Exception e) {

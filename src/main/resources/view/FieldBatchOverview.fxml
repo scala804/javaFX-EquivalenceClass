@@ -11,11 +11,11 @@
          <AnchorPane layoutX="4.0" layoutY="18.0" prefHeight="84.0" prefWidth="945.0">
           <children>
             <Label layoutX="55.0" layoutY="23.0" text="输入类型：" />
-            <ChoiceBox fx:id="ChoiceBoxfieldType" layoutX="116.0" layoutY="16.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="choiceBoxfieldType" layoutX="116.0" layoutY="16.0" prefWidth="150.0" />
             <Label layoutX="55.0" layoutY="56.0" text="是否为空：" />
-            <ChoiceBox fx:id="ChoiceFieldEmpty" layoutX="116.0" layoutY="54.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="choiceFieldEmpty" layoutX="116.0" layoutY="54.0" prefWidth="150.0" />
             <Label layoutX="278.0" layoutY="25.0" text="是否允许其他类型：" />
-            <ChoiceBox fx:id="ChoiceOtherType" layoutX="384.0" layoutY="17.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="choiceOtherType" layoutX="384.0" layoutY="17.0" prefWidth="150.0" />
             <Label layoutX="277.0" layoutY="60.0" prefHeight="15.0" prefWidth="108.0" text="     长度或者边界：" />
             <JFXTextField fx:id="fieldLength" layoutX="386.0" layoutY="49.0" prefHeight="23.0" prefWidth="150.0" />
             <Label layoutX="582.0" layoutY="45.0" prefHeight="15.0" prefWidth="67.0"  text="个       数：" />

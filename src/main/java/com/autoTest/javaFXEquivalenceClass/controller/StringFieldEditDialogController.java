@@ -33,7 +33,7 @@ public class StringFieldEditDialogController {
     @FXML
     private TextField uuid;
     @FXML
-    private ChoiceBox ChoiceFieldEmpty;
+    private ChoiceBox choiceFieldEmpty;
     @FXML
     private ChoiceBox isGroupBytes;
     @FXML
@@ -81,7 +81,7 @@ public class StringFieldEditDialogController {
 
     @FXML
     private void initialize() {
-        ChoiceFieldEmpty.getItems().addAll("否", "是");
+        choiceFieldEmpty.getItems().addAll("否", "是");
         isGroupBytes.getItems().addAll("否", "是");
         fieldName.setPromptText(TEXT_INPUT_NOT_NULL);
         fieldID.setPromptText(TEXT_INPUT_NOT_REQUIRED);
@@ -134,7 +134,7 @@ public class StringFieldEditDialogController {
     public void setField(Field field) {
         this.field = field;
         uuid.setText(field.getUuid());
-        ChoiceFieldEmpty.setValue(field.getChoiceFieldEmpty());
+        choiceFieldEmpty.setValue(field.getChoiceFieldEmpty());
         fieldOtherType.setText(field.getFieldOtherType());
         fieldType.setText(field.getFieldType());
         fieldLength.setText(field.getFieldLength());
@@ -160,7 +160,7 @@ public class StringFieldEditDialogController {
         if(isOkClicked()){
             field.setName(fieldName.getText());
             field.setFieldType(fieldType.getText());
-            field.setChoiceFieldEmpty(ChoiceFieldEmpty.getValue().toString());
+            field.setChoiceFieldEmpty(choiceFieldEmpty.getValue().toString());
             field.setUuid(uuid.getText());
             field.setFieldOtherType(fieldOtherType.getText());
             field.setFieldLength(fieldLength.getText());
@@ -227,7 +227,7 @@ public class StringFieldEditDialogController {
             }
         }
         /**根据字段是否为空判断，最小字符串长度的验证**/
-        if(ChoiceFieldEmpty.getValue().equals(CHOICE_FIELD_NO)&&returnBoolean==true){
+        if(choiceFieldEmpty.getValue().equals(CHOICE_FIELD_NO)&&returnBoolean==true){
             if (!StringUtils.isEmpty(minStringLenth.getText())) {
                 String minStringLenthStr=minStringLenth.getText();
                 String strMessage = "";
@@ -257,7 +257,7 @@ public class StringFieldEditDialogController {
         }
 
         /**根据字段是否为空判断，最长字符串长度的验证**/
-        if(ChoiceFieldEmpty.getValue().equals(CHOICE_FIELD_NO)&&returnBoolean==true){
+        if(choiceFieldEmpty.getValue().equals(CHOICE_FIELD_NO)&&returnBoolean==true){
             if(!StringUtils.isEmpty(bigStringLenth.getText())){
                 String bigStringLenthStr=bigStringLenth.getText();
                 String strMessage = "";
@@ -397,7 +397,7 @@ public class StringFieldEditDialogController {
             stringTypeBean.setWithNullExpectedResult(withNullExpectedResult.getText());
             stringTypeBean.setNotAllowedString(notAllowedString.getText());
             stringTypeBean.setWithDisallowedStringExpectedResult(withDisallowedStringExpectedResult.getText());
-            stringTypeBean.setChoiceFieldEmpty(ChoiceFieldEmpty.getValue().toString());
+            stringTypeBean.setChoiceFieldEmpty(choiceFieldEmpty.getValue().toString());
             stringTypeBean.setIsGroupBytes(isGroupBytes.getValue().toString());
 
         } catch (Exception e) {
@@ -429,7 +429,7 @@ public class StringFieldEditDialogController {
             withNullExpectedResult.setText(stringTypeBean.getWithNullExpectedResult());
             notAllowedString.setText(stringTypeBean.getNotAllowedString());
             withDisallowedStringExpectedResult.setText(stringTypeBean.getWithDisallowedStringExpectedResult());
-            ChoiceFieldEmpty.setValue(stringTypeBean.getChoiceFieldEmpty());
+            choiceFieldEmpty.setValue(stringTypeBean.getChoiceFieldEmpty());
             isGroupBytes.setValue(stringTypeBean.getIsGroupBytes());
         } catch (Exception e) {
             logger.error("编辑框中的数据放入到StringTypeBean里面失败：" + e);

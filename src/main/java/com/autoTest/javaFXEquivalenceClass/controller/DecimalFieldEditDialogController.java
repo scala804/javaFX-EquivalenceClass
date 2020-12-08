@@ -36,7 +36,7 @@ public class DecimalFieldEditDialogController {
     @FXML
     private TextField orderNumber;
     @FXML
-    private ChoiceBox ChoiceFieldEmpty;
+    private ChoiceBox choiceFieldEmpty;
     @FXML
     private  TextField fieldID;
     @FXML
@@ -66,7 +66,7 @@ public class DecimalFieldEditDialogController {
 
     @FXML
     private void initialize() {
-        ChoiceFieldEmpty.getItems().addAll("否", "是");
+        choiceFieldEmpty.getItems().addAll("否", "是");
 
         fieldName.setPromptText(TEXT_INPUT_NOT_NULL);
         fieldID.setPromptText(TEXT_INPUT_NOT_REQUIRED);
@@ -90,7 +90,7 @@ public class DecimalFieldEditDialogController {
     public void setField(Field field) {
         this.field = field;
         uuid.setText(field.getUuid());
-        ChoiceFieldEmpty.setValue(field.getChoiceFieldEmpty());
+        choiceFieldEmpty.setValue(field.getChoiceFieldEmpty());
         fieldOtherType.setText(field.getFieldOtherType());
         fieldType.setText(field.getFieldType());
         fieldLength.setText(field.getFieldLength());
@@ -128,7 +128,7 @@ public class DecimalFieldEditDialogController {
             decimalIsFormatExpectedResults.setText(decimalTypeBean.getDecimalIsFormatExpectedResults());
             beyondLowerBoundaryExpectedResults.setText(decimalTypeBean.getBeyondLowerBoundaryExpectedResults());
             fieldLength.setText(decimalTypeBean.getFieldLength());
-            ChoiceFieldEmpty.setValue(decimalTypeBean.getChoiceFieldEmpty());
+            choiceFieldEmpty.setValue(decimalTypeBean.getChoiceFieldEmpty());
             beyondUpperBoundaryExpectedResults.setText(decimalTypeBean.getBeyondUpperBoundaryExpectedResults());
         } catch (Exception e) {
             logger.error("编辑框中的数据放入到StringTypeBean里面失败：" + e);
@@ -144,7 +144,7 @@ public class DecimalFieldEditDialogController {
         if(isOkClicked()){
             field.setName(fieldName.getText());
             field.setFieldType(fieldType.getText());
-            field.setChoiceFieldEmpty(ChoiceFieldEmpty.getValue().toString());
+            field.setChoiceFieldEmpty(choiceFieldEmpty.getValue().toString());
             field.setUuid(uuid.getText());
             field.setFieldOtherType(fieldOtherType.getText());
             field.setFieldLength(fieldLength.getText());
@@ -179,7 +179,7 @@ public class DecimalFieldEditDialogController {
             decimalTypeBean.setBeyondLowerBoundaryExpectedResults(beyondLowerBoundaryExpectedResults.getText());
             decimalTypeBean.setBeyondUpperBoundaryExpectedResults(beyondUpperBoundaryExpectedResults.getText());
             decimalTypeBean.setFieldLength(fieldLength.getText());
-            decimalTypeBean.setChoiceFieldEmpty(ChoiceFieldEmpty.getValue().toString());
+            decimalTypeBean.setChoiceFieldEmpty(choiceFieldEmpty.getValue().toString());
         } catch (Exception e) {
             logger.error("编辑框中的数据放入到StringTypeBean里面失败：" + e);
         }
