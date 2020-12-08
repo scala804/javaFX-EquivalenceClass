@@ -174,13 +174,13 @@ public class FieldOverviewController {
         /**
          * 处理长度或者边界输入是否合法，如果合法返回结果fileldLength
          */
-        String StrFieldLength=fieldLength.getText();
+       /* String StrFieldLength=fieldLength.getText();
         int fileldLength=0;
         strTitle="长度或者边界";
         fileldLength=handleIntText(javaFxMain, StrFieldLength,strTitle,fileldLength);
         if(fileldLength==0){
             return;
-        }
+        }*/
         /**
          * 处理个数是否合法，如果合法返回结果fieldAddNumberInt
          */
@@ -204,7 +204,7 @@ public class FieldOverviewController {
                     tempField.setOrderNumber(String.valueOf(randomIntOrderNumber));
                     /*int randomIntFieldID=RandomUtil.getNotSimple(in,3);*/
                     tempField.setFieldID("testID");
-                    tempField.setFieldLength(Integer.toString(fileldLength));
+                    /*tempField.setFieldLength(Integer.toString(fileldLength));*/
                     tempField.setFieldOtherType(choiceOtherTypes);
                     tempField.setFieldType(choiceBoxfieldTypes);
                     javaFxMain.getFieldsData().add(tempField);

@@ -103,7 +103,8 @@ public class EnumerationFieldEditDialogController {
             fieldNormalData.setText(enumerationTypeBean.getFieldNormalData());
             fieldOtherType.setText(enumerationTypeBean.getFieldOtherType());
             isNullExpectedResults.setText(enumerationTypeBean.getIsNullExpectedResults());
-            fieldLength.setText(enumerationTypeBean.getFieldLength());
+           /* fieldLength.setText(enumerationTypeBean.getFieldLength());*/
+            fieldLength.setText("");
             choiceFieldEmpty.setValue(enumerationTypeBean.getChoiceFieldEmpty());
             enumerationValue.setText(enumerationTypeBean.getEnumerationValue());
             successExpectedResults.setText(enumerationTypeBean.getSuccessExpectedResults());
@@ -149,7 +150,8 @@ public class EnumerationFieldEditDialogController {
             enumerationTypeBean.setFieldNormalData(fieldNormalData.getText());
             enumerationTypeBean.setFieldOtherType(fieldOtherType.getText());
             enumerationTypeBean.setIsNullExpectedResults(isNullExpectedResults.getText());
-            enumerationTypeBean.setFieldLength(fieldLength.getText());
+            /*enumerationTypeBean.setFieldLength(fieldLength.getText());*/
+            enumerationTypeBean.setFieldLength("");
             enumerationTypeBean.setChoiceFieldEmpty(choiceFieldEmpty.getValue().toString());
             enumerationTypeBean.setEnumerationValue(enumerationValue.getText());
             enumerationTypeBean.setSuccessExpectedResults(successExpectedResults.getText());

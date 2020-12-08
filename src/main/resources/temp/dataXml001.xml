@@ -2,33 +2,12 @@
 <ListAllJavaBeans>
   <listStringTypeBeans>
     <StringTypeBean>
-      <uuid>992952354234</uuid>
-      <orderNumber>785678568565757</orderNumber>
-      <fieldID>test</fieldID>
-      <fieldName>测试数据字符串</fieldName>
-      <fieldType>字符串型</fieldType>
-      <fieldLength>20</fieldLength>
-      <fieldOtherType>是</fieldOtherType>
-      <minStringLenth>4</minStringLenth>
-      <beyondLowerBoundaryExpectedResults>操作失败</beyondLowerBoundaryExpectedResults>
-      <bigStringLenth>12</bigStringLenth>
-      <beyondUpperBoundaryExpectedResults>操作失败</beyondUpperBoundaryExpectedResults>
-      <groupNull />
-      <groupBytes />
-      <withNullExpectedResult>操作失败</withNullExpectedResult>
-      <notAllowedString>小</notAllowedString>
-      <withDisallowedStringExpectedResult>操作失败</withDisallowedStringExpectedResult>
-      <choiceFieldEmpty>是</choiceFieldEmpty>
-      <isGroupBytes>是</isGroupBytes>
-      <fieldNormalData />
-    </StringTypeBean>
-    <StringTypeBean>
       <uuid>04090604-8cdb-4a6f-b8ff-c703018dcd89</uuid>
       <orderNumber>49527</orderNumber>
       <fieldID />
       <fieldName>字符串测试</fieldName>
       <fieldType>字符串型</fieldType>
-      <fieldLength>1</fieldLength>
+      <fieldLength>[12,32]</fieldLength>
       <fieldOtherType>否</fieldOtherType>
       <minStringLenth>12</minStringLenth>
       <beyondLowerBoundaryExpectedResults>操作失败</beyondLowerBoundaryExpectedResults>
@@ -43,30 +22,34 @@
       <isGroupBytes>否</isGroupBytes>
       <fieldNormalData />
     </StringTypeBean>
+    <StringTypeBean>
+      <uuid>992952354234</uuid>
+      <orderNumber>785678568565757</orderNumber>
+      <fieldID>test</fieldID>
+      <fieldName>测试数据字符串</fieldName>
+      <fieldType>字符串型</fieldType>
+      <fieldLength>[4,12]</fieldLength>
+      <fieldOtherType>是</fieldOtherType>
+      <minStringLenth>4</minStringLenth>
+      <beyondLowerBoundaryExpectedResults>操作失败</beyondLowerBoundaryExpectedResults>
+      <bigStringLenth>12</bigStringLenth>
+      <beyondUpperBoundaryExpectedResults>操作失败</beyondUpperBoundaryExpectedResults>
+      <groupNull>null</groupNull>
+      <groupBytes>null</groupBytes>
+      <withNullExpectedResult>操作失败</withNullExpectedResult>
+      <notAllowedString>小</notAllowedString>
+      <withDisallowedStringExpectedResult>操作失败</withDisallowedStringExpectedResult>
+      <choiceFieldEmpty>是</choiceFieldEmpty>
+      <isGroupBytes>是</isGroupBytes>
+      <fieldNormalData />
+    </StringTypeBean>
   </listStringTypeBeans>
   <listInterTypeBeans>
-    <InterTypeBean>
-      <uuid>3fc290f2-c981-4b24-a27a-5c5f66d608ad</uuid>
-      <fieldOtherType>否</fieldOtherType>
-      <fieldType>整数型</fieldType>
-      <fieldLength>1</fieldLength>
-      <orderNumber>69427</orderNumber>
-      <fieldID>longTest</fieldID>
-      <fieldName>长度</fieldName>
-      <choiceFieldEmpty>否</choiceFieldEmpty>
-      <fieldNormalData />
-      <interBeyondLowerBoundaryValue>10</interBeyondLowerBoundaryValue>
-      <beyondLowerBoundaryExpectedResults>操作失败</beyondLowerBoundaryExpectedResults>
-      <beyondUpperBoundaryExpectedResults>操作失败</beyondUpperBoundaryExpectedResults>
-      <interBeyondUpperBoundaryValue>42</interBeyondUpperBoundaryValue>
-      <otherNotInterExpectedResults>操作失败</otherNotInterExpectedResults>
-      <withNullExpectedResult>操作失败</withNullExpectedResult>
-    </InterTypeBean>
     <InterTypeBean>
       <uuid>b0456f02-a4b1-4682-820b-523772371735</uuid>
       <fieldOtherType>否</fieldOtherType>
       <fieldType>整数型</fieldType>
-      <fieldLength>1</fieldLength>
+      <fieldLength>[6,12]</fieldLength>
       <orderNumber>47189</orderNumber>
       <fieldID />
       <fieldName>整型测试</fieldName>
@@ -77,7 +60,24 @@
       <beyondUpperBoundaryExpectedResults>操作失败</beyondUpperBoundaryExpectedResults>
       <interBeyondUpperBoundaryValue>12</interBeyondUpperBoundaryValue>
       <otherNotInterExpectedResults>操作失败</otherNotInterExpectedResults>
-      <withNullExpectedResult>操作失败</withNullExpectedResult>
+      <withNullExpectedResult />
+    </InterTypeBean>
+    <InterTypeBean>
+      <uuid>3fc290f2-c981-4b24-a27a-5c5f66d608ad</uuid>
+      <fieldOtherType>否</fieldOtherType>
+      <fieldType>整数型</fieldType>
+      <fieldLength>[10,42]</fieldLength>
+      <orderNumber>69427</orderNumber>
+      <fieldID>longTest</fieldID>
+      <fieldName>长度</fieldName>
+      <choiceFieldEmpty>否</choiceFieldEmpty>
+      <fieldNormalData />
+      <interBeyondLowerBoundaryValue>10</interBeyondLowerBoundaryValue>
+      <beyondLowerBoundaryExpectedResults>操作失败</beyondLowerBoundaryExpectedResults>
+      <beyondUpperBoundaryExpectedResults>操作失败</beyondUpperBoundaryExpectedResults>
+      <interBeyondUpperBoundaryValue>42</interBeyondUpperBoundaryValue>
+      <otherNotInterExpectedResults>操作失败</otherNotInterExpectedResults>
+      <withNullExpectedResult />
     </InterTypeBean>
   </listInterTypeBeans>
   <listDateTypeBeans>
@@ -85,7 +85,7 @@
       <uuid>bee71f00-e90b-46f1-a79a-3176e66f53ea</uuid>
       <fieldOtherType>否</fieldOtherType>
       <fieldType>日期型</fieldType>
-      <fieldLength>1</fieldLength>
+      <fieldLength>[2020-12-07 11:33:04,2024-01-17 21:30:05]</fieldLength>
       <orderNumber>26571</orderNumber>
       <fieldID>dateTime</fieldID>
       <fieldName>日期字段测试名称</fieldName>
@@ -106,7 +106,7 @@
       <uuid>9809d77a-1778-419f-aff5-8cfa21c593e8</uuid>
       <fieldOtherType>否</fieldOtherType>
       <fieldType>小数型</fieldType>
-      <fieldLength>1</fieldLength>
+      <fieldLength>[4.12,45.12]</fieldLength>
       <orderNumber>81326</orderNumber>
       <fieldID>testD</fieldID>
       <fieldName>小数字段名称</fieldName>
@@ -126,7 +126,7 @@
       <uuid>18ef9729-05db-47b1-8790-68cc5fcd9432</uuid>
       <fieldOtherType>否</fieldOtherType>
       <fieldType>枚举型</fieldType>
-      <fieldLength>1</fieldLength>
+      <fieldLength />
       <orderNumber>21489</orderNumber>
       <fieldID>deceial</fieldID>
       <fieldName>枚举型</fieldName>

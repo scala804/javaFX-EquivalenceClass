@@ -127,7 +127,8 @@ public class InterFieldEditDialogController {
             fieldOtherType.setText(interTypeBean.getFieldOtherType());
             interBeyondLowerBoundaryValue.setText(interTypeBean.getInterBeyondLowerBoundaryValue());
             beyondLowerBoundaryExpectedResults.setText(interTypeBean.getBeyondLowerBoundaryExpectedResults());
-            fieldLength.setText(interTypeBean.getFieldLength());
+            /*fieldLength.setText(interTypeBean.getFieldLength());*/
+            fieldLength.setText("["+interTypeBean.getInterBeyondLowerBoundaryValue()+","+interTypeBean.getInterBeyondUpperBoundaryValue()+"]");
             choiceFieldEmpty.setValue(interTypeBean.getChoiceFieldEmpty());
             interBeyondUpperBoundaryValue.setText(interTypeBean.getInterBeyondUpperBoundaryValue());
             beyondUpperBoundaryExpectedResults.setText(interTypeBean.getBeyondUpperBoundaryExpectedResults());
@@ -181,7 +182,8 @@ public class InterFieldEditDialogController {
             interTypeBean.setBeyondLowerBoundaryExpectedResults(beyondLowerBoundaryExpectedResults.getText());
             interTypeBean.setBeyondUpperBoundaryExpectedResults(beyondUpperBoundaryExpectedResults.getText());
             interTypeBean.setWithNullExpectedResult(withNullExpectedResult.getText());
-            interTypeBean.setFieldLength(fieldLength.getText());
+            interTypeBean.setFieldLength("["+interBeyondLowerBoundaryValue.getText()+","+interBeyondUpperBoundaryValue.getText()+"]");
+            /*interTypeBean.setFieldLength(fieldLength.getText());*/
             interTypeBean.setChoiceFieldEmpty(choiceFieldEmpty.getValue().toString());
         } catch (Exception e) {
             logger.error("编辑框中的数据放入到StringTypeBean里面失败：" + e);

@@ -159,7 +159,8 @@ public class DateFieldEditDialogController {
             timeBeyondUpperBoundaryValue.setText(dateTypeBean.getTimeBeyondUpperBoundaryValue());
             dateIsFormatExpectedResults.setText(dateTypeBean.getDateIsFormatExpectedResults());
             beyondLowerBoundaryExpectedResults.setText(dateTypeBean.getBeyondLowerBoundaryExpectedResults());
-            fieldLength.setText(dateTypeBean.getFieldLength());
+            /*fieldLength.setText(dateTypeBean.getFieldLength());*/
+            fieldLength.setText("["+LocalDate.parse(dateTypeBean.getDateBeyondLowerBoundaryValue(),yyyymmdd)+" "+dateTypeBean.getTimeBeyondLowerBoundaryValue()+","+LocalDate.parse(dateTypeBean.getDateBeyondUpperBoundaryValue(),yyyymmdd)+" "+dateTypeBean.getTimeBeyondUpperBoundaryValue()+"]");
             choiceFieldEmpty.setValue(dateTypeBean.getChoiceFieldEmpty());
             beyondUpperBoundaryExpectedResults.setText(dateTypeBean.getBeyondUpperBoundaryExpectedResults());
         } catch (Exception e) {
@@ -211,7 +212,8 @@ public class DateFieldEditDialogController {
             dateTypeBean.setDateIsFormatExpectedResults(dateIsFormatExpectedResults.getText());
             dateTypeBean.setBeyondLowerBoundaryExpectedResults(beyondLowerBoundaryExpectedResults.getText());
             dateTypeBean.setBeyondUpperBoundaryExpectedResults(beyondUpperBoundaryExpectedResults.getText());
-            dateTypeBean.setFieldLength(fieldLength.getText());
+            dateTypeBean.setFieldLength("["+yyyymmdd.format(dateBeyondLowerBoundaryValue.getValue())+" "+timeBeyondLowerBoundaryValue.getText()+","+yyyymmdd.format(dateBeyondUpperBoundaryValue.getValue())+" "+timeBeyondUpperBoundaryValue.getText()+"]");
+            /*dateTypeBean.setFieldLength(fieldLength.getText());*/
             dateTypeBean.setChoiceFieldEmpty(choiceFieldEmpty.getValue().toString());
         } catch (Exception e) {
             logger.error("编辑框中的数据放入到StringTypeBean里面失败：" + e);

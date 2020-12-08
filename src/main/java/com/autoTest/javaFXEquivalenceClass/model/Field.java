@@ -36,7 +36,7 @@ public class Field {
         this.fieldID = "100";
         this.name = "默认";
         this.fieldType = "String";
-        this.fieldLength = "20";
+       /* this.fieldLength = "20";*/
         this.choiceFieldEmpty ="否";
         this.fieldOtherType = "否";
         this.uuid = UUID_DEFAULT_VALUE;

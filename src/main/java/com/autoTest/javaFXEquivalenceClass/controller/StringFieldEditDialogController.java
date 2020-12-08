@@ -393,7 +393,8 @@ public class StringFieldEditDialogController {
             stringTypeBean.setBeyondLowerBoundaryExpectedResults(beyondLowerBoundaryExpectedResults.getText());
             stringTypeBean.setBigStringLenth(bigStringLenth.getText());
             stringTypeBean.setBeyondUpperBoundaryExpectedResults(beyondUpperBoundaryExpectedResults.getText());
-            stringTypeBean.setFieldLength(fieldLength.getText());
+            stringTypeBean.setFieldLength("["+minStringLenth.getText()+","+bigStringLenth.getText()+"]");
+            /*stringTypeBean.setFieldLength(fieldLength.getText());*/
             stringTypeBean.setWithNullExpectedResult(withNullExpectedResult.getText());
             stringTypeBean.setNotAllowedString(notAllowedString.getText());
             stringTypeBean.setWithDisallowedStringExpectedResult(withDisallowedStringExpectedResult.getText());
@@ -425,7 +426,8 @@ public class StringFieldEditDialogController {
             beyondLowerBoundaryExpectedResults.setText(stringTypeBean.getBeyondLowerBoundaryExpectedResults());
             bigStringLenth.setText(stringTypeBean.getBigStringLenth());
             beyondUpperBoundaryExpectedResults.setText(stringTypeBean.getBeyondUpperBoundaryExpectedResults());
-            fieldLength.setText(stringTypeBean.getFieldLength());
+            /*fieldLength.setText(stringTypeBean.getFieldLength());*/
+            fieldLength.setText("["+stringTypeBean.getMinStringLenth()+","+stringTypeBean.getBigStringLenth()+"]");
             withNullExpectedResult.setText(stringTypeBean.getWithNullExpectedResult());
             notAllowedString.setText(stringTypeBean.getNotAllowedString());
             withDisallowedStringExpectedResult.setText(stringTypeBean.getWithDisallowedStringExpectedResult());

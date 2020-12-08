@@ -127,7 +127,8 @@ public class DecimalFieldEditDialogController {
             decimalBeyondUpperBoundaryValue.setText(decimalTypeBean.getDecimalBeyondUpperBoundaryValue());
             decimalIsFormatExpectedResults.setText(decimalTypeBean.getDecimalIsFormatExpectedResults());
             beyondLowerBoundaryExpectedResults.setText(decimalTypeBean.getBeyondLowerBoundaryExpectedResults());
-            fieldLength.setText(decimalTypeBean.getFieldLength());
+            /*fieldLength.setText(decimalTypeBean.getFieldLength());*/
+            fieldLength.setText("["+decimalTypeBean.getDecimalBeyondLowerBoundaryValue()+","+decimalTypeBean.getDecimalBeyondUpperBoundaryValue()+"]");
             choiceFieldEmpty.setValue(decimalTypeBean.getChoiceFieldEmpty());
             beyondUpperBoundaryExpectedResults.setText(decimalTypeBean.getBeyondUpperBoundaryExpectedResults());
         } catch (Exception e) {
@@ -178,7 +179,8 @@ public class DecimalFieldEditDialogController {
             decimalTypeBean.setDecimalIsFormatExpectedResults(decimalIsFormatExpectedResults.getText());
             decimalTypeBean.setBeyondLowerBoundaryExpectedResults(beyondLowerBoundaryExpectedResults.getText());
             decimalTypeBean.setBeyondUpperBoundaryExpectedResults(beyondUpperBoundaryExpectedResults.getText());
-            decimalTypeBean.setFieldLength(fieldLength.getText());
+            /*decimalTypeBean.setFieldLength(fieldLength.getText());*/
+            decimalTypeBean.setFieldLength("["+decimalBeyondLowerBoundaryValue.getText()+","+decimalBeyondUpperBoundaryValue.getText()+"]");
             decimalTypeBean.setChoiceFieldEmpty(choiceFieldEmpty.getValue().toString());
         } catch (Exception e) {
             logger.error("编辑框中的数据放入到StringTypeBean里面失败：" + e);
