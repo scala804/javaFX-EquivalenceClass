@@ -112,8 +112,14 @@ public class FieldOverviewController {
         fielEmptyColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         fieldOtherTypeColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         // Add observable list data to the table
+       /* fieldTable.refresh();*/
         fieldTable.setItems(javaFxMain.getFieldsData());
         fieldTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
+    }
+
+    public void refreshFieldTable(){
+        this.fieldTable.getItems().clear();
 
     }
 
@@ -188,25 +194,32 @@ public class FieldOverviewController {
         int fieldAddNumberInt=0;
         strTitle="个数";
         fieldAddNumberInt=handleIntText(javaFxMain, strfieldAddNumber,strTitle,fieldAddNumberInt);
+        Integer maxNumber=javaFxMain.listMaxNumber;
+        if(maxNumber<0){
+            maxNumber=0;
+        }
         if(fieldAddNumberInt==0){
             return;
         }else {
             try {
                 String choiceBoxfieldTypes=choiceBoxfieldType.getValue().toString();
                 String choiceOtherTypes=choiceOtherType.getValue().toString();
+                String choiceFieldEmptyTypes=choiceFieldEmpty.getValue().toString();
                 for(int i=0;i<fieldAddNumberInt;i++){
                    /* fieldNumbers++;*/
                     Field tempField = new Field();
-                    int[] in = { 1, 2, 3, 4, 5, 6, 7 ,8,9};
-                  int randomIntOrderNumber= RandomUtil.getNotSimple(in,5);
+                    /*int[] in = { 1, 2, 3, 4, 5, 6, 7 ,8,9};
+                  int randomIntOrderNumber= RandomUtil.getNotSimple(in,5);*/
                     UUID uuid = UUID.randomUUID();
                     tempField.setUuid(uuid.toString());
-                    tempField.setOrderNumber(String.valueOf(randomIntOrderNumber));
+                    maxNumber=maxNumber+1+i;
+                    tempField.setOrderNumber(maxNumber.toString());
                     /*int randomIntFieldID=RandomUtil.getNotSimple(in,3);*/
                     tempField.setFieldID("testID");
                     /*tempField.setFieldLength(Integer.toString(fileldLength));*/
                     tempField.setFieldOtherType(choiceOtherTypes);
                     tempField.setFieldType(choiceBoxfieldTypes);
+                    tempField.setChoiceFieldEmpty(choiceFieldEmptyTypes);
                     javaFxMain.getFieldsData().add(tempField);
                 }
             }catch (Exception e){
@@ -265,6 +278,15 @@ public class FieldOverviewController {
             String headerText="成数据提示";
             String contentText="生成数据样本失败.";
             PopupUtil.WarningHints(javaFxMain,title,headerText,contentText);
+        }
+    }
+
+    @FXML
+    private void  handleSystemDeploy(){
+        try {
+          javaFxMain.setSystemDeploy();
+        }catch (Exception e){
+
         }
     }
 

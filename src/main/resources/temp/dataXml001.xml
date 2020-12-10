@@ -2,27 +2,6 @@
 <ListAllJavaBeans>
   <listStringTypeBeans>
     <StringTypeBean>
-      <uuid>04090604-8cdb-4a6f-b8ff-c703018dcd89</uuid>
-      <orderNumber>49527</orderNumber>
-      <fieldID />
-      <fieldName>字符串测试</fieldName>
-      <fieldType>字符串型</fieldType>
-      <fieldLength>[12,32]</fieldLength>
-      <fieldOtherType>否</fieldOtherType>
-      <minStringLenth>12</minStringLenth>
-      <beyondLowerBoundaryExpectedResults>操作失败</beyondLowerBoundaryExpectedResults>
-      <bigStringLenth>32</bigStringLenth>
-      <beyondUpperBoundaryExpectedResults>操作失败</beyondUpperBoundaryExpectedResults>
-      <groupNull>null</groupNull>
-      <groupBytes>null</groupBytes>
-      <withNullExpectedResult>操作失败</withNullExpectedResult>
-      <notAllowedString>二</notAllowedString>
-      <withDisallowedStringExpectedResult>操作失败</withDisallowedStringExpectedResult>
-      <choiceFieldEmpty>否</choiceFieldEmpty>
-      <isGroupBytes>否</isGroupBytes>
-      <fieldNormalData />
-    </StringTypeBean>
-    <StringTypeBean>
       <uuid>992952354234</uuid>
       <orderNumber>785678568565757</orderNumber>
       <fieldID>test</fieldID>
@@ -34,8 +13,8 @@
       <beyondLowerBoundaryExpectedResults>操作失败</beyondLowerBoundaryExpectedResults>
       <bigStringLenth>12</bigStringLenth>
       <beyondUpperBoundaryExpectedResults>操作失败</beyondUpperBoundaryExpectedResults>
-      <groupNull>null</groupNull>
-      <groupBytes>null</groupBytes>
+      <groupNull />
+      <groupBytes />
       <withNullExpectedResult>操作失败</withNullExpectedResult>
       <notAllowedString>小</notAllowedString>
       <withDisallowedStringExpectedResult>操作失败</withDisallowedStringExpectedResult>
@@ -43,25 +22,29 @@
       <isGroupBytes>是</isGroupBytes>
       <fieldNormalData />
     </StringTypeBean>
+    <StringTypeBean>
+      <uuid>04090604-8cdb-4a6f-b8ff-c703018dcd89</uuid>
+      <orderNumber>49527</orderNumber>
+      <fieldID />
+      <fieldName>字符串测试</fieldName>
+      <fieldType>字符串型</fieldType>
+      <fieldLength>[12,32]</fieldLength>
+      <fieldOtherType>否</fieldOtherType>
+      <minStringLenth>12</minStringLenth>
+      <beyondLowerBoundaryExpectedResults>操作失败</beyondLowerBoundaryExpectedResults>
+      <bigStringLenth>32</bigStringLenth>
+      <beyondUpperBoundaryExpectedResults>操作失败</beyondUpperBoundaryExpectedResults>
+      <groupNull />
+      <groupBytes />
+      <withNullExpectedResult>操作失败</withNullExpectedResult>
+      <notAllowedString>二</notAllowedString>
+      <withDisallowedStringExpectedResult>操作失败</withDisallowedStringExpectedResult>
+      <choiceFieldEmpty>否</choiceFieldEmpty>
+      <isGroupBytes>否</isGroupBytes>
+      <fieldNormalData />
+    </StringTypeBean>
   </listStringTypeBeans>
   <listInterTypeBeans>
-    <InterTypeBean>
-      <uuid>b0456f02-a4b1-4682-820b-523772371735</uuid>
-      <fieldOtherType>否</fieldOtherType>
-      <fieldType>整数型</fieldType>
-      <fieldLength>[6,12]</fieldLength>
-      <orderNumber>47189</orderNumber>
-      <fieldID />
-      <fieldName>整型测试</fieldName>
-      <choiceFieldEmpty>否</choiceFieldEmpty>
-      <fieldNormalData />
-      <interBeyondLowerBoundaryValue>6</interBeyondLowerBoundaryValue>
-      <beyondLowerBoundaryExpectedResults>操作失败</beyondLowerBoundaryExpectedResults>
-      <beyondUpperBoundaryExpectedResults>操作失败</beyondUpperBoundaryExpectedResults>
-      <interBeyondUpperBoundaryValue>12</interBeyondUpperBoundaryValue>
-      <otherNotInterExpectedResults>操作失败</otherNotInterExpectedResults>
-      <withNullExpectedResult />
-    </InterTypeBean>
     <InterTypeBean>
       <uuid>3fc290f2-c981-4b24-a27a-5c5f66d608ad</uuid>
       <fieldOtherType>否</fieldOtherType>
@@ -76,6 +59,23 @@
       <beyondLowerBoundaryExpectedResults>操作失败</beyondLowerBoundaryExpectedResults>
       <beyondUpperBoundaryExpectedResults>操作失败</beyondUpperBoundaryExpectedResults>
       <interBeyondUpperBoundaryValue>42</interBeyondUpperBoundaryValue>
+      <otherNotInterExpectedResults>操作失败</otherNotInterExpectedResults>
+      <withNullExpectedResult />
+    </InterTypeBean>
+    <InterTypeBean>
+      <uuid>b0456f02-a4b1-4682-820b-523772371735</uuid>
+      <fieldOtherType>否</fieldOtherType>
+      <fieldType>整数型</fieldType>
+      <fieldLength>[6,12]</fieldLength>
+      <orderNumber>47189</orderNumber>
+      <fieldID />
+      <fieldName>整型测试</fieldName>
+      <choiceFieldEmpty>否</choiceFieldEmpty>
+      <fieldNormalData />
+      <interBeyondLowerBoundaryValue>6</interBeyondLowerBoundaryValue>
+      <beyondLowerBoundaryExpectedResults>操作失败</beyondLowerBoundaryExpectedResults>
+      <beyondUpperBoundaryExpectedResults>操作失败</beyondUpperBoundaryExpectedResults>
+      <interBeyondUpperBoundaryValue>12</interBeyondUpperBoundaryValue>
       <otherNotInterExpectedResults>操作失败</otherNotInterExpectedResults>
       <withNullExpectedResult />
     </InterTypeBean>
@@ -124,6 +124,23 @@
   <listEnumerationTypeBeans>
     <EnumerationTypeBean>
       <uuid>18ef9729-05db-47b1-8790-68cc5fcd9432</uuid>
+      <fieldOtherType>否</fieldOtherType>
+      <fieldType>枚举型001</fieldType>
+      <fieldLength />
+      <orderNumber>21489</orderNumber>
+      <fieldID>deceial</fieldID>
+      <fieldName>枚举型001</fieldName>
+      <choiceFieldEmpty>否</choiceFieldEmpty>
+      <fieldNormalData />
+      <enumerationValue>sfsf
+        SFGSF
+        手动阀手动阀
+        是否是否是</enumerationValue>
+      <successExpectedResults>操作成功</successExpectedResults>
+      <isNullExpectedResults>操作成功</isNullExpectedResults>
+    </EnumerationTypeBean>
+    <EnumerationTypeBean>
+      <uuid>18ef9729-05db-47b1-8790-68cc5fcd9476</uuid>
       <fieldOtherType>否</fieldOtherType>
       <fieldType>枚举型</fieldType>
       <fieldLength />

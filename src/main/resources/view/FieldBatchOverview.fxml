@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
+<?import java.lang.*?>
 <?import com.jfoenix.controls.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="956.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.autoTest.javaFXEquivalenceClass.controller.FieldOverviewController">
    <children>
          <AnchorPane layoutX="4.0" layoutY="18.0" prefHeight="84.0" prefWidth="945.0">
           <children>
-            <Label layoutX="55.0" layoutY="23.0" text="输入类型：" />
-            <ChoiceBox fx:id="choiceBoxfieldType" layoutX="116.0" layoutY="16.0" prefWidth="150.0" />
-            <Label layoutX="55.0" layoutY="56.0" text="是否为空：" />
-            <ChoiceBox fx:id="choiceFieldEmpty" layoutX="116.0" layoutY="54.0" prefWidth="150.0" />
-            <Label layoutX="278.0" layoutY="25.0" text="是否允许其他类型：" />
-            <ChoiceBox fx:id="choiceOtherType" layoutX="384.0" layoutY="17.0" prefWidth="150.0" />
-            <Label layoutX="277.0" layoutY="60.0" prefHeight="15.0" prefWidth="108.0" text="     长度或者边界：" />
-            <JFXTextField fx:id="fieldLength" layoutX="386.0" layoutY="49.0" prefHeight="23.0" prefWidth="150.0" />
-            <Label layoutX="582.0" layoutY="45.0" prefHeight="15.0" prefWidth="67.0"  text="个       数：" />
-            <TextField fx:id="fieldAddNumber" layoutX="657.0" layoutY="44.0" prefHeight="23.0" prefWidth="84.0"  />
+            <Label layoutX="55.0" layoutY="47.0" text="输入类型：" />
+            <ChoiceBox fx:id="choiceBoxfieldType" layoutX="116.0" layoutY="40.0" prefWidth="150.0" />
+            <Label layoutX="306.0" layoutY="48.0" text="是否为空：" />
+            <ChoiceBox fx:id="choiceFieldEmpty" layoutX="367.0" layoutY="41.0" prefWidth="150.0" />
+            <Label layoutX="278.0" layoutY="25.0" text="是否允许其他类型：" visible="false" />
+            <ChoiceBox fx:id="choiceOtherType" layoutX="384.0" layoutY="17.0" prefWidth="150.0" visible="false" />
+            <Label layoutX="277.0" layoutY="49.0" prefHeight="15.0" prefWidth="108.0" text="     长度或者边界：" visible="false" />
+            <JFXTextField fx:id="fieldLength" layoutX="386.0" layoutY="38.0" prefHeight="23.0" prefWidth="150.0" visible="false" />
+            <Label layoutX="582.0" layoutY="51.0" prefHeight="15.0" prefWidth="67.0" text="个       数：" />
+            <TextField fx:id="fieldAddNumber" layoutX="657.0" layoutY="44.0" prefHeight="23.0" prefWidth="84.0" />
             <JFXButton layoutX="784.0" layoutY="43.0" onAction="#handleNewField" prefHeight="23.0" prefWidth="79.0" ripplerFill="#194ce4" style="-fx-background-color: #3A84C3; -fx-background-radius: 1em;" text="增加字段" textFill="#eeeaea" />
          </children>
       </AnchorPane>
@@ -30,12 +29,12 @@
             <TableView fx:id="fieldTable" prefHeight="379.0" prefWidth="933.0">
               <columns>
                   <TableColumn fx:id="orderNumberColumn" prefWidth="99.0" text="序号" />
-                  <TableColumn fx:id="fieldIDColumn" prefWidth="146.0" text="数据项" />
-                  <TableColumn fx:id="nameColumn" prefWidth="130.0" text="字段名称" />
-                  <TableColumn fx:id="fieldTypeColumn" prefWidth="170.0" text="输入类型" />
-                  <TableColumn fx:id="fielLengthColumn" prefWidth="165.0" text="长度或者边界" />
-                  <TableColumn fx:id="fielEmptyColumn" prefWidth="92.0" text="是否为空" />
-                  <TableColumn fx:id="fieldOtherTypeColumn" prefWidth="130.0" text="是否允许其它类型" />
+                  <TableColumn fx:id="fieldIDColumn" prefWidth="146.0" text="数据项" visible="false" />
+                  <TableColumn fx:id="nameColumn" prefWidth="213.0" text="字段名称" />
+                  <TableColumn fx:id="fieldTypeColumn" prefWidth="205.0" text="输入类型" />
+                  <TableColumn fx:id="fielLengthColumn" prefWidth="278.0" text="长度或者边界" />
+                  <TableColumn fx:id="fielEmptyColumn" minWidth="0.0" prefWidth="159.0" text="是否为空" />
+                 <TableColumn fx:id="fieldOtherTypeColumn" prefWidth="130.0" text="是否允许其它类型" visible="false" />
               </columns>
             </TableView>
          </children>
@@ -46,7 +45,7 @@
             <JFXButton layoutX="321.0" layoutY="24.0" onAction="#handleDeleteField" prefHeight="23.0" prefWidth="79.0" style="-fx-background-color: #3A84C3; -fx-background-radius: 1em;" text="删除字段" textAlignment="CENTER" textFill="#e8e3e3" />
             <JFXButton layoutX="130.0" layoutY="24.0" onAction="#handleEditField" prefHeight="23.0" prefWidth="79.0" style="-fx-background-color: #3A84C3; -fx-background-radius: 1em;" text="编辑字段" textAlignment="CENTER" textFill="#ebeaea" />
             <JFXButton layoutX="520.0" layoutY="24.0" onAction="#handleGeneratedSamples" prefHeight="23.0" prefWidth="79.0" style="-fx-background-color: #3A84C3; -fx-background-radius: 1em;" text="生成数据" textAlignment="CENTER" textFill="#e8e5e5" />
-            <JFXButton layoutX="722.0" layoutY="24.0" prefHeight="23.0" prefWidth="79.0" style="-fx-background-color: #3A84C3; -fx-background-radius: 1em;" text="工具配置" textAlignment="CENTER" textFill="#e8e5e5" />
+            <JFXButton layoutX="722.0" layoutY="24.0" onAction="#handleSystemDeploy" prefHeight="23.0" prefWidth="79.0" style="-fx-background-color: #3A84C3; -fx-background-radius: 1em;" text="工具配置" textAlignment="CENTER" textFill="#e8e5e5" />
          </children>
       </AnchorPane>
    </children>

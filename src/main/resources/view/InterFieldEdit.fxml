@@ -16,12 +16,12 @@
 
               <Label layoutX="15.0" layoutY="38.0" prefHeight="23.0" prefWidth="55.0" text="字段名称:" />
               <TextField fx:id="fieldName" layoutX="85.0" layoutY="37.0" prefHeight="23.0" prefWidth="142.0" />
-              <Label layoutX="264.0" layoutY="42.0" prefHeight="15.0" prefWidth="55.0" text="数据项:" />
-              <TextField fx:id="fieldID" layoutX="320.0" layoutY="38.0" prefHeight="23.0" prefWidth="142.0" />
-              <Label layoutX="512.0" layoutY="22.0" prefHeight="15.0" prefWidth="66.0" text="是否为空:" />
-              <ChoiceBox fx:id="choiceFieldEmpty" layoutX="581.0" layoutY="19.0" prefHeight="23.0" prefWidth="161.0" />
-              <Label layoutX="512.0" layoutY="67.0" text="正常数值：" />
-              <TextField fx:id="fieldNormalData" layoutX="582.0" layoutY="63.0" />
+              <Label layoutX="264.0" layoutY="42.0" prefHeight="15.0" prefWidth="55.0" text="数据项:" visible="false" />
+              <TextField fx:id="fieldID" layoutX="320.0" layoutY="38.0" prefHeight="23.0" prefWidth="142.0" visible="false" />
+              <Label layoutX="252.0" layoutY="42.0" prefHeight="15.0" prefWidth="66.0" text="是否为空:" />
+              <ChoiceBox fx:id="choiceFieldEmpty" layoutX="321.0" layoutY="39.0" prefHeight="23.0" prefWidth="161.0" />
+              <Label layoutX="512.0" layoutY="44.0" text="正常数值：" />
+              <TextField fx:id="fieldNormalData" layoutX="582.0" layoutY="40.0" />
               <Separator layoutY="95.0" prefHeight="4.0" prefWidth="780.0" />
           </children>
       </AnchorPane>

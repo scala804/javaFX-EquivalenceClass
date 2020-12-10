@@ -42,7 +42,7 @@ public class XmlInterfaceUtils {
      * @param object
      * @return 返回一个生成xml的位置
      */
-    public static String convertToXml(Object object,String fileName) {
+    public static String convertToXml(Object object,String filePath) {
         if (object == null) {
             return null;
         }
@@ -89,7 +89,7 @@ public class XmlInterfaceUtils {
             }
             SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHssmm");
             System.out.println(f.getAbsolutePath());
-            File file = new File(f.getAbsolutePath() + File.separator +fileName+ ".xml");
+            File file = new File(filePath);
            /* File file = new File(f.getAbsolutePath() + File.separator + object.getClass().getSimpleName() + format.format(new Date()) + ".xml");*/
             xmlOutput.output(doc, new FileOutputStream(file));
             System.out.println("生成完毕！ " + file.getName() + "文件生成位置为：" + file.getAbsolutePath());

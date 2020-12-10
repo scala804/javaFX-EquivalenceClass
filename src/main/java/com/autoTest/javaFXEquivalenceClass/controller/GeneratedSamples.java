@@ -27,13 +27,12 @@ public class GeneratedSamples {
 
     }
 
-    public boolean writeExcel(List listArrayList) {
+    public boolean writeExcel(List listArrayList,String excelPath) {
         boolean booleanSamples = false;
-        List<String> list = new ArrayList<>();
-        String path = System.getProperty("user.dir");
-        path = path + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "excel" + File.separator + "success.xlsx";
-        logger.info(String.valueOf("path____________" + path));
-        writeExcelByString(path, "等价类生成数据", listArrayList);
+        /*List<String> list = new ArrayList<>();*/
+
+        logger.info(String.valueOf("path____________" + excelPath));
+        writeExcelByString(excelPath, "等价类生成数据", listArrayList);
         return booleanSamples;
     }
 
@@ -49,7 +48,7 @@ public class GeneratedSamples {
 
         getListList(lists,successList,successJson);
         getListList(lists,failList,successJson);
-       writeExcel(lists);
+       /*writeExcel(lists);*/
         return lists;
     }
 

@@ -29,6 +29,9 @@ import static com.autoTest.javaFXEquivalenceClass.util.PopupUtil.dataIsEmptyStag
 import static com.autoTest.javaFXEquivalenceClass.util.PopupUtil.dataIsInvalid;
 import static java.time.LocalDate.now;
 
+/**
+ * @author yangbihua
+ */
 public class DateFieldEditDialogController {
 
     private static final Logger logger = LoggerFactory.getLogger(DateFieldEditDialogController.class);

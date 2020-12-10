@@ -39,6 +39,16 @@ public class ConsField {
      * xml保存路径
      */
     public static final String XML_FILE_PATH="src\\main\\resources\\temp\\dataXml.xml";
+
+    /**
+     * 加载xml配置
+     */
+    public static final String viewSystemDployFxmlPath="/view/SystemDeploy.fxml";
+
+    /**
+     * 设置excel保存路径
+     */
+    public static final String viewExcelDployFxmlPath="/view/ExcelFileDeploy.fxml";
     /**
      * 字符串类型
      * 1.“无效下边界的预期结果”的系统默认值为：操作失败。
@@ -99,10 +109,10 @@ public class ConsField {
      * 弹出框提示信息
      */
     public static final String POPUP_DATA_INVALID_TITLE="数据验证";
-    public static final String POPUP_DATA_INVALID_CONTENTTEXT="请重新输入满足要求的数据。";
+    public static final String POPUP_DATA_INVALID_CONTENTTEXT="请重新选择输入满足要求的数据。";
 
     public static final String POPUP_DATA_EMPTY_TITLE="非空验证";
-    public static final String POPUP_DATA_EMPTY_CONTENTTEXT="请输入合法的非空数据。";
+    public static final String POPUP_DATA_EMPTY_CONTENTTEXT="请选择输入合法的非空数据。";
 
     /**
      * 字符串类型，弹出框提示信息
@@ -280,4 +290,8 @@ public class ConsField {
     public static final String STANDARD_CHARACTERS="'%_,.*~`!@#$^&()-+=[]{}:;\"?/<>";
 
     public static final String EXPECT_RESULT="期望结果";
+
+
+    public static final String XML_PROMPT_FILE="如果使用之前的编辑文件，请选择对应名称的xml";
+    public static final String EXCEL_PROMPT_FILE_PATH="默认Excel存放路径为：D:\\EquivalenceClass\\dataXml.xlsx";
 }

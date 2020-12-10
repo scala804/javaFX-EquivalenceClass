@@ -17,6 +17,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -39,33 +40,42 @@ public  class JavaFxMain extends Application {
     private GeneratedSamples generatedSamples=new GeneratedSamples();
 
     private ObservableList<Field> fieldsData = FXCollections.observableArrayList();
-    private List<StringTypeBean> stringTypeBeans;
-    private List<InterTypeBean> interTypeBeans;
-    private List<DateTypeBean> dateTypeBeans;
-    private List<DecimalTypeBean> decimalTypeBeans;
-    private List<EnumerationTypeBean> enumerationTypeBeans;
+    private  static List<StringTypeBean> stringTypeBeans=new ArrayList<>();
+    private static List<InterTypeBean> interTypeBeans=new ArrayList<>();
+    private static  List<DateTypeBean> dateTypeBeans=new ArrayList<>();
+    private static List<DecimalTypeBean> decimalTypeBeans=new ArrayList<>();
+    private static List<EnumerationTypeBean> enumerationTypeBeans=new ArrayList<>();
+    public  Integer listMaxNumber=0;
+
+    public String xmlFilePathJavaFxMain;
+    public String excelFilePathJavaFxMain;
+
     /**
      * Constructor
      */
     public JavaFxMain() {
-        stringTypeBeans=new ArrayList<>();
-        interTypeBeans=new ArrayList<>();
-        dateTypeBeans=new ArrayList<>();
-        decimalTypeBeans=new ArrayList<>();
-        enumerationTypeBeans=new ArrayList<>();
+
+        xmlFilePathJavaFxMain=JavaFxMain.class.getResource("/temp/dataEmpty.xml").toString();
+        String path = System.getProperty("user.dir");
+        excelFilePathJavaFxMain = path + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "excel" + File.separator + "success.xlsx";
         /**
          * 数据初始化，从配置的xml中读取数据
          */
         dataInitialization();
     }
 
+
     /**
      * 数据初始化，根据字段类型获取数据
      */
-    private void dataInitialization() {
+    public  void dataInitialization() {
+        stringTypeBeans.clear();
+        interTypeBeans.clear();
+        dateTypeBeans.clear();
+        decimalTypeBeans.clear();
+        enumerationTypeBeans.clear();
+       String xmlPath=xmlFilePathJavaFxMain;
         try {
-            String xmlPath=JavaFxMain.class.getResource("/temp/dataXml.xml").toString();
-            System.out.println(xmlPath);
            int indexInt=xmlPath.indexOf("/");
             String xmlFilePath;
             int xmlPathLength=xmlPath.length();
@@ -79,37 +89,57 @@ public  class JavaFxMain extends Application {
             if(listAllJavaBeans.getListStringTypeBeans()!=null){
                 List<StringTypeBean> listStringTypeBeans=listAllJavaBeans.getListStringTypeBeans();
                 for(int m=0;m<listStringTypeBeans.size();m++){
+                    int maxtInt=Integer.valueOf(listStringTypeBeans.get(m).getOrderNumber());
+                    if(listMaxNumber<maxtInt){
+                        listMaxNumber=maxtInt;
+                    }
                     getDateFromXMl(Collections.singletonList(listStringTypeBeans.get(m)),FIELD_TYPE_STRING);
                 }
             }
             if(listAllJavaBeans.getListInterTypeBeans()!=null){
                 List<InterTypeBean> listInterTypeBeans=listAllJavaBeans.getListInterTypeBeans();
                 for(int i=0;i<listInterTypeBeans.size();i++){
+                    int maxtInt=Integer.valueOf(listInterTypeBeans.get(i).getOrderNumber());
+                    if(listMaxNumber<maxtInt){
+                        listMaxNumber=maxtInt;
+                    }
                     getDateFromXMl(Collections.singletonList(listInterTypeBeans.get(i)),FIELD_TYPE_INTER);
                 }
             }
             if(listAllJavaBeans.getListDateTypeBeans()!=null){
                 List<DateTypeBean> listDateTypeBeans=listAllJavaBeans.getListDateTypeBeans();
                 for(int i=0;i<listDateTypeBeans.size();i++){
+                    int maxtInt=Integer.valueOf(listDateTypeBeans.get(i).getOrderNumber());
+                    if(listMaxNumber<maxtInt){
+                        listMaxNumber=maxtInt;
+                    }
                     getDateFromXMl(Collections.singletonList(listDateTypeBeans.get(i)),FIELD_TYPE_DATE);
                 }
             }
             if(listAllJavaBeans.getListDecimalTypeBeans()!=null){
                 List<DecimalTypeBean> listDecimalTypeBeans=listAllJavaBeans.getListDecimalTypeBeans();
                 for(int i=0;i<listDecimalTypeBeans.size();i++){
+                    int maxtInt=Integer.valueOf(listDecimalTypeBeans.get(i).getOrderNumber());
+                    if(listMaxNumber<maxtInt){
+                        listMaxNumber=maxtInt;
+                    }
                     getDateFromXMl(Collections.singletonList(listDecimalTypeBeans.get(i)),FIELD_TYPE_DECIMAL);
                 }
             }
             if(listAllJavaBeans.getListEnumerationTypeBeans()!=null){
                 List<EnumerationTypeBean> listEnumerationTypeBeans=listAllJavaBeans.getListEnumerationTypeBeans();
                 for(int i=0;i<listEnumerationTypeBeans.size();i++){
+                    int maxtInt=Integer.valueOf(listEnumerationTypeBeans.get(i).getOrderNumber());
+                    if(listMaxNumber<maxtInt){
+                        listMaxNumber=maxtInt;
+                    }
                     getDateFromXMl(Collections.singletonList(listEnumerationTypeBeans.get(i)),FIELD_TYPE_ENUMERATION);
                 }
             }
+
         }catch (Exception e){
            System.out.println("数据初始化失败："+e);
         }
-
     }
 
     /**
@@ -217,6 +247,7 @@ public  class JavaFxMain extends Application {
             e.printStackTrace();
         }
     }
+
 
     /**
      * Opens a dialog to edit details for the specified person. If the user
@@ -357,7 +388,6 @@ public  class JavaFxMain extends Application {
             if(index>=0){
                 dateFieldEditDialogController.setDateListTypeBeanEdit(index);
             }
-            /* stringFieldEditDialogController.setStringTypeBeans(stringTypeBeans);*/
             dialogStage.showAndWait();
             return dateFieldEditDialogController.returnModifyField();
 
@@ -440,6 +470,8 @@ public  class JavaFxMain extends Application {
 
     public boolean generatedSamples(){
 
+        choiceExcel();
+        String generatedXmlFilePath=xmlFilePathJavaFxMain;
        ListAllJavaBeans listAllJavaBeans = new ListAllJavaBeans();
        if(stringTypeBeans.size()>0){
            listAllJavaBeans.setListStringTypeBeans(stringTypeBeans);
@@ -456,7 +488,7 @@ public  class JavaFxMain extends Application {
        if(interTypeBeans.size()>0){
            listAllJavaBeans.setListInterTypeBeans(interTypeBeans);
        }
-        String pathString=XmlInterfaceUtils.convertToXml(listAllJavaBeans,"dataXml001");
+        String pathString=XmlInterfaceUtils.convertToXml(listAllJavaBeans,generatedXmlFilePath);
         ListAllJavaBeans o = (ListAllJavaBeans) XmlInterfaceUtils.dataXmltoEntity(ListAllJavaBeans.class, pathString);
         if(o.getListDateTypeBeans()!=null){
             for(int i=0;i<o.getListDateTypeBeans().size();i++){
@@ -501,9 +533,60 @@ public  class JavaFxMain extends Application {
         }
 
        List<List<String>> lists=generatedSamples.makeLists(normalListDate,abnormalListDate,successJson);
-        generatedSamples.writeExcel(lists);
+
+
+        generatedSamples.writeExcel(lists,excelFilePathJavaFxMain);
         return true;
     }
+
+    public void choiceExcel(){
+        // Load the fxml file and create a new stage for the popup dialog.
+        try{
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource(viewExcelDployFxmlPath));
+            AnchorPane page = (AnchorPane) loader.load();
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("选择数据保存路径");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+            // Set the field into the controller.
+            ExcelFileDeployController excelFileDeployController = loader.getController();
+            excelFileDeployController.setDialogStage(dialogStage);
+            dialogStage.showAndWait();
+            excelFileDeployController.setJavaFxMain(this);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void setSystemDeploy(){
+        // Load the fxml file and create a new stage for the popup dialog.
+        try{
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource(viewSystemDployFxmlPath));
+            AnchorPane page = (AnchorPane) loader.load();
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("加载xml");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+            // Set the field into the controller.
+            SystemDeployController systemDeployController = loader.getController();
+            systemDeployController.setDialogStage(dialogStage);
+            dialogStage.showAndWait();
+            Boolean isOkClicked=systemDeployController.systemDeployIsOkClicked();
+            systemDeployController.setJavaFxMain(this);
+            if(isOkClicked){
+                dataInitialization();
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
 
     public boolean deleteFieldListBeans(String fildType,String uuid){
         int index;
@@ -570,6 +653,8 @@ public  class JavaFxMain extends Application {
    public Stage getPrimaryStage() {
         return primaryStage;
     }
+
+
 
   /*  public static void main(String[] args) {
         launch(args);
