@@ -36,6 +36,7 @@ public class ExcelFileDeployController {
 
     public String xmlfile;
     public String excelFile;
+    public String excelFileName="默认";
 
     final FileChooser excelFileChooser = new FileChooser();
 
@@ -69,7 +70,7 @@ public class ExcelFileDeployController {
 
     @FXML
     public void handleOk() {
-        String excelFileName="";
+        /*String excelFileName="";*/
         String filePath="";
         xmlfile=deployXmlFilePath.getText();
         excelFile=deployExcelFilePath.getText();
@@ -83,12 +84,13 @@ public class ExcelFileDeployController {
            }
            if("".equals(xmlfile)){
                xmlfile=filePath+excelFileName+".xml";
+               okClicked = true;
+               dialogStage.close();
            }
         }else {
             dataIsEmptyStage(dialogStage, "Excel保存路径", "没有选择Excel保存路径。");
+            okClicked = false;
         }
-        okClicked = true;
-        dialogStage.close();
     }
 
 
@@ -96,6 +98,7 @@ public class ExcelFileDeployController {
         this.javaFxMain = javaFxMain;
         javaFxMain.xmlFilePathJavaFxMain=xmlfile;
         javaFxMain.excelFilePathJavaFxMain=excelFile;
+        javaFxMain.excelFileTableName=excelFileName;
         /*javaFxMain.getFieldsData().clear();*/
     }
 
@@ -105,6 +108,7 @@ public class ExcelFileDeployController {
 
     @FXML
     public void handleCancel(){
+        okClicked=false;
         dialogStage.close();
     }
 }

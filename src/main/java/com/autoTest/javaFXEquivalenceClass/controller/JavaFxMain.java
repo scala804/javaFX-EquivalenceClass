@@ -49,6 +49,7 @@ public  class JavaFxMain extends Application {
 
     public String xmlFilePathJavaFxMain;
     public String excelFilePathJavaFxMain;
+    public String excelFileTableName;
 
     /**
      * Constructor
@@ -63,7 +64,6 @@ public  class JavaFxMain extends Application {
          */
         dataInitialization();
     }
-
 
     /**
      * 数据初始化，根据字段类型获取数据
@@ -468,79 +468,85 @@ public  class JavaFxMain extends Application {
         }
     }
 
-    public boolean generatedSamples(){
+    public int generatedSamples(){
 
-        choiceExcel();
-        String generatedXmlFilePath=xmlFilePathJavaFxMain;
-       ListAllJavaBeans listAllJavaBeans = new ListAllJavaBeans();
-       if(stringTypeBeans.size()>0){
-           listAllJavaBeans.setListStringTypeBeans(stringTypeBeans);
-       }
-       if(dateTypeBeans.size()>0){
-           listAllJavaBeans.setListDateTypeBeans(dateTypeBeans);
-       }
-       if(enumerationTypeBeans.size()>0){
-           listAllJavaBeans.setListDecimalTypeBeans(decimalTypeBeans);
-       }
-       if(enumerationTypeBeans.size()>0){
-           listAllJavaBeans.setListEnumerationTypeBeans(enumerationTypeBeans);
-       }
-       if(interTypeBeans.size()>0){
-           listAllJavaBeans.setListInterTypeBeans(interTypeBeans);
-       }
-        String pathString=XmlInterfaceUtils.convertToXml(listAllJavaBeans,generatedXmlFilePath);
-        ListAllJavaBeans o = (ListAllJavaBeans) XmlInterfaceUtils.dataXmltoEntity(ListAllJavaBeans.class, pathString);
-        if(o.getListDateTypeBeans()!=null){
-            for(int i=0;i<o.getListDateTypeBeans().size();i++){
-                DateTypeBean tempDateTypeBean=o.getListDateTypeBeans().get(i);
-                System.out.println(tempDateTypeBean);
+        Boolean choiceExcelBoolean=choiceExcel();
+        if(!choiceExcelBoolean){
+            return 0;
+        }
+        try{
+            String generatedXmlFilePath=xmlFilePathJavaFxMain;
+            ListAllJavaBeans listAllJavaBeans = new ListAllJavaBeans();
+            if(stringTypeBeans.size()>0){
+                listAllJavaBeans.setListStringTypeBeans(stringTypeBeans);
             }
-        }
-        /**按照字段，用于存放正常的数据样本**/
-        /*List<List<String>> successList=new ArrayList<>();*/
-        //Map<String,List<Map<String,String>>> 正常数据集合：为字段名称，包含字段值及字段描述
-        List<Map<String,List<Map<String,String>>>> normalListDate=new ArrayList<>();
-        /**按照字段，用于存放异常的数据样本**/
-        /*List<List<String>> failList=new ArrayList<>();*/
-        //Map<String,List<Map<String,String>>> 异常数据集合：为字段名称，包含字段值及字段描述
-        List<Map<String,List<Map<String,String>>>> abnormalListDate=new ArrayList<>();
-        JSONObject successJson=new JSONObject();
-        //String fieldType="字符串型";
-        if(stringTypeBeans.size()>0){
-            logger.info("开始根据\"生成字符串型数据样本\"，生成字符串样本数据。");
-            generatedSamples.stringTypeDateComputation(stringTypeBeans,successJson,normalListDate,abnormalListDate);
-        }
-        //String fieldType="整数型";
-        if(interTypeBeans.size()>0){
-            logger.info("开始根据\"生成整数型数据样本\"，生成整数样本数据。");
-            generatedSamples.interTypeDateComputation(interTypeBeans,successJson,normalListDate,abnormalListDate);
+            if(dateTypeBeans.size()>0){
+                listAllJavaBeans.setListDateTypeBeans(dateTypeBeans);
+            }
+            if(enumerationTypeBeans.size()>0){
+                listAllJavaBeans.setListDecimalTypeBeans(decimalTypeBeans);
+            }
+            if(enumerationTypeBeans.size()>0){
+                listAllJavaBeans.setListEnumerationTypeBeans(enumerationTypeBeans);
+            }
+            if(interTypeBeans.size()>0){
+                listAllJavaBeans.setListInterTypeBeans(interTypeBeans);
+            }
+            String pathString=XmlInterfaceUtils.convertToXml(listAllJavaBeans,generatedXmlFilePath);
+            ListAllJavaBeans o = (ListAllJavaBeans) XmlInterfaceUtils.dataXmltoEntity(ListAllJavaBeans.class, pathString);
+            if(o.getListDateTypeBeans()!=null){
+                for(int i=0;i<o.getListDateTypeBeans().size();i++){
+                    DateTypeBean tempDateTypeBean=o.getListDateTypeBeans().get(i);
+                    System.out.println(tempDateTypeBean);
+                }
+            }
+            /**按照字段，用于存放正常的数据样本**/
+            /*List<List<String>> successList=new ArrayList<>();*/
+            //Map<String,List<Map<String,String>>> 正常数据集合：为字段名称，包含字段值及字段描述
+            List<Map<String,List<Map<String,String>>>> normalListDate=new ArrayList<>();
+            /**按照字段，用于存放异常的数据样本**/
+            /*List<List<String>> failList=new ArrayList<>();*/
+            //Map<String,List<Map<String,String>>> 异常数据集合：为字段名称，包含字段值及字段描述
+            List<Map<String,List<Map<String,String>>>> abnormalListDate=new ArrayList<>();
+            JSONObject successJson=new JSONObject();
+            //String fieldType="字符串型";
+            if(stringTypeBeans.size()>0){
+                logger.info("开始根据\"生成字符串型数据样本\"，生成字符串样本数据。");
+                generatedSamples.stringTypeDateComputation(stringTypeBeans,successJson,normalListDate,abnormalListDate);
+            }
+            //String fieldType="整数型";
+            if(interTypeBeans.size()>0){
+                logger.info("开始根据\"生成整数型数据样本\"，生成整数样本数据。");
+                generatedSamples.interTypeDateComputation(interTypeBeans,successJson,normalListDate,abnormalListDate);
 
+            }
+            // String fieldType="小数型";
+            if(decimalTypeBeans.size()>0){
+                logger.info("开始根据\"生成小数型数据样本\"，生成小数样本数据。");
+                generatedSamples.decimalTypeDateComputation(decimalTypeBeans,successJson,normalListDate,abnormalListDate);
+            }
+            if(dateTypeBeans.size()>0){
+                generatedSamples.dateTypeDateComputation(dateTypeBeans,successJson,normalListDate,abnormalListDate);
+                logger.info("开始根据\"生成日期型数据样本\"，生成日期样本数据。");
+                /*String fieldType="日期型";*/
+            }
+            //String fieldType="枚举型";
+            if(enumerationTypeBeans.size()>0){
+                generatedSamples.enumerationTypeDateComputation(enumerationTypeBeans,successJson,normalListDate,abnormalListDate);
+                logger.info("开始根据\"生成枚举型数据样本\"，生成枚举样本数据。");
+            }
+            List<List<String>> lists=generatedSamples.makeLists(normalListDate,abnormalListDate,successJson);
+            generatedSamples.writeExcel(lists,excelFilePathJavaFxMain,excelFileTableName);
+            return 1;
+        }catch (Exception e){
+            System.out.println("生成数据失败："+e);
+            return 2;
         }
-        // String fieldType="小数型";
-        if(decimalTypeBeans.size()>0){
-            logger.info("开始根据\"生成小数型数据样本\"，生成小数样本数据。");
-            generatedSamples.decimalTypeDateComputation(decimalTypeBeans,successJson,normalListDate,abnormalListDate);
-        }
-        if(dateTypeBeans.size()>0){
-            generatedSamples.dateTypeDateComputation(dateTypeBeans,successJson,normalListDate,abnormalListDate);
-            logger.info("开始根据\"生成日期型数据样本\"，生成日期样本数据。");
-            /*String fieldType="日期型";*/
-        }
-        //String fieldType="枚举型";
-        if(enumerationTypeBeans.size()>0){
-            generatedSamples.enumerationTypeDateComputation(enumerationTypeBeans,successJson,normalListDate,abnormalListDate);
-            logger.info("开始根据\"生成枚举型数据样本\"，生成枚举样本数据。");
-        }
-
-       List<List<String>> lists=generatedSamples.makeLists(normalListDate,abnormalListDate,successJson);
-
-
-        generatedSamples.writeExcel(lists,excelFilePathJavaFxMain);
-        return true;
     }
 
-    public void choiceExcel(){
+    public Boolean choiceExcel(){
         // Load the fxml file and create a new stage for the popup dialog.
+        Boolean isOkClicked=false;
         try{
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource(viewExcelDployFxmlPath));
@@ -555,10 +561,14 @@ public  class JavaFxMain extends Application {
             ExcelFileDeployController excelFileDeployController = loader.getController();
             excelFileDeployController.setDialogStage(dialogStage);
             dialogStage.showAndWait();
-            excelFileDeployController.setJavaFxMain(this);
+            isOkClicked=excelFileDeployController.systemDeployIsOkClicked();
+            if(isOkClicked){
+                excelFileDeployController.setJavaFxMain(this);
+            }
         }catch (Exception e){
             e.printStackTrace();
         }
+        return isOkClicked;
     }
 
     public void setSystemDeploy(){

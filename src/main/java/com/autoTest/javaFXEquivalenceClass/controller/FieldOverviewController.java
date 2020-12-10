@@ -267,13 +267,14 @@ public class FieldOverviewController {
      */
     @FXML
     private void handleGeneratedSamples(){
-        boolean generatedSamples=javaFxMain.generatedSamples();
-        if(generatedSamples){
+        int generatedSamples=javaFxMain.generatedSamples();
+        if(generatedSamples==1){
             String title="生成数据样本";
             String headerText="生成数据提示";
             String contentText="生成数据样本成功.";
             PopupUtil.WarningHints(javaFxMain,title,headerText,contentText);
-        }else {
+        } if(generatedSamples==2)
+         {
             String title="生成数据失败！";
             String headerText="成数据提示";
             String contentText="生成数据样本失败.";

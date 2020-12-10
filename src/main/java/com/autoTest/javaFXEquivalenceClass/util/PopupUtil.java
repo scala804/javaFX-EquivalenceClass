@@ -93,7 +93,7 @@ public class PopupUtil {
         alert.initOwner(stage);
         alert.setTitle(fieldName+POPUP_DATA_EMPTY_TITLE);
         alert.setHeaderText(tips);
-        alert.setContentText(POPUP_DATA_EMPTY_CONTENTTEXT);
+        alert.setContentText("");
         alert.showAndWait();
     }
 

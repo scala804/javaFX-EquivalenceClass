@@ -294,4 +294,7 @@ public class ConsField {
 
     public static final String XML_PROMPT_FILE="如果使用之前的编辑文件，请选择对应名称的xml";
     public static final String EXCEL_PROMPT_FILE_PATH="默认Excel存放路径为：D:\\EquivalenceClass\\dataXml.xlsx";
+
+    public static final String FILED_NAME="字符串名称";
+    public static final String FILED_PARAMS="参数值";
 }

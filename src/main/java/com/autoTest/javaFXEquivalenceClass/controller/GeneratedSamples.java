@@ -21,40 +21,41 @@ import static com.autoTest.javaFXEquivalenceClass.util.RandomUtil.dateEqually;
 @Controller
 public class GeneratedSamples {
     private static final Logger logger = LoggerFactory.getLogger(GeneratedSamples.class);
+    int intParamsNumber=0;
 
     @Autowired
     public GeneratedSamples() {
 
     }
 
-    public boolean writeExcel(List listArrayList,String excelPath) {
+    public boolean writeExcel(List listArrayList,String excelPath,String excelFileTableName) {
         boolean booleanSamples = false;
         /*List<String> list = new ArrayList<>();*/
 
         logger.info(String.valueOf("path____________" + excelPath));
-        writeExcelByString(excelPath, "等价类生成数据", listArrayList);
+        writeExcelByString(excelPath, excelFileTableName, listArrayList);
         return booleanSamples;
     }
 
     public List<List<String>> makeLists(List<Map<String, List<Map<String, String>>>> successList, List<Map<String, List<Map<String, String>>>> failList, JSONObject successJson) {
 
         List<List<String>> lists = new ArrayList<>();
-        String paramType="字符串名称";
+        String paramType=FILED_NAME;
         List<String> listParam=getList(successJson,paramType);
         lists.add(0,listParam);
-        String valueType="参数值";
+        String valueType=FILED_PARAMS;
+
         List<String> listParamValue=getList(successJson,valueType);
         lists.add(1,listParamValue);
 
         getListList(lists,successList,successJson);
         getListList(lists,failList,successJson);
-       /*writeExcel(lists);*/
         return lists;
     }
 
 
     public List<List<String>> getListList(List<List<String>> lists,List<Map<String, List<Map<String, String>>>> litMapList, JSONObject successJson){
-        String valueType="参数值";
+        String valueType=FILED_PARAMS;
         for(int i=0;i<litMapList.size();i++){
             Map<String, List<Map<String, String>>> mapList=litMapList.get(i);
             Set<String> keys = mapList.keySet();
@@ -72,9 +73,6 @@ public class GeneratedSamples {
                             List<String> listParamKey =getList(successObject,valueType);
                             lists.add(listParamKey);
                             System.out.println("——————————————"+listParamKey);
-                          /*
-                            List<String> listParamValue =getList(successJson,valueType);
-                            lists.add(listParamValue);*/
                         }
                     }
 
@@ -86,16 +84,21 @@ public class GeneratedSamples {
 
     public List<String> getList( JSONObject successJson,String type){
         List<String> listParam=new ArrayList<>();
-        java.util.Iterator it = successJson.entrySet().iterator();
-        while(it.hasNext()){
-            java.util.Map.Entry entry = (java.util.Map.Entry)it.next();
-            if(entry.getKey()!=null){
-                if("字符串名称".equals(type)){
-                    listParam.add(entry.getKey().toString());
-                }
-                if("参数值".equals(type)){
-                    listParam.add(entry.getValue().toString());
-                }
+        if(FILED_NAME.equals(type)){
+            listParam.add("样本序号");
+            java.util.Iterator it = successJson.entrySet().iterator();
+            while(it.hasNext()){
+                java.util.Map.Entry entry = (java.util.Map.Entry)it.next();
+                listParam.add(entry.getKey().toString());
+            }
+        }
+        if(FILED_PARAMS.equals(type)){
+            java.util.Iterator it = successJson.entrySet().iterator();
+            intParamsNumber++;
+            listParam.add("样本"+intParamsNumber);
+            while(it.hasNext()){
+                java.util.Map.Entry entry = (java.util.Map.Entry)it.next();
+                listParam.add(entry.getValue().toString());
             }
         }
         return listParam;

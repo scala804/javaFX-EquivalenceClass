@@ -74,12 +74,11 @@ public class SystemDeployController {
         xmlfile=deployXmlFilePath.getText();
            if(!"".equals(xmlfile)){
                okClicked = true;
+               dialogStage.close();
            }
         else {
             dataIsEmptyStage(dialogStage, "Xml保存路径", "没有选择Xml保存路径。");
         }
-
-        dialogStage.close();
     }
 
 
