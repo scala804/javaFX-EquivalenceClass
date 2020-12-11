@@ -91,7 +91,7 @@ public class InterFieldEditDialogController {
         choiceFieldEmpty.setValue(field.getChoiceFieldEmpty());
         fieldOtherType.setText(field.getFieldOtherType());
         fieldType.setText(field.getFieldType());
-        fieldLength.setText(field.getFieldLength());
+        fieldLength.setText("["+field.getMinLength()+","+field.getMaxLength()+"]");
         orderNumber.setText(field.getOrderNumber());
     }
 
@@ -150,7 +150,7 @@ public class InterFieldEditDialogController {
             field.setChoiceFieldEmpty(choiceFieldEmpty.getValue().toString());
             field.setUuid(uuid.getText());
             field.setFieldOtherType(fieldOtherType.getText());
-            field.setFieldLength(fieldLength.getText());
+            field.setFieldLength("["+interBeyondLowerBoundaryValue.getText()+","+interBeyondUpperBoundaryValue.getText()+"]");
             field.setFieldType(fieldType.getText());
             field.setFieldID(fieldID.getText());
             field.setOrderNumber(orderNumber.getText());

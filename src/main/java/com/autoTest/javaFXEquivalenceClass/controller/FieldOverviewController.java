@@ -205,6 +205,7 @@ public class FieldOverviewController {
                 String choiceBoxfieldTypes=choiceBoxfieldType.getValue().toString();
                 String choiceOtherTypes=choiceOtherType.getValue().toString();
                 String choiceFieldEmptyTypes=choiceFieldEmpty.getValue().toString();
+                /*String fieldLength=*/
                 for(int i=0;i<fieldAddNumberInt;i++){
                    /* fieldNumbers++;*/
                     Field tempField = new Field();

@@ -122,7 +122,8 @@ public class DateFieldEditDialogController {
         choiceFieldEmpty.setValue(field.getChoiceFieldEmpty());
         fieldOtherType.setText(field.getFieldOtherType());
         fieldType.setText(field.getFieldType());
-        fieldLength.setText(field.getFieldLength());
+        /*fieldLength.setText(field.getFieldLength());*/
+        fieldLength.setText("["+field.getMinLength()+","+field.getMaxLength()+"]");
         orderNumber.setText(field.getOrderNumber());
     }
     public void setDateTypeBeans(List<DateTypeBean> dateTypeBeans) {
@@ -183,8 +184,10 @@ public class DateFieldEditDialogController {
             field.setChoiceFieldEmpty(choiceFieldEmpty.getValue().toString());
             field.setUuid(uuid.getText());
             field.setFieldOtherType(fieldOtherType.getText());
-            field.setFieldLength(fieldLength.getText());
-            field.setFieldType(fieldType.getText());
+            String dateLength="["+dateBeyondLowerBoundaryValue.getEditor().getText()+" "+timeBeyondLowerBoundaryValue.getText()+","+dateBeyondUpperBoundaryValue.getEditor().getText()+" "+timeBeyondUpperBoundaryValue.getText()+"]";
+            field.setFieldLength(dateLength);
+            /*field.setFieldType(fieldType.getText());*/
+            /*field.setFieldType("["+dateBeyondLowerBoundaryValue.get)*/;
             field.setFieldID(fieldID.getText());
             field.setOrderNumber(orderNumber.getText());
             field.setIsGroupBytes("");

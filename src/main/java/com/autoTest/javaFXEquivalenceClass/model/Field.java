@@ -15,8 +15,10 @@ public class Field {
     private   String  fieldOtherType;
     private   String uuid;
     private   String isGroupBytes;
+    private String maxLength;
+    private String minLength;
 
-    public Field(String orderNumber,  String fieldID,  String name,  String fieldType,  String fieldLength,  String choiceFieldEmpty,  String fieldOtherType,  String uuid, String isGroupBytes) {
+    public Field(String orderNumber,  String fieldID,  String name,  String fieldType,  String fieldLength,  String choiceFieldEmpty,  String fieldOtherType,  String uuid, String isGroupBytes,String maxLength,String minLength) {
         this.orderNumber = orderNumber;
         this.fieldID = fieldID;
         this.name = name;
@@ -26,6 +28,8 @@ public class Field {
         this.fieldOtherType = fieldOtherType;
         this.uuid = uuid;
         this.isGroupBytes = isGroupBytes;
+        this.maxLength=maxLength;
+        this.minLength=minLength;
 
     }
     /**
@@ -41,6 +45,8 @@ public class Field {
         this.fieldOtherType = "否";
         this.uuid = UUID_DEFAULT_VALUE;
         this.isGroupBytes ="否";
+        this.maxLength="";
+        this.minLength="";
     }
 
     public String getOrderNumber() {
@@ -117,5 +123,21 @@ public class Field {
 
     public void setFieldType(String fieldType) {
         this.fieldType = fieldType;
+    }
+
+    public String getMaxLength() {
+        return maxLength;
+    }
+
+    public void setMaxLength(String maxLength) {
+        this.maxLength = maxLength;
+    }
+
+    public String getMinLength() {
+        return minLength;
+    }
+
+    public void setMinLength(String minLength) {
+        this.minLength = minLength;
     }
 }

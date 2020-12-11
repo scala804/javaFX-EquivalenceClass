@@ -137,7 +137,7 @@ public class StringFieldEditDialogController {
         choiceFieldEmpty.setValue(field.getChoiceFieldEmpty());
         fieldOtherType.setText(field.getFieldOtherType());
         fieldType.setText(field.getFieldType());
-        fieldLength.setText(field.getFieldLength());
+        fieldLength.setText("["+field.getMinLength()+","+field.getMaxLength()+"]");
         orderNumber.setText(field.getOrderNumber());
         isGroupBytes.setValue(field.getIsGroupBytes());
     }
@@ -163,7 +163,7 @@ public class StringFieldEditDialogController {
             field.setChoiceFieldEmpty(choiceFieldEmpty.getValue().toString());
             field.setUuid(uuid.getText());
             field.setFieldOtherType(fieldOtherType.getText());
-            field.setFieldLength(fieldLength.getText());
+            field.setFieldLength("["+minStringLenth.getText()+","+bigStringLenth.getText()+"]");
             field.setFieldType(fieldType.getText());
             field.setFieldID(fieldID.getText());
             field.setOrderNumber(orderNumber.getText());

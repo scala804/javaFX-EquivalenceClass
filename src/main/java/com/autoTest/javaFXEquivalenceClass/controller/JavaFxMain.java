@@ -166,18 +166,44 @@ public  class JavaFxMain extends Application {
                 }
                 String uuid=map.get("uuid").toString();
                 String isGroupBytes="";
+                String maxLength="";
+                String minLength="";
                 if(javaBeanType.equals(FIELD_TYPE_STRING)){
                     stringTypeBeans.add(i, map2Bean(map,StringTypeBean.class));
                     isGroupBytes=map.get("isGroupBytes").toString();
+                    if(map.get("bigStringLenth")!=null){
+                        maxLength=map.get("bigStringLenth").toString();
+                    }
+                    if(map.get("minStringLenth")!=null){
+                        minLength=map.get("minStringLenth").toString();
+                    }
                 }
                 if(javaBeanType.equals(FIELD_TYPE_INTER)){
                     interTypeBeans.add(i, map2Bean(map,InterTypeBean.class));
+                    if(map.get("interBeyondUpperBoundaryValue")!=null){
+                        maxLength=map.get("interBeyondUpperBoundaryValue").toString();
+                    }
+                    if(map.get("interBeyondLowerBoundaryValue")!=null){
+                        minLength=map.get("interBeyondLowerBoundaryValue").toString();
+                    }
                 }
                 if(javaBeanType.equals(FIELD_TYPE_DECIMAL)){
                     decimalTypeBeans.add(i, map2Bean(map,DecimalTypeBean.class));
+                    if(map.get("decimalBeyondUpperBoundaryValue")!=null){
+                        maxLength=map.get("decimalBeyondUpperBoundaryValue").toString();
+                    }
+                    if(map.get("decimalBeyondLowerBoundaryValue")!=null){
+                        minLength=map.get("decimalBeyondLowerBoundaryValue").toString();
+                    }
                 }
                 if(javaBeanType.equals(FIELD_TYPE_DATE)){
                     dateTypeBeans.add(i, map2Bean(map,DateTypeBean.class));
+                    if(map.get("dateBeyondUpperBoundaryValue")!=null&&map.get("timeBeyondUpperBoundaryValue")!=null){
+                        maxLength=map.get("dateBeyondUpperBoundaryValue").toString()+" "+map.get("timeBeyondUpperBoundaryValue").toString();
+                    }
+                    if(map.get("dateBeyondLowerBoundaryValue")!=null&&map.get("timeBeyondLowerBoundaryValue")!=null){
+                        maxLength=map.get("dateBeyondLowerBoundaryValue").toString()+" "+map.get("timeBeyondLowerBoundaryValue").toString();
+                    }
                 }
                 if(javaBeanType.equals(FIELD_TYPE_ENUMERATION)){
                     enumerationTypeBeans.add(i, map2Bean(map,EnumerationTypeBean.class));
@@ -191,7 +217,9 @@ public  class JavaFxMain extends Application {
                         choiceFieldEmpty,
                         fieldOtherType,
                         uuid,
-                        isGroupBytes
+                        isGroupBytes,
+                        maxLength,
+                        minLength
                 ));
             }else {
                 System.out.println("字段类型为："+javaBeanType+",第"+i+"的字符串类型数据为空！");
