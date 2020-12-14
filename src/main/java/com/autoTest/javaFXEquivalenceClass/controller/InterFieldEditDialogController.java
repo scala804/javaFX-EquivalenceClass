@@ -248,7 +248,8 @@ public class InterFieldEditDialogController {
             if (!StringUtils.isEmpty(interBeyondLowerBoundaryValue.getText())) {
                 String strMessage = "";
                 String interBeyondLowerBoundaryValueStr=interBeyondLowerBoundaryValue.getText();
-                boolean result=interBeyondLowerBoundaryValueStr.matches("^[0-9]*[1-9][0-9]*$");
+               /* boolean result=interBeyondLowerBoundaryValueStr.matches("^[0-9]*[0-9][0-9]*$");*/
+                 boolean result=interBeyondLowerBoundaryValueStr.matches("^-?\\d+$");
                 if(!result){
                     strMessage=POPUP_INTER_LOW_BOUNDARY_VALUE_IS_NOT_INTER;
                     dataIsInvalid(dialogStage, "整数下边界值", strMessage);
@@ -278,7 +279,8 @@ public class InterFieldEditDialogController {
             if (!StringUtils.isEmpty(interBeyondUpperBoundaryValue.getText())) {
                 String strMessage = "";
                 String interBeyondLowerBoundaryValueStr=interBeyondUpperBoundaryValue.getText();
-                boolean result=interBeyondLowerBoundaryValueStr.matches("^[0-9]*[1-9][0-9]*$");
+                /*boolean result=interBeyondLowerBoundaryValueStr.matches("^[0-9]*[0-9][0-9]*$");*/
+                boolean result=interBeyondLowerBoundaryValueStr.matches("^-?\\d+$");
                 if(!result){
                     strMessage=POPUP_INTER_UPPER_BOUNDARY_IS_NOT_INTER;
                     dataIsInvalid(dialogStage, "整数上边界值", strMessage);

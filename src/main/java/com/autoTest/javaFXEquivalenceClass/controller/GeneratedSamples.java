@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.File;
+import java.math.BigDecimal;
 import java.util.*;
 
 import static com.autoTest.javaFXEquivalenceClass.base.ConsField.*;
@@ -393,9 +394,16 @@ public class GeneratedSamples {
                 litNormalMap.add(normalMap);
                 keyNormalMap.put(fieldNameKey, litNormalMap);
                 normalListDate.add(keyNormalMap);
+                double temptest = Math.pow(10,precisionKeyInt);
 
-                abnormalMap.put(String.valueOf(Max + 1), beyondUpperBoundaryExpectedResults);
-                abnormalMap.put(String.valueOf(Min - 1), beyondLowerBoundaryExpectedResults);
+                BigDecimal maxB1 = new BigDecimal(Float.toString(Max));
+                BigDecimal minB1 = new BigDecimal(Float.toString(Min));
+                BigDecimal b1 = new BigDecimal(Double.toString((1/temptest)));
+                Float maxSum= maxB1.add(b1).floatValue();
+                Float minSum= minB1.subtract(b1).floatValue();
+                abnormalMap.put(String.valueOf(maxSum), beyondUpperBoundaryExpectedResults);
+                abnormalMap.put(String.valueOf(minSum), beyondLowerBoundaryExpectedResults);
+
                 abnormalMap.put(String.valueOf(generationDouble()), decimalIsFormatExpectedResults);
                 abnormalMap.put("A", decimalIsFormatExpectedResults);
                 abnormalMap.put(String.valueOf(generatingFloat()), decimalIsFormatExpectedResults);
@@ -403,7 +411,6 @@ public class GeneratedSamples {
                 keyAbnormalMap.put(fieldNameKey, litabnormalMap);
                 abnormalListDate.add(keyAbnormalMap);
             }
-
         }
     }
 

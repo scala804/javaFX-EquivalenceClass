@@ -84,7 +84,7 @@ public class FieldOverviewController {
         choiceOtherType.getItems().addAll("否", "是");
         choiceOtherType.getSelectionModel().selectFirst();
 
-        choiceFieldEmpty.getItems().addAll("否", "是");
+        choiceFieldEmpty.getItems().addAll("是", "否");
         choiceFieldEmpty.getSelectionModel().selectFirst();
         /*fieldNumbers=0;*/
         fieldAddNumber.setPromptText(TEXT_INPUT_NOT_NULL);
@@ -196,7 +196,7 @@ public class FieldOverviewController {
         fieldAddNumberInt=handleIntText(javaFxMain, strfieldAddNumber,strTitle,fieldAddNumberInt);
         Integer maxNumber=javaFxMain.listMaxNumber;
         if(maxNumber<0){
-            maxNumber=0;
+            javaFxMain.listMaxNumber=0;
         }
         if(fieldAddNumberInt==0){
             return;
@@ -213,8 +213,8 @@ public class FieldOverviewController {
                   int randomIntOrderNumber= RandomUtil.getNotSimple(in,5);*/
                     UUID uuid = UUID.randomUUID();
                     tempField.setUuid(uuid.toString());
-                    maxNumber=maxNumber+1+i;
-                    tempField.setOrderNumber(maxNumber.toString());
+                    javaFxMain.listMaxNumber=javaFxMain.listMaxNumber+1;
+                    tempField.setOrderNumber(javaFxMain.listMaxNumber.toString());
                     /*int randomIntFieldID=RandomUtil.getNotSimple(in,3);*/
                     tempField.setFieldID("testID");
                     /*tempField.setFieldLength(Integer.toString(fileldLength));*/

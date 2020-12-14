@@ -45,7 +45,7 @@
             <JFXButton layoutX="321.0" layoutY="24.0" onAction="#handleDeleteField" prefHeight="23.0" prefWidth="79.0" style="-fx-background-color: #3A84C3; -fx-background-radius: 1em;" text="删除字段" textAlignment="CENTER" textFill="#e8e3e3" />
             <JFXButton layoutX="130.0" layoutY="24.0" onAction="#handleEditField" prefHeight="23.0" prefWidth="79.0" style="-fx-background-color: #3A84C3; -fx-background-radius: 1em;" text="编辑字段" textAlignment="CENTER" textFill="#ebeaea" />
             <JFXButton layoutX="520.0" layoutY="24.0" onAction="#handleGeneratedSamples" prefHeight="23.0" prefWidth="79.0" style="-fx-background-color: #3A84C3; -fx-background-radius: 1em;" text="生成数据" textAlignment="CENTER" textFill="#e8e5e5" />
-            <JFXButton layoutX="722.0" layoutY="24.0" onAction="#handleSystemDeploy" prefHeight="23.0" prefWidth="79.0" style="-fx-background-color: #3A84C3; -fx-background-radius: 1em;" text="工具配置" textAlignment="CENTER" textFill="#e8e5e5" />
+            <JFXButton layoutX="722.0" layoutY="24.0" onAction="#handleSystemDeploy" prefHeight="23.0" prefWidth="79.0" style="-fx-background-color: #3A84C3; -fx-background-radius: 1em;" text="重新加载" textAlignment="CENTER" textFill="#e8e5e5" />
          </children>
       </AnchorPane>
    </children>

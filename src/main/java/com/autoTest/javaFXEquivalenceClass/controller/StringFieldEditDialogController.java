@@ -227,17 +227,17 @@ public class StringFieldEditDialogController {
             }
         }
         /**根据字段是否为空判断，最小字符串长度的验证**/
-        if(choiceFieldEmpty.getValue().equals(CHOICE_FIELD_NO)&&returnBoolean==true){
+        if(choiceFieldEmpty.getValue().equals(CHOICE_FIELD_NO)||returnBoolean==true){
             if (!StringUtils.isEmpty(minStringLenth.getText())) {
                 String minStringLenthStr=minStringLenth.getText();
                 String strMessage = "";
-                boolean result=minStringLenthStr.matches("^[0-9]*[1-9][0-9]*$");
+                boolean result=minStringLenthStr.matches("^[0-9]*[0-9][0-9]*$");
                 if(!result){
                     strMessage=POPUP_MINIMUM_STRING_SIZE_IS_NOT_INTER;
                     dataIsInvalid(dialogStage, "最小字符串长度", strMessage);
                     return  false;
                 }else {
-                    if(minStringLenthStr.length()<1){
+                    if(minStringLenthStr.length()<0){
                         strMessage=POPUP_STRING_IS_EMPT;
                         dataIsInvalid(dialogStage, "最小字符串长度", strMessage);
                         return  false;
@@ -257,11 +257,11 @@ public class StringFieldEditDialogController {
         }
 
         /**根据字段是否为空判断，最长字符串长度的验证**/
-        if(choiceFieldEmpty.getValue().equals(CHOICE_FIELD_NO)&&returnBoolean==true){
+        if(choiceFieldEmpty.getValue().equals(CHOICE_FIELD_NO)||returnBoolean==true){
             if(!StringUtils.isEmpty(bigStringLenth.getText())){
                 String bigStringLenthStr=bigStringLenth.getText();
                 String strMessage = "";
-                boolean result=bigStringLenthStr.matches("^[0-9]*[1-9][0-9]*$");
+                boolean result=bigStringLenthStr.matches("^[0-9]*[0-9][0-9]*$");
                if(!result){
                     strMessage=POPUP_BIG_STRING_SIZE_IS_NOT_INTER;
                     dataIsInvalid(dialogStage, "最大字符串长度", strMessage);

@@ -1,5 +1,6 @@
 package src.test;
 
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
@@ -70,5 +71,14 @@ public class StringUtils {
         System.out.println(getIdNo(false));
         a = System.currentTimeMillis() - a;
         System.out.println(a);
+
+        System.out.println( 1/Math.pow(10,3));
+
+        double v1 = 4.5;
+        double v2 = 4.55;
+        BigDecimal b1 = new BigDecimal(Double.toString(v1));
+        BigDecimal b2 = new BigDecimal(Double.toString(v2));
+        double sum= b1.add(b2).doubleValue();
+        System.out.println("sum==="+sum);
     }
 }

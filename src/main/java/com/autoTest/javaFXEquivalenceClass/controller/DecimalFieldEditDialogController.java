@@ -195,7 +195,6 @@ public class DecimalFieldEditDialogController {
     @FXML
     private void handleOk() {
         DecimalTypeBean decimalTypeBean;
-        /*stringTypeBean.setFieldName(fieldName.getText());*/
         if (!isInputDataFormatValid()) {
             okClicked=false;
         } else {
@@ -310,7 +309,7 @@ public class DecimalFieldEditDialogController {
                 if(result){
                     int number=getNumberDecimalDigits(str);
                     int precisionInt=Integer.valueOf(precision.getText());
-                    if(number>100){
+                    if(str.length()>100){
                         String strMessage = POPUP_DECIMAL_UPPER_BOUNDARY_OVER_LENGTH_ONE_HUNDRED;
                         dataIsEmptyStage(dialogStage, "小数上边界值", strMessage);
                         return false;
