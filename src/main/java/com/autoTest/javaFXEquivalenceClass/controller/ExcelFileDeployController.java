@@ -2,10 +2,12 @@ package com.autoTest.javaFXEquivalenceClass.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,18 +40,23 @@ public class ExcelFileDeployController {
     public String excelFile;
     public String excelFileName="默认";
 
+    /*private Stage Stage=new Stage();*/
+   /* private Window Stage=new Stage();*/
+
     final FileChooser excelFileChooser = new FileChooser();
 
     @FXML
     private void initialize() {
         deployXmlFilePath.setPromptText(XML_PROMPT_FILE);
         deployExcelFilePath.setPromptText(EXCEL_PROMPT_FILE_PATH);
-        Stage Stage=new Stage();
+
         excel_changeDirButton.setOnAction(
                 (final ActionEvent e) -> {
+                    Scene scene = excel_changeDirButton.getScene();
+                    Window Stage = (null == scene) ? null : scene.getWindow();
                     excelFileChooser.setTitle("选择Excel文件路径");
                     excelFileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("xlsx Files", "*.xlsx"));
-                    File file = excelFileChooser.showOpenDialog(Stage);
+                    File file = excelFileChooser.showSaveDialog(Stage);
                     if (file != null) {
                         System.out.println(file.getAbsolutePath());
                         deployExcelFilePath.setText(file.getAbsolutePath().trim());
@@ -70,7 +77,6 @@ public class ExcelFileDeployController {
 
     @FXML
     public void handleOk() {
-        /*String excelFileName="";*/
         String filePath="";
         xmlfile=deployXmlFilePath.getText();
         excelFile=deployExcelFilePath.getText();

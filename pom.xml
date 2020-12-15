@@ -15,7 +15,7 @@
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
-		<java.version>11</java.version>
+		<java.version>1.8</java.version>
 	</properties>
 
 	<dependencies>
@@ -119,7 +119,6 @@
 			<artifactId>tornadofx-controls</artifactId>
 			<version>1.0.4</version>
 		</dependency>
-
 	</dependencies>
 
 
@@ -141,6 +140,5 @@
 			</resource>
 		</resources>
 	</build>
-
 
 </project>

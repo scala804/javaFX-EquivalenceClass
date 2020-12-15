@@ -2,12 +2,14 @@ package com.autoTest.javaFXEquivalenceClass.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -45,9 +47,11 @@ public class SystemDeployController {
     @FXML
     private void initialize() {
         deployXmlFilePath.setPromptText(XML_PROMPT_FILE);
-        Stage Stage=new Stage();
+        /*Stage Stage=new Stage();*/
         xml_changeDirButton.setOnAction(
                 (final ActionEvent e) -> {
+                    Scene scene = xml_changeDirButton.getScene();
+                    Window Stage = (null == scene) ? null : scene.getWindow();
                     xmlFileChooser.setTitle("选择xml文件路径");
                     xmlFileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("xml Files", "*.xml"));
                     File file = xmlFileChooser.showOpenDialog(Stage);

@@ -288,13 +288,19 @@ public class EasyExcelUtil {
      * @param sheetName sheetName
      * @param dataList  数据集
      */
-    public static void writeExcelByString(String filePath, String sheetName, List<List<String>> dataList) {
-        // 创建返回信息
-        Map<String, List<List<String>>> dataListMap = Maps.newLinkedHashMap();
-        // 将工作表放入到Excel中
-        dataListMap.put(sheetName, dataList);
-        // 输出Excel数据
-        writeExcelByString(filePath, dataListMap);
+    public static Boolean writeExcelByString(String filePath, String sheetName, List<List<String>> dataList) {
+        try {
+            // 创建返回信息
+            Map<String, List<List<String>>> dataListMap = Maps.newLinkedHashMap();
+            // 将工作表放入到Excel中
+            dataListMap.put(sheetName, dataList);
+            // 输出Excel数据
+            writeExcelByString(filePath, dataListMap);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+
     }
 
     /**

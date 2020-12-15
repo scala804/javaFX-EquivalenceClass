@@ -30,16 +30,13 @@ public class GeneratedSamples {
     }
 
     public boolean writeExcel(List listArrayList,String excelPath,String excelFileTableName) {
-        boolean booleanSamples = false;
-        /*List<String> list = new ArrayList<>();*/
-
-        logger.info(String.valueOf("path____________" + excelPath));
-        writeExcelByString(excelPath, excelFileTableName, listArrayList);
+        boolean booleanSamples;
+        logger.info("Excel保存路径：" + excelPath);
+        booleanSamples=writeExcelByString(excelPath, excelFileTableName, listArrayList);
         return booleanSamples;
     }
 
     public List<List<String>> makeLists(List<Map<String, List<Map<String, String>>>> successList, List<Map<String, List<Map<String, String>>>> failList, JSONObject successJson) {
-
         List<List<String>> lists = new ArrayList<>();
         String paramType=FILED_NAME;
         List<String> listParam=getList(successJson,paramType);
@@ -47,6 +44,9 @@ public class GeneratedSamples {
         String valueType=FILED_PARAMS;
 
         List<String> listParamValue=getList(successJson,valueType);
+        if(listParamValue.size()>0){
+            listParamValue.add("操作成功");
+        }
         lists.add(1,listParamValue);
 
         getListList(lists,successList,successJson);
@@ -73,10 +73,9 @@ public class GeneratedSamples {
                             successObject.put("exceptResult",value);
                             List<String> listParamKey =getList(successObject,valueType);
                             lists.add(listParamKey);
-                            System.out.println("——————————————"+listParamKey);
+                            System.out.println("测试数据："+listParamKey);
                         }
                     }
-
                 }
             }
         }

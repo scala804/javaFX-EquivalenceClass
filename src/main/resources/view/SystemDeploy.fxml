@@ -9,9 +9,7 @@
       <Button layoutX="291.0" layoutY="169.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="23.0" prefWidth="48.0" style="-fx-background-color: #3A84C3; -fx-background-radius: 1em;" text="取消" textFill="#e8e5e5" />
       <Label layoutX="92.0" layoutY="84.0" text="XML文件名称：" />
       <TextField fx:id="deployXmlFilePath" layoutX="196.0" layoutY="80.0" prefHeight="23.0" prefWidth="396.0" />
-     <!-- <TextField fx:id="deployExcelFilePath" layoutX="196.0" layoutY="152.0" prefHeight="23.0" prefWidth="396.0" />-->
-      <!--<Button fx:id="excel_changeDirButton" layoutX="644.0" layoutY="149.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="48.0" text="浏览" />-->
-      <Button layoutX="643.0" layoutY="80.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="48.0" text="浏览" fx:id="xml_changeDirButton" />
+      <Button layoutX="643.0" layoutY="80.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="48.0" text="选择" fx:id="xml_changeDirButton" />
 
    </children>
 </AnchorPane>

@@ -288,7 +288,7 @@ public class FieldOverviewController {
         try {
           javaFxMain.setSystemDeploy();
         }catch (Exception e){
-
+          System.out.println("重载xml失败");
         }
     }
 

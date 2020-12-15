@@ -13,6 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
@@ -40,7 +41,7 @@ public  class JavaFxMain extends Application {
     private GeneratedSamples generatedSamples=new GeneratedSamples();
 
     private ObservableList<Field> fieldsData = FXCollections.observableArrayList();
-    private  static List<StringTypeBean> stringTypeBeans=new ArrayList<>();
+    private static List<StringTypeBean> stringTypeBeans=new ArrayList<>();
     private static List<InterTypeBean> interTypeBeans=new ArrayList<>();
     private static  List<DateTypeBean> dateTypeBeans=new ArrayList<>();
     private static List<DecimalTypeBean> decimalTypeBeans=new ArrayList<>();
@@ -55,14 +56,19 @@ public  class JavaFxMain extends Application {
      * Constructor
      */
     public JavaFxMain() {
-
-        xmlFilePathJavaFxMain=JavaFxMain.class.getResource("/temp/dataEmpty.xml").toString();
-        String path = System.getProperty("user.dir");
-        excelFilePathJavaFxMain = path + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "excel" + File.separator + "success.xlsx";
+        /*String strURL = getClass().getProtectionDomain().getCodeSource().getLocation().getPath();*/
+      /*  xmlFilePathJavaFxMain="";*/
+       xmlFilePathJavaFxMain="";
+      /*String path = System.getProperty("user.dir");*/
+      /*  excelFilePathJavaFxMain = path + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "excel" + File.separator + "success.xlsx";*/
+         excelFilePathJavaFxMain = "";
         /**
          * 数据初始化，从配置的xml中读取数据
          */
-        dataInitialization();
+        if(xmlFilePathJavaFxMain!=""&&excelFilePathJavaFxMain!=""){
+            dataInitialization();
+        }
+
     }
 
     /**
@@ -84,6 +90,7 @@ public  class JavaFxMain extends Application {
             }else {
                 xmlFilePath="";
             }
+            System.out.println("重载的XML文件地址为："+xmlFilePath);
             ListAllJavaBeans listAllJavaBeans = (ListAllJavaBeans) XmlInterfaceUtils.dataXmltoEntity(ListAllJavaBeans.class, xmlFilePath);
 
             if(listAllJavaBeans.getListStringTypeBeans()!=null){
@@ -585,6 +592,7 @@ public  class JavaFxMain extends Application {
             dialogStage.initOwner(primaryStage);
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
+            dialogStage.initStyle(StageStyle.UTILITY);
             // Set the field into the controller.
             ExcelFileDeployController excelFileDeployController = loader.getController();
             excelFileDeployController.setDialogStage(dialogStage);
@@ -611,13 +619,14 @@ public  class JavaFxMain extends Application {
             dialogStage.initOwner(primaryStage);
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
+            dialogStage.initStyle(StageStyle.UTILITY);
             // Set the field into the controller.
             SystemDeployController systemDeployController = loader.getController();
             systemDeployController.setDialogStage(dialogStage);
             dialogStage.showAndWait();
             Boolean isOkClicked=systemDeployController.systemDeployIsOkClicked();
-            systemDeployController.setJavaFxMain(this);
             if(isOkClicked){
+                systemDeployController.setJavaFxMain(this);
                 dataInitialization();
             }
         }catch (Exception e){
@@ -676,6 +685,8 @@ public  class JavaFxMain extends Application {
                         deleteBoolean=true;
                     }
                     break;
+                default:
+                    logger.error("没有该"+fildType+"类型！");;
             }
         }catch (Exception e){
             logger.error("删除类型为"+fildType+",uuid为"+uuid+"失败！");
