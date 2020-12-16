@@ -47,7 +47,6 @@ public class SystemDeployController {
     @FXML
     private void initialize() {
         deployXmlFilePath.setPromptText(XML_PROMPT_FILE);
-        /*Stage Stage=new Stage();*/
         xml_changeDirButton.setOnAction(
                 (final ActionEvent e) -> {
                     Scene scene = xml_changeDirButton.getScene();

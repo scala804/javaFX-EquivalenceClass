@@ -84,7 +84,7 @@ public class ExcelFileDeployController {
            int indexFileName=excelFile.lastIndexOf("\\");
            int indexSullfix=excelFile.lastIndexOf(".");
            if(indexSullfix>indexFileName){
-                excelFileName=excelFile.substring(indexFileName+1,indexSullfix);
+               excelFileName=excelFile.substring(indexFileName+1,indexSullfix);
                filePath=excelFile.substring(0,indexFileName+1);
                System.out.println(filePath);
            }
@@ -105,7 +105,6 @@ public class ExcelFileDeployController {
         javaFxMain.xmlFilePathJavaFxMain=xmlfile;
         javaFxMain.excelFilePathJavaFxMain=excelFile;
         javaFxMain.excelFileTableName=excelFileName;
-        /*javaFxMain.getFieldsData().clear();*/
     }
 
   public Boolean systemDeployIsOkClicked() {

@@ -179,10 +179,14 @@ public class GeneratedSamples {
                     }
                     //特殊字符串
                     Map<String, String> abnormalMap = new HashMap<>();
+                    Map<String, String> normalMap = new HashMap<>();
                     String standardCharactersKey = getStandardCharacters(bigIntLength, notAllowedString);
                     /* String standardCharactersValue="验证特殊字符串";*/
                     /*String standardCharactersValue=SYSTEM_DEFAULT_SUCCESS_VALUE;*/
-                    abnormalMap.put(standardCharactersKey, withDisallowedStringExpectedResult);
+                    normalMap.put(standardCharactersKey,SYSTEM_DEFAULT_SUCCESS_VALUE);
+                    normalListMap.add(normalMap);
+
+                    abnormalMap.put(notAllowedString, withDisallowedStringExpectedResult);
                     abnormalListMap.add(abnormalMap);
                     //操作失败
                     fieldNameAbnormalMap.put(fieldNameKey, abnormalListMap);
@@ -241,8 +245,9 @@ public class GeneratedSamples {
         if (!"".equals(notAllowedString)) {
             for (int i = 0; i < notAllowedString.length(); i++) {
                 String tempString = String.valueOf(notAllowedString.charAt(i));
-                if (STANDARD_CHARACTERS.contains(tempString)) {
-                    standardCharacters.replace(tempString, "");
+                if (standardCharacters.contains(tempString)) {
+                  String   temp=standardCharacters.replace(tempString, "");
+                    standardCharacters=temp;
                 }
             }
         }
