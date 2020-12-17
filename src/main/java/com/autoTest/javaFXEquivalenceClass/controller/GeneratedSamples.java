@@ -22,7 +22,7 @@ import static com.autoTest.javaFXEquivalenceClass.util.RandomUtil.dateEqually;
 @Controller
 public class GeneratedSamples {
     private static final Logger logger = LoggerFactory.getLogger(GeneratedSamples.class);
-    int intParamsNumber=0;
+    int intParamsNumber;
 
     @Autowired
     public GeneratedSamples() {
@@ -37,6 +37,7 @@ public class GeneratedSamples {
     }
 
     public List<List<String>> makeLists(List<Map<String, List<Map<String, String>>>> successList, List<Map<String, List<Map<String, String>>>> failList, JSONObject successJson) {
+        intParamsNumber=0;
         List<List<String>> lists = new ArrayList<>();
         String paramType=FILED_NAME;
         List<String> listParam=getList(successJson,paramType);
@@ -357,19 +358,19 @@ public class GeneratedSamples {
                 Float Min = Float.valueOf(decimalBeyondLowerBoundaryKey);
 
                 String beyondLowerBoundaryExpectedResults=SYSTEM_DEFAULT_FAIL_VALUE;
-                if(decimalTypeBeans.get(i).getBeyondLowerBoundaryExpectedResults()!=null){
+                if(!"".equals(decimalTypeBeans.get(i).getBeyondLowerBoundaryExpectedResults())){
                     beyondLowerBoundaryExpectedResults=decimalTypeBeans.get(i).getBeyondLowerBoundaryExpectedResults();
                 }
                 String isNullExpectedResults=SYSTEM_DEFAULT_FAIL_VALUE;
-                if(decimalTypeBeans.get(i).getIsNullExpectedResults()!=null){
+                if(!"".equals(decimalTypeBeans.get(i).getIsNullExpectedResults())){
                     isNullExpectedResults=decimalTypeBeans.get(i).getIsNullExpectedResults();
                 }
                 String beyondUpperBoundaryExpectedResults=SYSTEM_DEFAULT_FAIL_VALUE;
-                if(decimalTypeBeans.get(i).getBeyondUpperBoundaryExpectedResults()!=null){
+                if(!"".equals(decimalTypeBeans.get(i).getBeyondUpperBoundaryExpectedResults())){
                     beyondUpperBoundaryExpectedResults=decimalTypeBeans.get(i).getBeyondUpperBoundaryExpectedResults();
                 }
                 String decimalIsFormatExpectedResults=SYSTEM_DEFAULT_FAIL_VALUE;
-                if(decimalTypeBeans.get(i).getDecimalIsFormatExpectedResults()!=null){
+                if(!"".equals(decimalTypeBeans.get(i).getDecimalIsFormatExpectedResults())){
                     decimalIsFormatExpectedResults=decimalTypeBeans.get(i).getDecimalIsFormatExpectedResults();
                 }
                 String fieldNormalData = null;
@@ -430,19 +431,19 @@ public class GeneratedSamples {
             String timeBeyondLowerBoundaryValue = dateTypeBeans.get(i).getTimeBeyondLowerBoundaryValue();
 
             String beyondLowerBoundaryExpectedResults=SYSTEM_DEFAULT_FAIL_VALUE;
-            if(dateTypeBeans.get(i).getBeyondLowerBoundaryExpectedResults()!=null){
+            if(!"".equals(dateTypeBeans.get(i).getBeyondLowerBoundaryExpectedResults())){
                 beyondLowerBoundaryExpectedResults=dateTypeBeans.get(i).getBeyondLowerBoundaryExpectedResults();
             }
             String beyondUpperBoundaryExpectedResults=SYSTEM_DEFAULT_FAIL_VALUE;
-            if(dateTypeBeans.get(i).getBeyondLowerBoundaryExpectedResults()!=null){
+            if(!"".equals(dateTypeBeans.get(i).getBeyondLowerBoundaryExpectedResults())){
                 beyondUpperBoundaryExpectedResults=dateTypeBeans.get(i).getBeyondLowerBoundaryExpectedResults();
             }
             String dateIsFormatExpectedResults=SYSTEM_DEFAULT_FAIL_VALUE;
-            if(dateTypeBeans.get(i).getDateIsFormatExpectedResults()!=null){
+            if(!"".equals(dateTypeBeans.get(i).getDateIsFormatExpectedResults())){
                 dateIsFormatExpectedResults=dateTypeBeans.get(i).getDateIsFormatExpectedResults();
             }
             String dateIsNullExpectedResults=SYSTEM_DEFAULT_FAIL_VALUE;
-            if(dateTypeBeans.get(i).getDateIsNullExpectedResults()!=null){
+            if(!"".equals(dateTypeBeans.get(i).getDateIsNullExpectedResults())){
                 dateIsNullExpectedResults=dateTypeBeans.get(i).getDateIsNullExpectedResults();
             }
 
@@ -502,11 +503,11 @@ public class GeneratedSamples {
             String enumerationValue = enumerationTypeBeans.get(i).getEnumerationValue();
             String ChoiceFieldEmpty = enumerationTypeBeans.get(i).getChoiceFieldEmpty();
             String successExpectedResults=SYSTEM_DEFAULT_SUCCESS_VALUE;
-            if(enumerationTypeBeans.get(i).getSuccessExpectedResults()!=null){
+            if(!"".equals(enumerationTypeBeans.get(i).getSuccessExpectedResults())){
                 successExpectedResults=enumerationTypeBeans.get(i).getSuccessExpectedResults();
             }
             String isNullExpectedResults=SYSTEM_DEFAULT_FAIL_VALUE;
-            if(enumerationTypeBeans.get(i).getIsNullExpectedResults()!=null){
+            if(!"".equals(enumerationTypeBeans.get(i).getIsNullExpectedResults())){
                 isNullExpectedResults=enumerationTypeBeans.get(i).getIsNullExpectedResults();
             }
 

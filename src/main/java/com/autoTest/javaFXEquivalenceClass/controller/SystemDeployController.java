@@ -22,22 +22,19 @@ import static com.autoTest.javaFXEquivalenceClass.util.PopupUtil.dataIsEmptyStag
  * @author yangbihua
  */
 public class SystemDeployController {
+
     private static final Logger logger = LoggerFactory.getLogger(SystemDeployController.class);
     @FXML
     private TextField deployXmlFilePath;
-    /*@FXML
-    private TextField deployExcelFilePath;*/
-   /* @FXML
-    private Button excel_changeDirButton;*/
 
     @FXML
     private Button xml_changeDirButton;
 
     private Stage dialogStage;
 
-    private boolean okClicked=false;
+    private boolean okClicked = false;
 
-    private  JavaFxMain javaFxMain;
+    private JavaFxMain javaFxMain;
 
     public String xmlfile;
 
@@ -74,12 +71,11 @@ public class SystemDeployController {
 
     @FXML
     public void handleOk() {
-        xmlfile=deployXmlFilePath.getText();
-           if(!"".equals(xmlfile)){
-               okClicked = true;
-               dialogStage.close();
-           }
-        else {
+        xmlfile = deployXmlFilePath.getText();
+        if (!"".equals(xmlfile)) {
+            okClicked = true;
+            dialogStage.close();
+        } else {
             dataIsEmptyStage(dialogStage, "Xml保存路径", "没有选择Xml保存路径。");
         }
     }
@@ -87,17 +83,17 @@ public class SystemDeployController {
 
     public void setJavaFxMain(JavaFxMain javaFxMain) {
         this.javaFxMain = javaFxMain;
-        javaFxMain.xmlFilePathJavaFxMain=xmlfile;
-     /*   javaFxMain.excelFilePathJavaFxMain=excelFile;*/
+        javaFxMain.xmlFilePathJavaFxMain = xmlfile;
+        /*   javaFxMain.excelFilePathJavaFxMain=excelFile;*/
         javaFxMain.getFieldsData().clear();
     }
 
-  public Boolean systemDeployIsOkClicked() {
+    public Boolean systemDeployIsOkClicked() {
         return okClicked;
     }
 
     @FXML
-    public void handleCancel(){
+    public void handleCancel() {
         dialogStage.close();
     }
 }
