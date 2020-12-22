@@ -64,7 +64,7 @@ public class StringUtils {
         return calcR[result % 11];
     }
     public static void main(String[] args) {
-        long a = System.currentTimeMillis();
+      /*  long a = System.currentTimeMillis();
         System.out.println(getIdNo("19840101",true));
         System.out.println(getIdNo("20100112",false));
         System.out.println(getIdNo(true));
@@ -79,6 +79,7 @@ public class StringUtils {
         BigDecimal b1 = new BigDecimal(Double.toString(v1));
         BigDecimal b2 = new BigDecimal(Double.toString(v2));
         double sum= b1.add(b2).doubleValue();
-        System.out.println("sum==="+sum);
+        System.out.println("sum==="+sum);*/
+
     }
 }

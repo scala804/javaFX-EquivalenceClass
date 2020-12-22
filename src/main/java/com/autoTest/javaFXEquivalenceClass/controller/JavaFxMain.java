@@ -244,7 +244,7 @@ public class JavaFxMain extends Application {
         System.out.println("start");
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("数据生成工具");
-
+        primaryStage.initStyle(StageStyle.UTILITY);
         initRootLayout();
         showFieldBatchOverview();
     }

@@ -274,7 +274,10 @@ public class DecimalFieldEditDialogController {
                /*Boolean result=str.matches("[+-]?[0-9]+(\\\\.[0-9]+)?");*/
                Boolean result= isDecimal(str);
                if(result){
-                   int number=getNumberDecimalDigits(str);
+                   int intStr=str.length();
+                   int indexDecimail=str.indexOf(".");
+                  /* int number=getNumberDecimalDigits(str);*/
+                   int  number=intStr-indexDecimail-1;
                    int length=str.length();
                    int precisionInt=Integer.valueOf(precision.getText());
                    if(length>100){
@@ -307,7 +310,11 @@ public class DecimalFieldEditDialogController {
                 String str=decimalBeyondUpperBoundaryValue.getText();
                 Boolean result= isDecimal(str);
                 if(result){
-                    int number=getNumberDecimalDigits(str);
+                    /*int number=getNumberDecimalDigits(str);*/
+                    int intStr=str.length();
+                    int indexDecimail=str.indexOf(".");
+                    /* int number=getNumberDecimalDigits(str);*/
+                    int  number=intStr-indexDecimail-1;
                     int precisionInt=Integer.valueOf(precision.getText());
                     if(str.length()>100){
                         String strMessage = POPUP_DECIMAL_UPPER_BOUNDARY_OVER_LENGTH_ONE_HUNDRED;

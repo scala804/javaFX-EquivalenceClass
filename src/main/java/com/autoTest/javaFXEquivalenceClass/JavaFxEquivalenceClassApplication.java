@@ -1,14 +1,18 @@
 package com.autoTest.javaFXEquivalenceClass;
 
 import com.autoTest.javaFXEquivalenceClass.controller.JavaFxMain;
+import de.felixroske.jfxsupport.AbstractJavaFxApplicationSupport;
 import javafx.application.Application;
 import org.springframework.boot.Banner;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * @author yangbihua
+ */
 @SpringBootApplication
-public class JavaFxEquivalenceClassApplication  implements CommandLineRunner {
+public class JavaFxEquivalenceClassApplication extends AbstractJavaFxApplicationSupport implements CommandLineRunner  {
 	/**
 	 * SpringBoot 的入口，这里关闭了启动时会出现的 banner 图形
 	 *

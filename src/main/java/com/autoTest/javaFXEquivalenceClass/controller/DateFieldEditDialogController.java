@@ -304,7 +304,7 @@ public class DateFieldEditDialogController {
                     String strMessage = POPUP_DATE_LOW_BOUNDARY_AFTER_UPPER_BOUNDARY;
                     dataIsInvalid(dialogStage, "日期上边界值", strMessage);
                     return false;
-                };
+                }
             }
         } else {
             String strMessage = POPUP_DATE_IS_EMPTY;
@@ -343,7 +343,7 @@ public class DateFieldEditDialogController {
                     String strMessage = POPUP_TIME_LOW_BOUNDARY_AFTER_UPPER_BOUNDARY;
                     dataIsInvalid(dialogStage, "时间上边界值", strMessage);
                     return false;
-                };
+                }
             }
         } else {
             String strMessage = POPUP_DATE_IS_EMPTY;

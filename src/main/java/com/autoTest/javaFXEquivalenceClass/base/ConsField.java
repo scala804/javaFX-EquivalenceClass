@@ -297,4 +297,10 @@ public class ConsField {
 
     public static final String FILED_NAME="字符串名称";
     public static final String FILED_PARAMS="参数值";
+
+
+    public static final String STRING_CHINA="中文";
+    public static final String STRING_ENGILISH="英文";
+    public static final String STRING_NUMBER="数字";
+    public static final String STRING_CHINA_ENGILISH_NUMBER="中文英文数字";
 }

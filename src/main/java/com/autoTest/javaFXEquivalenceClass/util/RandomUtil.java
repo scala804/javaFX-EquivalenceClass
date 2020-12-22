@@ -14,6 +14,17 @@ public class RandomUtil {
     public static final String LETTERCHAR = "abcdefghijkllmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     public static final String NUMBERCHAR = "0123456789";
 
+
+    public static final char [] LETTER_NUMBER = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
+            'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+            '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+
+    public static final char [] LETTER = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
+            'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+
+    public static final char [] NUMBER = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+
+
     /**
      * 返回一个定长的随机字符串(只包含大小写字母、数字)
      *
@@ -247,167 +258,6 @@ public class RandomUtil {
         return days.get(indexInt);
     }
 
-   public static String getTime(String startTime, String endTime){
-        String HHYYMM="";
-      String startHH=startTime.substring(0,2);
-      int startHHInt=Integer.valueOf(startHH);
-      String endHH=endTime.substring(0,2);
-      int endHHInt=Integer.valueOf(endHH);
-
-      String startYY=startTime.substring(3,5);
-      int startYYInt=Integer.valueOf(startYY);
-      String endYY=endTime.substring(3,5);
-      int endYYInt=Integer.valueOf(endYY);
-
-      String startMM=startTime.substring(6,8);
-      int startMMInt=Integer.valueOf(startMM);
-      String endMM=endTime.substring(6,8);
-      int endMMInt=Integer.valueOf(endMM);
-
-      if(endHHInt>startHHInt){
-         int HH=getRandom(startHHInt,endHHInt);
-         if(startHHInt<HH&&HH<endHHInt){
-             HHYYMM=HH+":";
-           int YY=getRandom(0,59);
-           if(YY<10){
-               HHYYMM=HHYYMM+"0"+YY+":";
-           }else {
-               HHYYMM=HHYYMM+YY+":";
-           }
-           int MM=getRandom(0,59);
-             if(MM<10){
-                 HHYYMM=HHYYMM+"0"+MM;
-             }else {
-                 HHYYMM=HHYYMM+MM;
-             }
-         }else {
-             if(HH==endHHInt){
-                 HHYYMM=HH+":";
-                 int YY=getRandom(0,endYYInt);
-                 if(YY<endYYInt){
-                     if(YY<10){
-                         HHYYMM=HHYYMM+"0"+YY+":";
-                         int MM=getRandom(0,59);
-                         if(MM<10){
-                             HHYYMM=HHYYMM+"0"+MM;
-                         }else {
-                             HHYYMM=HHYYMM+MM;
-                         }
-                     }else {
-                         HHYYMM=HHYYMM+YY+":";
-                         int MM=getRandom(0,59);
-                         if(MM<10){
-                             HHYYMM=HHYYMM+"0"+MM;
-                         }else {
-                             HHYYMM=HHYYMM+MM;
-                         }
-                     }
-                 }else {
-                     if(YY==endYYInt){
-                         if(YY<10){
-                             HHYYMM=HHYYMM+"0"+YY+":";
-                             int MM=getRandom(0,endMMInt);
-                             if(MM<10){
-                                 HHYYMM=HHYYMM+"0"+MM;
-                             }else {
-                                 HHYYMM=HHYYMM+MM;
-                             }
-                         }else {
-                             HHYYMM=HHYYMM+YY+":";
-                             int MM=getRandom(0,endMMInt);
-                             if(MM<10){
-                                 HHYYMM=HHYYMM+"0"+MM;
-                             }else {
-                                 HHYYMM=HHYYMM+MM;
-                             }
-                         }
-                     }
-                 }
-
-             }
-             if(HH==startHHInt){
-                 HHYYMM=HH+":";
-                 int YY=getRandom(startYYInt,endYYInt);
-                 if(YY<endYYInt){
-                     if(YY<10){
-                         HHYYMM=HHYYMM+"0"+YY+":";
-                         int MM=getRandom(startMMInt,endMMInt);
-                         if(MM<10){
-                             HHYYMM=HHYYMM+"0"+MM;
-                         }else {
-                             HHYYMM=HHYYMM+MM;
-                         }
-                     }else {
-                         HHYYMM=HHYYMM+YY+":";
-                         int MM=getRandom(startMMInt,endMMInt);
-                         if(MM<10){
-                             HHYYMM=HHYYMM+"0"+MM;
-                         }else {
-                             HHYYMM=HHYYMM+MM;
-                         }
-                     }
-                 }else {
-                     if(YY==endYYInt){
-                         if(YY<10){
-                             HHYYMM=HHYYMM+"0"+YY+":";
-                             int MM=getRandom(startMMInt,endMMInt);
-                             if(MM<10){
-                                 HHYYMM=HHYYMM+"0"+MM;
-                             }else {
-                                 HHYYMM=HHYYMM+MM;
-                             }
-                         }else {
-                             HHYYMM=HHYYMM+YY+":";
-                             int MM=getRandom(startMMInt,endMMInt);
-                             if(MM<10){
-                                 HHYYMM=HHYYMM+"0"+MM;
-                             }else {
-                                 HHYYMM=HHYYMM+MM;
-                             }
-                         }
-                     }
-                 }
-
-             }
-         }
-      }else {
-          if(endHHInt==startHHInt){
-              HHYYMM=endHHInt+":";
-              if(startYYInt==endYYInt){
-                  int YY=endYYInt;
-                  HHYYMM=HHYYMM+YY+":";
-                  int MM=getRandom(startMMInt,endMMInt);
-                  if(MM<10){
-                      HHYYMM=HHYYMM+"0"+MM;
-                  }else {
-                      HHYYMM=HHYYMM+MM;
-                  }
-              }else {
-                  if(endYYInt>startYYInt){
-                      int  YY=getRandom(startYYInt,endYYInt);
-                      HHYYMM=HHYYMM+YY+":";
-                      if(YY==endYYInt){
-                          int  MM=getRandom(0,endMMInt);
-                          if(MM<10){
-                              HHYYMM=HHYYMM+"0"+MM;
-                          }else {
-                              HHYYMM=HHYYMM+MM;
-                          }
-                      }
-                      if(YY==startYYInt){
-                          int  MM=getRandom(startMMInt,endMMInt);
-                          if(MM<10){
-                              HHYYMM=HHYYMM+"0"+MM;
-                          }else {
-                              HHYYMM=HHYYMM+MM;
-                          }
-                      }
-                  }
-              }
-          }
-      }
-      return HHYYMM;
-    }
 
     public static int getRandom(int min, int max){
         Random random = new Random();
@@ -525,7 +375,77 @@ public class RandomUtil {
     }
 
 
-    public static void main(String[] args) {
+    /**
+     * 按指定大小在<b>26个英文字母</b>中生成随机数。
+     *
+     * @param t
+     *         生成的长度，t不能小于1或大于99，否则返回"0"
+     * @return 你想要的随机数
+     * @created 2013-5-16 下午02:40:05
+     * @author Belen
+     */
+    public static String getRandomOfLetter(int t) {
+        return get(LETTER, t);
+    }
+
+    /**
+     * 按指定大小在<b>0-9</b>数字中生成随机数。
+     *
+     * @param t
+     *         生成的长度，t不能小于1或大于99，否则返回"0"
+     * @return 你想要的随机数
+     * @created 2013-5-16 下午02:40:05
+     * @author Belen
+     */
+    public static String getRandomOfNumber(int t) {
+        return get(NUMBER, t);
+    }
+
+    /**
+     * 按指定大小在<b>25个英文以及10个数字</b>中生成随机数。
+     *
+     * @param t
+     *         生成的长度，t不能小于1或大于99，否则返回"0"
+     * @return 你想要的随机数
+     * @created 2013-5-16 下午02:40:05
+     * @author Belen
+     */
+    public static String getRandomOfLetterAndNumber(int t) {
+        return get(LETTER_NUMBER, t);
+    }
+
+    /** 按指定数组生成数据。*/
+    private static String get(char[] c, int t) {
+        if(t < 1){
+            return "0";
+        }
+
+        final int maxNum = 36;
+        int i; // 生成的随机数
+        int count = 0; // 生成的长度
+
+        StringBuffer sb = new StringBuffer("");
+        Random r = new Random();
+        while (count < t) {
+            // 生成随机数，取绝对值，防止生成负数，
+            i = Math.abs(r.nextInt(maxNum)); // 生成的数最大为36-1
+            if (i >= 0 && i < c.length) {
+                sb.append(c[i]);
+                count++;
+            }
+        }
+        return sb.toString();
+    }
+
+
+    public static String getBetweenMinAndMax(int min, int max) {
+        Random random = new Random();
+        int s = random.nextInt(max) % (max - min + 1) + min;
+        return String.valueOf(s);
+    }
+
+
+        public static void main(String[] args) {
        System.out.println("返回一个定长的随机字符串(只包含大小写字母、数字):" + generateString(10));
         System.out.println("返回一个定长的随机纯字母字符串(只包含大小写字母):" + generateMixString(10));
         System.out.println("返回一个定长的随机纯大写字母字符串(只包含大小写字母):"
@@ -559,5 +479,11 @@ public class RandomUtil {
         System.out.println(getSpecifiedDay("2015-02-01",1));
 
         System.out.println( "00000"+getNumber("%"));
+        System.out.println("我的".length());
+
+        System.out.println(getRandomOfLetter(200));
+        System.out.println(getRandomOfNumber(120));
+            System.out.println(getBetweenMinAndMax(3,9));
+
     }
 }

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 
 import java.io.File;
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.*;
 
 import static com.autoTest.javaFXEquivalenceClass.base.ConsField.*;
@@ -40,23 +41,24 @@ public class GeneratedSamples {
         intParamsNumber=0;
         List<List<String>> lists = new ArrayList<>();
         String paramType=FILED_NAME;
-        List<String> listParam=getList(successJson,paramType);
+        List<String> listParam=getList(successJson,paramType,"");
         lists.add(0,listParam);
         String valueType=FILED_PARAMS;
-
-        List<String> listParamValue=getList(successJson,valueType);
+        String success="S";
+        String fail="F";
+        List<String> listParamValue=getList(successJson,valueType,success);
         if(listParamValue.size()>0){
             listParamValue.add("操作成功");
         }
         lists.add(1,listParamValue);
 
-        getListList(lists,successList,successJson);
-        getListList(lists,failList,successJson);
+        getListList(lists,successList,successJson,success);
+        getListList(lists,failList,successJson,fail);
         return lists;
     }
 
 
-    public List<List<String>> getListList(List<List<String>> lists,List<Map<String, List<Map<String, String>>>> litMapList, JSONObject successJson){
+    public List<List<String>> getListList(List<List<String>> lists,List<Map<String, List<Map<String, String>>>> litMapList, JSONObject successJson,String sf){
         String valueType=FILED_PARAMS;
         for(int i=0;i<litMapList.size();i++){
             Map<String, List<Map<String, String>>> mapList=litMapList.get(i);
@@ -72,7 +74,7 @@ public class GeneratedSamples {
                             JSONObject successObject = JSONObject.parseObject(successJson.toJSONString());
                             successObject.put(key,mapKey);
                             successObject.put("exceptResult",value);
-                            List<String> listParamKey =getList(successObject,valueType);
+                            List<String> listParamKey =getList(successObject,valueType,sf);
                             lists.add(listParamKey);
                             System.out.println("测试数据："+listParamKey);
                         }
@@ -83,7 +85,7 @@ public class GeneratedSamples {
         return lists;
     }
 
-    public List<String> getList( JSONObject successJson,String type){
+    public List<String> getList( JSONObject successJson,String type,String sf){
         List<String> listParam=new ArrayList<>();
         if(FILED_NAME.equals(type)){
             listParam.add("样本序号");
@@ -92,11 +94,13 @@ public class GeneratedSamples {
                 java.util.Map.Entry entry = (java.util.Map.Entry)it.next();
                 listParam.add(entry.getKey().toString());
             }
+            listParam.add("期望结果");
+            listParam.add("备注");
         }
         if(FILED_PARAMS.equals(type)){
             java.util.Iterator it = successJson.entrySet().iterator();
             intParamsNumber++;
-            listParam.add("样本"+intParamsNumber);
+            listParam.add(sf+"-"+"样本"+intParamsNumber);
             while(it.hasNext()){
                 java.util.Map.Entry entry = (java.util.Map.Entry)it.next();
                 listParam.add(entry.getValue().toString());
@@ -140,7 +144,7 @@ public class GeneratedSamples {
                     rusultMap.put("withNullExpectedResult", withNullExpectedResult);
                     rusultMap.put("withDisallowedStringExpectedResult", withDisallowedStringExpectedResult);
                     String fieldNormalData = "";
-                    if (stringTypeBeans.get(i).getFieldNormalData() != null) {
+                    if (!"".equals(stringTypeBeans.get(i).getFieldNormalData()) ) {
                         fieldNormalData = stringTypeBeans.get(i).getFieldNormalData();
                     }
 
@@ -157,37 +161,40 @@ public class GeneratedSamples {
                             successJson.put(fieldNameKey, middleStrngValue);
                         }
                     }
+
+                    Map<String, String> abnormalMap = new HashMap<>();
+                    Map<String, String> normalMap = new HashMap<>();
+
                     //字符串生成成功的业务规则2、3、4
                     //数据样本验证有效上边界（最大长度的有效字符串）,先判断单双字节
                     List<Map<String, String>> normalListMap = new ArrayList<>();
                     List<Map<String, String>> abnormalListMap = new ArrayList<>();
-                    if (!"".equals(isGroupBytes)) {
-                        if (bigIntLength > minIntLength) {
-                            getListMap(isGroupBytes, bigIntLength, 0, normalListMap, rusultMap);
-                            if (CHOICE_FIELD_YES.equals(choiceFieldEmptyKey)) {
-                                getListMap(isGroupBytes, 0, 0, normalListMap, rusultMap);
-                            }
-                            if (CHOICE_FIELD_NO.equals(choiceFieldEmptyKey)) {
-                                Map tempMap = new HashMap();
-                                tempMap.put("", withNullExpectedResult);
-                                abnormalListMap.add(tempMap);
-                            }
-                            getListMap(isGroupBytes, bigIntLength, 1, abnormalListMap, rusultMap);
-                            if (minIntLength > 1) {
-                                getListMap(isGroupBytes, minIntLength, -1, abnormalListMap, rusultMap);
-                            }
-                        }
+                   //上边界正常值
+                   if(!"".equals(isGroupBytes)){
+                       choiceFieldNoOrYes(bigIntLength, normalMap,0,isGroupBytes);
+                       choiceFieldNoOrYes(bigIntLength, abnormalMap,1,isGroupBytes);
+                       choiceFieldNoOrYes(minIntLength, normalMap,0,isGroupBytes);
+                       choiceFieldNoOrYes(minIntLength, abnormalMap,-1,isGroupBytes);
+                   }
+
+                    String keyValue="字符串字段设置为空";
+                    if(CHOICE_FIELD_NO.equals(choiceFieldEmptyKey)){
+                        abnormalMap.put("",keyValue);
+                    }
+                    if(CHOICE_FIELD_YES.equals(choiceFieldEmptyKey)){
+                        abnormalMap.put("",keyValue);
                     }
                     //特殊字符串
-                    Map<String, String> abnormalMap = new HashMap<>();
-                    Map<String, String> normalMap = new HashMap<>();
                     String standardCharactersKey = getStandardCharacters(bigIntLength, notAllowedString);
                     /* String standardCharactersValue="验证特殊字符串";*/
                     /*String standardCharactersValue=SYSTEM_DEFAULT_SUCCESS_VALUE;*/
-                    normalMap.put(standardCharactersKey,SYSTEM_DEFAULT_SUCCESS_VALUE);
-                    normalListMap.add(normalMap);
-
-                    abnormalMap.put(notAllowedString, withDisallowedStringExpectedResult);
+                    if(CHOICE_FIELD_NO.equals(choiceFieldEmptyKey)&&!"".equals(standardCharactersKey)){
+                        normalMap.put(standardCharactersKey,SYSTEM_DEFAULT_SUCCESS_VALUE);
+                        normalListMap.add(normalMap);
+                    }
+                    if(!"".equals(notAllowedString)){
+                        abnormalMap.put(notAllowedString, withDisallowedStringExpectedResult);
+                    }
                     abnormalListMap.add(abnormalMap);
                     //操作失败
                     fieldNameAbnormalMap.put(fieldNameKey, abnormalListMap);
@@ -203,41 +210,28 @@ public class GeneratedSamples {
         }
     }
 
-    //获取字符串listMap
-    private List<Map<String, String>> getListMap(String isGroupBytes, int length, int addInt, List<Map<String, String>> listMap, Map<String, String> rusultMap) {
-        String result = "操作成功";
-        if (addInt > 0) {
-            result = rusultMap.get("beyondUpperBoundaryExpectedResults");
-        }
-        if (addInt < 0) {
-            result = rusultMap.get("beyondLowerBoundaryExpectedResults");
+
+
+    private void choiceFieldNoOrYes(int length,Map<String,String> map,int addInt,String isGroupBytes){
+        String keyValue="";
+        //加括号的文字描述“（最大长度）个中文字符
+        keyValue=length+addInt+"个中文字符";
+        map.put(getFixedLengthChinese(length+1),keyValue);
+        //加括号的文字描述“（最大长度）个英文字符”
+        keyValue=length+addInt+"个英文字符";
+        map.put(getRandomOfLetter(length+addInt),keyValue);
+        //加括号的文字描述“（最大长度）个整数数字”
+        keyValue=length+addInt+"个整数数字";
+        map.put(getRandomOfNumber(length+addInt),keyValue);
+        if(length>6){
+            Integer chinaNumber=Integer.valueOf(getBetweenMinAndMax(1,length+addInt));
+            Integer numberInt=length+addInt-Integer.valueOf(chinaNumber);
+            keyValue=length+addInt+"个中文+英文+数字组合的字符串";
+            if(CHOICE_FIELD_YES.equals(isGroupBytes)){
+                map.put(getFixedLengthChinese(chinaNumber)+generateString(numberInt),keyValue);
+            }
         }
 
-        if (isGroupBytes.equals(CHOICE_FIELD_YES)) {
-            Map<String, String> map = new HashMap<>();
-            //输出为：输出2个数据样本，分别为：加括号的文字描述“（最大长度）个英文字符串”、加括号的文字描述“（最大长度/2）个中文字符串”，此样本的中文个数向下取整；
-            String bigIntLengthStringLetterKey = generateLowerString(length + addInt);
-            /*String bigIntLengthStringLetterValue=length+addInt+"个英文字符串";*/
-            map.put(bigIntLengthStringLetterKey, result);
-
-            String bigIntLengthStringChinaKey = getFixedLengthChinese(length / 2 + addInt);
-            /*String bigIntLengthStringChinaValue=length/2+addInt+"个中文字符串";*/
-            map.put(bigIntLengthStringChinaKey, result);
-            listMap.add(map);
-        }
-        if (isGroupBytes.equals(CHOICE_FIELD_NO)) {
-            Map<String, String> map = new HashMap<>();
-            //如果不区分单双字节，输出2个数据样本，分别为：加括号的文字描述“（最大长度）个中文字符”、加括号的文字描述“（最大长度）个中英文组合的字符串”
-            String bigIntLengthStringLetterKey = generateLowerString(length + addInt);
-            /*String bigIntLengthStringLetterValue=length+addInt+"个英文字符串";*/
-            map.put(bigIntLengthStringLetterKey, result);
-
-            String bigIntLengthStringChinaKey = getFixedLengthChinese(length + addInt);
-            /*String bigIntLengthStringChinaValue=length+addInt+"个中文字符串";*/
-            map.put(bigIntLengthStringChinaKey, result);
-            listMap.add(map);
-        }
-        return listMap;
     }
 
     //特殊字符处理
@@ -373,7 +367,7 @@ public class GeneratedSamples {
                 if(!"".equals(decimalTypeBeans.get(i).getDecimalIsFormatExpectedResults())){
                     decimalIsFormatExpectedResults=decimalTypeBeans.get(i).getDecimalIsFormatExpectedResults();
                 }
-                String fieldNormalData = null;
+                String fieldNormalData;
                 if (!"".equals(decimalTypeBeans.get(i).getFieldNormalData())) {
                     fieldNormalData = decimalTypeBeans.get(i).getFieldNormalData();
                     successJson.put(fieldNameKey, fieldNormalData);
@@ -406,12 +400,17 @@ public class GeneratedSamples {
                 BigDecimal b1 = new BigDecimal(Double.toString((1/temptest)));
                 Float maxSum= maxB1.add(b1).floatValue();
                 Float minSum= minB1.subtract(b1).floatValue();
-                abnormalMap.put(String.valueOf(maxSum), beyondUpperBoundaryExpectedResults);
-                abnormalMap.put(String.valueOf(minSum), beyondLowerBoundaryExpectedResults);
+                String zeroPatten="."+generateZeroString(precisionKeyInt);
+                DecimalFormat decimalFormat=new DecimalFormat(zeroPatten);//构造方法的字符格式这里如果小数不足2位,会以0补足.
+                String p=decimalFormat.format(maxSum);//format 返回的是字符串/构造方法的字符格式这里如果小数不足2位,会以0补足.
+                String b=decimalFormat.format(minSum);//format 返回的是字符串
+                abnormalMap.put(p, beyondUpperBoundaryExpectedResults);
+                abnormalMap.put(b, beyondLowerBoundaryExpectedResults);
 
-                abnormalMap.put(String.valueOf(generationDouble()), decimalIsFormatExpectedResults);
-                abnormalMap.put("A", decimalIsFormatExpectedResults);
-                abnormalMap.put(String.valueOf(generatingFloat()), decimalIsFormatExpectedResults);
+                abnormalMap.put(generateString(Integer.valueOf(precisionKey)), decimalIsFormatExpectedResults);
+                /*abnormalMap.put("A", decimalIsFormatExpectedResults);*/
+                String tempPrecisionKeyInt=generationDecimal(precisionKeyInt+1, Max, Min);
+                abnormalMap.put(tempPrecisionKeyInt, decimalIsFormatExpectedResults);
                 litabnormalMap.add(abnormalMap);
                 keyAbnormalMap.put(fieldNameKey, litabnormalMap);
                 abnormalListDate.add(keyAbnormalMap);
@@ -435,8 +434,8 @@ public class GeneratedSamples {
                 beyondLowerBoundaryExpectedResults=dateTypeBeans.get(i).getBeyondLowerBoundaryExpectedResults();
             }
             String beyondUpperBoundaryExpectedResults=SYSTEM_DEFAULT_FAIL_VALUE;
-            if(!"".equals(dateTypeBeans.get(i).getBeyondLowerBoundaryExpectedResults())){
-                beyondUpperBoundaryExpectedResults=dateTypeBeans.get(i).getBeyondLowerBoundaryExpectedResults();
+            if(!"".equals(dateTypeBeans.get(i).getBeyondUpperBoundaryExpectedResults())){
+                beyondUpperBoundaryExpectedResults=dateTypeBeans.get(i).getBeyondUpperBoundaryExpectedResults();
             }
             String dateIsFormatExpectedResults=SYSTEM_DEFAULT_FAIL_VALUE;
             if(!"".equals(dateTypeBeans.get(i).getDateIsFormatExpectedResults())){
