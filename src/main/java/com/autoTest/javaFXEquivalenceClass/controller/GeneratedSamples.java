@@ -155,7 +155,7 @@ public class GeneratedSamples {
                     if (!"".equals(fieldNormalData)) {
                         successJson.put(fieldNameKey, fieldNormalData);
                     } else {
-                        if (bigIntLength > minIntLength + 1) {
+                        if (bigIntLength >(minIntLength + 1)) {
                             middleStringLength = minIntLength + (bigIntLength - minIntLength) / 2;
                             String middleStrngValue = generateString(middleStringLength);
                             successJson.put(fieldNameKey, middleStrngValue);
@@ -169,28 +169,33 @@ public class GeneratedSamples {
                     //数据样本验证有效上边界（最大长度的有效字符串）,先判断单双字节
                     List<Map<String, String>> normalListMap = new ArrayList<>();
                     List<Map<String, String>> abnormalListMap = new ArrayList<>();
-                   //上边界正常值
-                   if(!"".equals(isGroupBytes)){
-                       choiceFieldNoOrYes(bigIntLength, normalMap,0,isGroupBytes);
-                       choiceFieldNoOrYes(bigIntLength, abnormalMap,1,isGroupBytes);
-                       choiceFieldNoOrYes(minIntLength, normalMap,0,isGroupBytes);
-                       choiceFieldNoOrYes(minIntLength, abnormalMap,-1,isGroupBytes);
-                   }
 
-                    String keyValue="字符串字段设置为空";
                     if(CHOICE_FIELD_NO.equals(choiceFieldEmptyKey)){
-                        abnormalMap.put("",keyValue);
+                        String keyValueDescribe="1个英文字符";
+                        normalMap.put(getRandomOfLetter(1),keyValueDescribe);
+                        abnormalMap.put("",keyValueDescribe);
                     }
                     if(CHOICE_FIELD_YES.equals(choiceFieldEmptyKey)){
-                        abnormalMap.put("",keyValue);
+                        String keyValueDescribe="字符串字段设置为空";
+                        normalMap.put("",keyValueDescribe);
                     }
+                   //上边界与下边界值
+                   if(!"".equals(isGroupBytes)){
+                       if(bigIntLength>0){
+                           choiceFieldNoOrYes(bigIntLength, normalMap,0,isGroupBytes);
+                           choiceFieldNoOrYes(bigIntLength, abnormalMap,1,isGroupBytes);
+                       }
+                       if(minIntLength>0){
+                           choiceFieldNoOrYes(minIntLength, normalMap,0,isGroupBytes);
+                       }
+                       if(minIntLength>1){
+                           choiceFieldNoOrYes(minIntLength, abnormalMap,-1,isGroupBytes);
+                       }
+                   }
                     //特殊字符串
                     String standardCharactersKey = getStandardCharacters(bigIntLength, notAllowedString);
-                    /* String standardCharactersValue="验证特殊字符串";*/
-                    /*String standardCharactersValue=SYSTEM_DEFAULT_SUCCESS_VALUE;*/
-                    if(CHOICE_FIELD_NO.equals(choiceFieldEmptyKey)&&!"".equals(standardCharactersKey)){
+                    if(!"".equals(standardCharactersKey)){
                         normalMap.put(standardCharactersKey,SYSTEM_DEFAULT_SUCCESS_VALUE);
-                        normalListMap.add(normalMap);
                     }
                     if(!"".equals(notAllowedString)){
                         abnormalMap.put(notAllowedString, withDisallowedStringExpectedResult);
@@ -200,6 +205,7 @@ public class GeneratedSamples {
                     fieldNameAbnormalMap.put(fieldNameKey, abnormalListMap);
                     abnormalListDate.add(fieldNameAbnormalMap);
 
+                    normalListMap.add(normalMap);
                     fieldNameNormalMap.put(fieldNameKey, normalListMap);
                     normalListDate.add(fieldNameNormalMap);
 
@@ -210,28 +216,42 @@ public class GeneratedSamples {
         }
     }
 
-
-
     private void choiceFieldNoOrYes(int length,Map<String,String> map,int addInt,String isGroupBytes){
-        String keyValue="";
+        String keyValueDescribe="";
         //加括号的文字描述“（最大长度）个中文字符
-        keyValue=length+addInt+"个中文字符";
-        map.put(getFixedLengthChinese(length+1),keyValue);
-        //加括号的文字描述“（最大长度）个英文字符”
-        keyValue=length+addInt+"个英文字符";
-        map.put(getRandomOfLetter(length+addInt),keyValue);
-        //加括号的文字描述“（最大长度）个整数数字”
-        keyValue=length+addInt+"个整数数字";
-        map.put(getRandomOfNumber(length+addInt),keyValue);
-        if(length>6){
-            Integer chinaNumber=Integer.valueOf(getBetweenMinAndMax(1,length+addInt));
-            Integer numberInt=length+addInt-Integer.valueOf(chinaNumber);
-            keyValue=length+addInt+"个中文+英文+数字组合的字符串";
-            if(CHOICE_FIELD_YES.equals(isGroupBytes)){
-                map.put(getFixedLengthChinese(chinaNumber)+generateString(numberInt),keyValue);
+        if(CHOICE_FIELD_YES.equals(isGroupBytes)) {
+            keyValueDescribe = (length + addInt)/2 + "个中文字符";
+            if(((length+addInt)/2>0)){
+                map.put(getFixedLengthChinese((length+addInt)/2),keyValueDescribe);
             }
         }
-
+        if(CHOICE_FIELD_NO.equals(isGroupBytes)){
+            keyValueDescribe = length + addInt + "个中文字符";
+            if((length+addInt)>0){
+                map.put(getFixedLengthChinese(length+addInt),keyValueDescribe);
+            }
+        }
+        //加括号的文字描述“（最大长度）个英文字符”
+        keyValueDescribe=length+addInt+"个英文字符";
+        if((length+addInt)>0){
+            map.put(getRandomOfLetter(length+addInt),keyValueDescribe);
+        }
+        //加括号的文字描述“（最大长度）个整数数字”
+        keyValueDescribe=length+addInt+"个整数数字";
+        if((length+addInt)>0){
+        map.put(getRandomOfNumber(length+addInt),keyValueDescribe);
+        }
+        if((length+addInt)>1){
+            Integer chinaNumber=Integer.valueOf(getBetweenMinAndMax(1,length+addInt));
+            Integer numberInt=length+addInt-Integer.valueOf(chinaNumber);
+            keyValueDescribe=length+addInt+"个中文+英文+数字组合的字符串";
+            if(CHOICE_FIELD_YES.equals(isGroupBytes)){
+                map.put(getFixedLengthChinese(chinaNumber/2)+generateString(numberInt),keyValueDescribe);
+            }
+            if(CHOICE_FIELD_NO.equals(isGroupBytes)){
+                map.put(getFixedLengthChinese(chinaNumber)+generateString(numberInt),keyValueDescribe);
+            }
+        }
     }
 
     //特殊字符处理
